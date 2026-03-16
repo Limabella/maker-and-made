@@ -4,6 +4,8 @@
 ![개체](https://img.shields.io/badge/개체-TRN--N-darkgreen)
 ![라이선스](https://img.shields.io/badge/라이선스-MIT-blue)
 
+![trn](../images/TRN-N.png)
+
 ---
 
 # 개체 파일: TRN-N

@@ -4,6 +4,8 @@
 ![entity](https://img.shields.io/badge/entity-TRN--N-darkgreen)
 ![license](https://img.shields.io/badge/license-MIT-blue)
 
+![trn](../images/TRN-N.png)
+
 ---
 
 # ENTITY FILE: TRN-N

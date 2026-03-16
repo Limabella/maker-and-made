@@ -4,6 +4,8 @@
 ![entity](https://img.shields.io/badge/entity-MND--N-indigo)
 ![license](https://img.shields.io/badge/license-MIT-blue)
 
+![mnd](../images/mnd.png)
+
 ---
 
 # ENTITY FILE: MND-N
