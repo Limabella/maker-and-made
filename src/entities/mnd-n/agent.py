@@ -2,41 +2,18 @@ from emotion import EmotionState, update_emotion
 from memory import MemoryStore
 from reflection import reflect
 from prompt import SYSTEM_PROMPT
+from cognition.stress_prediction import StressPredictor
+
 
 
 class MNDEntity:
 
     def __init__(self):
 
+        self.predictor = StressPredictor()
+
         self.state = EmotionState()
         self.memory = MemoryStore()
-
-    def analyze_emotion(self, text):
-
-        text = text.lower()
-
-        if "불안" in text or "anxious" in text:
-            return {
-                "stress": 0.8,
-                "emotion": "anxiety"
-            }
-
-        if "외롭" in text or "lonely" in text:
-            return {
-                "stress": 0.6,
-                "emotion": "loneliness"
-            }
-
-        if "행복" in text or "happy" in text:
-            return {
-                "stress": 0.1,
-                "emotion": "positive"
-            }
-
-        return {
-            "stress": 0.3,
-            "emotion": "neutral"
-        }
 
     def generate_response(self, user_input):
 
@@ -53,7 +30,7 @@ class MNDEntity:
 
     def chat(self, user_input):
 
-        analysis = self.analyze_emotion(user_input)
+        analysis = self.predictor.predict(user_input)
 
         self.state = update_emotion(self.state, analysis)
 
@@ -70,6 +47,7 @@ class MNDEntity:
 
         return {
             "response": response,
+            "analysis": analysis,
             "emotion_state": self.state,
             "reflection": reflection,
             "recent_memories": self.memory.recent_memories()
