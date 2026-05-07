@@ -1,5 +1,8 @@
-from emotion import EmotionState, update_emotion
-from memory import MemoryStore
+from emotion import EmotionState, update_emotion, load_state, save_state
+from memory import (
+    ShortTermMemory,
+    LongTermMemory
+)
 from reflection import reflect
 from prompt import SYSTEM_PROMPT
 from cognition.stress_prediction import StressPredictor
@@ -12,8 +15,12 @@ class MNDEntity:
 
         self.predictor = StressPredictor()
 
-        self.state = EmotionState()
-        self.memory = MemoryStore()
+        self.state = load_state()
+        
+        self.short_term_memory = ShortTermMemory()
+        
+        self.long_term_memory = LongTermMemory()
+        
 
     def generate_response(self, user_input):
 
@@ -33,14 +40,23 @@ class MNDEntity:
         analysis = self.predictor.predict(user_input)
 
         self.state = update_emotion(self.state, analysis)
+        save_state(self.state)
 
-        self.memory.add_memory(
+        self.short_term_memory.add_memory(
             user_input,
             analysis["emotion"]
         )
 
+        self.long_term_memory.update_emotion(
+            analysis["emotion"]
+        )
+
+        self.long_term_memory.update_relationship(
+            trust_delta=0.01
+        )
+
         reflection = reflect(
-            self.memory.recent_memories()
+            self.short_term_memory.get_recent()
         )
 
         response = self.generate_response(user_input)
@@ -50,7 +66,8 @@ class MNDEntity:
             "analysis": analysis,
             "emotion_state": self.state,
             "reflection": reflection,
-            "recent_memories": self.memory.recent_memories()
+            "recent_memories": self.short_term_memory.get_recent(),
+            "long_term_patterns": self.long_term_memory.get_emotion_patterns()
         }
 
 
@@ -74,3 +91,6 @@ if __name__ == "__main__":
 
         print("\n[Emotion State]")
         print(result["emotion_state"])
+
+        print("\n[Long-Term Memory]")
+        print(result["long_term_patterns"])
