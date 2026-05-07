@@ -1,6 +1,6 @@
 # MND-N
 Mind Care Entity
-
+![architecture](image.png)
 ---
 
 ## Identity
