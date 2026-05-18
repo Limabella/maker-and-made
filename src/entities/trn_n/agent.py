@@ -1,6 +1,7 @@
 import json
 import cv2
 import os
+from .cognition.pose_estimation import PoseEstimator
 from .motion_analyzer import MotionAnalyzer
 from .memory import ShortTermMemory, LongTermMemory
 from .prompt import SYSTEM_PROMPT
@@ -15,9 +16,8 @@ class TRNEntity:
         with open(config_path, 'r') as f:
             self.config = json.load(f)
         
-        # MediaPipe will be integrated later
-        # For now, using basic OpenCV
-        self.pose = None
+        pose_model_path = self.config.get('pose_model_path')
+        self.pose_estimator = PoseEstimator(model_path=pose_model_path)
         self.analyzer = MotionAnalyzer()
         self.short_term_memory = ShortTermMemory()
         self.long_term_memory = LongTermMemory()
@@ -29,29 +29,19 @@ class TRNEntity:
         }
     
     def process_frame(self, frame):
-        # Convert to RGB
-        rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-        
-        # TODO: Integrate MediaPipe for pose detection
-        # For now, return placeholder response
-        if self.pose is None:
-            return "Pose detection not yet integrated", None
-        
-        # Process pose
-        results = self.pose.process(rgb_frame)
-        
+        try:
+            results = self.pose_estimator.process_image(frame)
+        except FileNotFoundError as e:
+            return str(e), None
+        except Exception as e:
+            return f"Pose estimation error: {e}", None
+
         if results.pose_landmarks:
-            # Analyze motion
             analysis = self.analyzer.analyze_pose(results.pose_landmarks)
-            
-            # Update session state
             self.update_session_state(analysis)
-            
-            # Generate feedback
             feedback = self.generate_feedback(analysis)
-            
             return feedback, analysis
-        
+
         return "No pose detected", None
     
     def update_session_state(self, analysis):
