@@ -73,9 +73,9 @@ class PoseEstimator:
                 base_options=BaseOptions(model_asset_path=self.model_path),
                 running_mode=self.running_mode,
                 num_poses=1,                           # Max number of poses to detect
-                min_pose_detection_confidence=0.5,     # Min confidence for person detection
-                min_pose_presence_confidence=0.5,      # Min confidence for pose landmarks
-                min_tracking_confidence=0.5,           # Min confidence for tracking
+                min_pose_detection_confidence=0.3,     # Min confidence for person detection
+                min_pose_presence_confidence=0.3,      # Min confidence for pose landmarks
+                min_tracking_confidence=0.3,           # Min confidence for tracking
             )
             # Create the landmarker instance
             self.landmarker = vision.PoseLandmarker.create_from_options(self._options)
