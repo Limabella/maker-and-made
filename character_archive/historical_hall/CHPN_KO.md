@@ -4,7 +4,7 @@
 ![개체](https://img.shields.io/badge/개체-CHPN--N-darkblue)
 ![라이선스](https://img.shields.io/badge/라이선스-MIT-blue)
 
-![CHPN-N](../images/chopin.png)
+![CHPN-N](../images/chpn.png)
 
 ---
 
@@ -177,4 +177,4 @@ MIT License
 
 ## 제작자
 
-FerryLa
+Limabella
