@@ -31,6 +31,7 @@ class TRNEntity:
             'form_errors': []
         }
 
+        # [V2 DRAFT] Transitioning to Q-Former for Memory Efficiency and Robust Recognition.
         # VisualReasoner(): 자원 최적화를 위해 특정 순간에만 시각적 추론을 수행하도록 설정
         self.visual_reasoner = VisualReasoner() # 시각적 추론을 담당할 모듈 호출
         self.last_semantic_check = 0 # 자원 최적화용 타이머
@@ -42,37 +43,57 @@ class TRNEntity:
             return f"Pose estimation error: {e}", None
 
         if results.pose_landmarks:
-            # 1. 기하학적 분석 (수치 데이터 추출)
+            # Step 1: Geometric Analysis (Extracting numerical data)
             analysis = self.analyzer.analyze_pose(results.pose_landmarks)
             self.update_session_state(analysis)
             
-            # 2. 3단계: 이벤트 기반 지능형 분석 (LAVR 적용)
+            # Step 2: Event-based Intelligent Analysis (LAVR Implementation)
             import time
             current_time = time.time()
             
-            # 마지막 분석 후 2초가 지났거나, 자세가 불량(INCORRECT)일 때만 MLLM 호출
-            if not hasattr(self, 'last_semantic_time'): self.last_semantic_time = 0
-            
-            if (current_time - self.last_semantic_time > 2.0) or (analysis.get('status') == "INCORRECT"):
-                # VisualReasoner를 통해 이미지의 맥락(시선, 등 굽음 등) 분석
-                # 주의: self.visual_reasoner가 사전에 초기화되어 있어야 함
+            # Ensure last_semantic_time is initialized
+            if not hasattr(self, 'last_semantic_time'): 
+                self.last_semantic_time = 0
+
+            # [V2 DRAFT] Encapsulate trigger for memory/hardware optimization.
+            # This logic minimizes redundant MLLM calls to ensure smooth performance on laptops.
+            if self._should_run_deep_learning_inference(analysis, current_time):
+                # Analyze visual context (e.g., eye contact, back posture) via VisualReasoner
                 semantic_context = self.visual_reasoner.analyze_frame(frame, analysis.get('angles'))
                 analysis['semantic_message'] = semantic_context
                 self.last_semantic_time = current_time
             else:
                 analysis['semantic_message'] = None
 
-            # 3. 종합 피드백 생성 (수치 피드백 + 맥락 피드백)
+            # Step 3: Integrated Feedback Generation (Numerical + Semantic Context)
             feedback = self.generate_feedback(analysis)
             if analysis['semantic_message']:
-                feedback = f"{feedback} | [AI 분석] {analysis['semantic_message']}"
+                feedback = f"{feedback} | [AI Analysis] {analysis['semantic_message']}"
             
-            # 4. 4단계: 의미론적 로깅 수행
+            # Step 4: Semantic Logging and Memory Storage
             self.add_memory(frame, analysis)
             
             return feedback, analysis
 
         return "No pose detected", None
+    
+    def _should_run_deep_learning_inference(self, analysis, current_time):
+        """
+        [V2 DRAFT] Determine whether to execute deep learning inference considering laptop hardware constraints.
+        (Triggered every 2 seconds or when INCORRECT form is detected)
+
+        [V2 초안] 노트북 하드웨어 사양을 고려하여 딥러닝 추론 실행 여부를 결정합니다.
+        (2초 주기 혹은 자세 불량(INCORRECT) 감지 시 실행)
+        """
+        # Ensure last_semantic_time is initialized
+        if not hasattr(self, 'last_semantic_time'): 
+            self.last_semantic_time = 0
+            
+        # Decision logic: Periodic check OR Event-driven (form error)
+        is_time_to_check = (current_time - self.last_semantic_time > 2.0)
+        is_form_incorrect = (analysis.get('status') == "INCORRECT")
+        
+        return is_time_to_check or is_form_incorrect
     
     def update_session_state(self, analysis):
         if analysis['exercise_type']:
