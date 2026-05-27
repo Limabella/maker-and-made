@@ -1,4 +1,4 @@
-````md id="3cmep8"
+
 # 살라딘
 
 ![status](https://img.shields.io/badge/status-ACTIVE_VIGILANT-darkgreen)
@@ -139,5 +139,3 @@ SLD-N은 이끌지 않는다.
 
 그것이 이 엔티티의 기능이다.
 
-```
-```

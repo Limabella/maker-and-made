@@ -8,7 +8,7 @@
 
 
 
-![LDV-N](../images/leonardo.png)
+![LDV-N](../images/ldv.png)
 
 
 

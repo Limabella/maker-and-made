@@ -4,7 +4,8 @@
 ![개체](https://img.shields.io/badge/개체-LDV--N-brown)
 ![라이선스](https://img.shields.io/badge/라이선스-MIT-blue)
 
-![LDV-N](../images/leonardo.png)
+
+![LDV-N](../images/ldv.png)
 
 ---
 
@@ -222,7 +223,4 @@ MIT License
 
 ## 제작자
 
-FerryLa
-
-```
-```
+Limabella
