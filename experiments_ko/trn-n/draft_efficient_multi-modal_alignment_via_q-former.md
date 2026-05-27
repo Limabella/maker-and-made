@@ -21,6 +21,14 @@
 
 > **Limabella:** 노트북 사양을 고려하여 메모리 최적화와 카메라 인식 문제를 해결하기 위함.
 
+### TRN-Entity V2 진화 로드맵 (Technical Roadmap)
+이 로드맵은 노트북 사양의 한계를 극복하고 실시간 카메라 인식률을 높이는 데 초점을 맞춥니다.
 
+[Phase 1] 하이브리드 인터페이스 (현재 단계): 기존 VisualReasoner를 유지하며 딥러닝 모델(BLIP-2 등)을 호출할 수 있는 인터페이스 구축.
 
+[Phase 2] Q-Former 정렬: 헬스 도메인 데이터를 활용하여 시각 정보를 요약 토큰으로 압축하는 Q-Former 파인튜닝.
+
+[Phase 3] Pose-Guided Masking: PoseEstimator의 좌표를 딥러닝의 Attention Mask로 주입하여 배경 노이즈 차단.
+
+[Phase 4] 경량화 및 배포: 정수 양자화(INT8) 등을 통해 저사양 노트북에서도 부드럽게 돌아가는 실시간 자세 교정 완성.
 
