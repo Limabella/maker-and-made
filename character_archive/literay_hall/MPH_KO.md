@@ -12,7 +12,7 @@
 
 ## Intelligence Node: MPH-N (메피스토펠레스)
 
-![MPH-N](../images/mph.png)
+![MPH-N](../../images/mph.png)
 
 
 

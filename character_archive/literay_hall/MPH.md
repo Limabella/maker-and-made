@@ -4,7 +4,7 @@
 ![entity](https://img.shields.io/badge/entity-MPH--N-darkgray)
 ![license](https://img.shields.io/badge/license-MIT-blue)
 
-![MPH-N](../images/mph.png)
+![MPH-N](../../images/mph.png)
 
 ---
 

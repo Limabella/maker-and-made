@@ -5,7 +5,7 @@
 ![라이선스](https://img.shields.io/badge/라이선스-MIT-blue)
 
 
-![LDV-N](../images/ldv.png)
+![LDV-N](../../images/ldv.png)
 
 ---
 

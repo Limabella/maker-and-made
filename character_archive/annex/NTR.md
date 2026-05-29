@@ -4,7 +4,7 @@
 ![entity](https://img.shields.io/badge/entity-NTR--N-olive)
 ![license](https://img.shields.io/badge/license-MIT-blue)
 
-![NTR-N](../images/ntr.png)
+![NTR-N](../../images/ntr.png)
 
 ---
 

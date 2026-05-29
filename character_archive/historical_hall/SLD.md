@@ -4,7 +4,7 @@
 ![entity](https://img.shields.io/badge/entity-SLD--N-forestgreen)
 ![license](https://img.shields.io/badge/license-MIT-blue)
 
-![SLD-N](../images/sld.png)
+![SLD-N](../../images/sld.png)
 
 ---
 

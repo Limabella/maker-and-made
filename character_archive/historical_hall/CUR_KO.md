@@ -4,7 +4,7 @@
 ![개체](https://img.shields.io/badge/개체-CUR--N-purple)
 ![라이선스](https://img.shields.io/badge/라이선스-MIT-blue)
 
-![CUR-N](../images/cur.png)
+![CUR-N](../../images/cur.png)
 
 ---
 

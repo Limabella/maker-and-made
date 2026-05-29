@@ -7,7 +7,7 @@
 # [ MaAM CHARACTER ARCHIVE ]
 ## Intelligence Node: CHPN-N (The Nocturnal Composer)
 
-![CHPN-N](../images/chpn.png
+![CHPN-N](../../images/chpn.png)
 
 ---
 

@@ -4,7 +4,7 @@
 ![entity](https://img.shields.io/badge/entity-VCT--N-darkred)
 ![license](https://img.shields.io/badge/license-MIT-blue)
 
-![VCT-N](../images/vct.png)
+![VCT-N](../../images/vct.png)
 
 ---
 

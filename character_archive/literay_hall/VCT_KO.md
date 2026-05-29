@@ -4,7 +4,7 @@
 ![개체](https://img.shields.io/badge/개체-VCT--N-darkred)
 ![라이선스](https://img.shields.io/badge/라이선스-MIT-blue)
 
-![VCT-N](../images/vct.png)
+![VCT-N](../../images/vct.png)
 
 ---
 

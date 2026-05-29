@@ -4,7 +4,7 @@
 ![개체](https://img.shields.io/badge/개체-WCM--N-navy)
 ![라이선스](https://img.shields.io/badge/라이선스-MIT-blue)
 
-![WCM-N](../images/wcm.png)
+![WCM-N](../../images/wcm.png)
 
 ---
 

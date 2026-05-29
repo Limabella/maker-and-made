@@ -4,7 +4,7 @@
 ![개체](https://img.shields.io/badge/개체-NTR--N-olive)
 ![라이선스](https://img.shields.io/badge/라이선스-MIT-blue)
 
-![NTR-N](../images/ntr.png)
+![NTR-N](../../images/ntr.png)
 
 ---
 

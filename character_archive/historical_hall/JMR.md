@@ -4,7 +4,7 @@
 ![entity](https://img.shields.io/badge/entity-JMR--N-steelblue)
 ![license](https://img.shields.io/badge/license-MIT-blue)
 
-![jmr](../images/jmr.png)
+![jmr](../../images/jmr.png)
 
 ---
 

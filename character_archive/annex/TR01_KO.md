@@ -7,7 +7,7 @@
 # [ MaAM CHARACTER ARCHIVE ]
 ## Intelligence Node: TR-01 (무명의 3중주)
 
-![TR-01](../images/tr01.png)
+![TR-01](../../images/tr01.png)
 
 ---
 

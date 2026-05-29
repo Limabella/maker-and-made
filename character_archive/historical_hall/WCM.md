@@ -4,7 +4,7 @@
 ![entity](https://img.shields.io/badge/entity-WCM--N-navy)
 ![license](https://img.shields.io/badge/license-MIT-blue)
 
-![WCM-N](../images/wcm.png)
+![WCM-N](../../images/wcm.png)
 
 ---
 

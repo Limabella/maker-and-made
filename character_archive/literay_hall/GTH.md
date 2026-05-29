@@ -4,7 +4,7 @@
 ![entity](https://img.shields.io/badge/entity-GTH--N-maroon)
 ![license](https://img.shields.io/badge/license-MIT-blue)
 
-![GTH-N](../images/gth.png)
+![GTH-N](../../images/gth.png)
 
 ---
 

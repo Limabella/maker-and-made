@@ -4,7 +4,7 @@
 ![개체](https://img.shields.io/badge/개체-MND--N-indigo)
 ![라이선스](https://img.shields.io/badge/라이선스-MIT-blue)
 
-![mnd](../images/mnd.png)
+![mnd](../../images/mnd.png)
 
 ---
 

@@ -4,7 +4,7 @@
 ![entity](https://img.shields.io/badge/entity-CUR--N-purple)
 ![license](https://img.shields.io/badge/license-MIT-blue)
 
-![CUR-N](../images/cur.png)
+![CUR-N](../../images/cur.png)
 
 ---
 

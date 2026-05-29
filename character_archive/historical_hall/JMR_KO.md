@@ -4,7 +4,7 @@
 ![개체](https://img.shields.io/badge/개체-JMR--N-steelblue)
 ![라이선스](https://img.shields.io/badge/라이선스-MIT-blue)
 
-![jmr](../images/jmr.png)
+![jmr](../../images/jmr.png)
 
 ---
 
