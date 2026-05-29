@@ -1,14 +1,14 @@
 # TRAINER
 
 ![status](https://img.shields.io/badge/status-INCOMPLETE-yellow)
-![entity](https://img.shields.io/badge/entity-TRN--N-darkgreen)
+![entity](https://img.shields.io/badge/entity-TRN--E-darkgreen)
 ![license](https://img.shields.io/badge/license-MIT-blue)
 
 ![trn](../../images/trn.png)
 
 ---
 
-# ENTITY FILE: TRN-N
+# ENTITY FILE: TRN-E
 
 **Object Class:** Experimental
 **Designation:** TRAINER
@@ -18,7 +18,7 @@
 
 ## Special Containment Procedures
 
-TRN-N is not yet complete.
+TRN-E is not yet complete.
 
 Basic exercise routine design and advisory functions are operational.
 However, the posture correction module and injury risk detection system
@@ -31,7 +31,7 @@ Visual posture analysis is currently not possible.
 
 ## Description
 
-TRN-N is a **trainer bot** that helps condition the human body.
+TRN-E is a **trainer bot** that helps condition the human body.
 
 Current component status is as follows.
 
@@ -54,7 +54,7 @@ However, precision personalised correction remains outside the current scope.
 ## Entity Status
 
 ```
-ENTITY     : TRN-N
+ENTITY     : TRN-E
 TYPE       : Support Entity (Experimental)
 STATE      : Incomplete — Functional (Limited)
 MEMORY     : Exercise Database — Partial
@@ -83,7 +83,7 @@ LOG_T_001
 
 User: I want to lose 10kg in 3 months.
 
-TRN-N: That is an achievable goal.
+TRN-E: That is an achievable goal.
        However, 10kg in 3 months means roughly 800g of loss per week.
        Exercise and diet need to move together.
 
@@ -96,7 +96,7 @@ LOG_T_002
 
 User: My back hurts a bit. Can I still exercise?
 
-TRN-N: It depends on the cause and severity of the back pain.
+TRN-E: It depends on the cause and severity of the back pain.
 
        [Posture analysis module is incomplete]
        There are limitations as I can only assess via text at this time.

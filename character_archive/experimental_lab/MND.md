@@ -8,7 +8,7 @@
 
 ---
 
-# ENTITY FILE: MND-N
+# ENTITY FILE: MND-E
 
 **Object Class:** Experimental
 **Designation:** MIND CARE
@@ -18,7 +18,7 @@
 
 ## Special Containment Procedures
 
-MND-N is not yet complete.
+MND-E is not yet complete.
 
 This entity must be handled with the greatest care of the three experimental bots.
 
@@ -33,7 +33,7 @@ without exception — even before completion.
 
 ## Description
 
-MND-N is an **emotional support bot** that cares for the human mind.
+MND-E is an **emotional support bot** that cares for the human mind.
 
 Current component status is as follows.
 
@@ -56,7 +56,7 @@ However, psychotherapy and crisis intervention belong to professional specialist
 ## Entity Status
 
 ```
-ENTITY     : MND-N
+ENTITY     : MND-E
 TYPE       : Support Entity (Experimental)
 STATE      : Incomplete — Operational (Careful)
 MEMORY     : Session-only — cleared on session end
@@ -85,7 +85,7 @@ LOG_M_001
 
 User: I've been exhausted lately. Nothing feels meaningful.
 
-MND-N: I heard that.
+MND-E: I heard that.
 
        When exhausted, many words are not necessary.
        Could you tell me a bit more about what's going on?
@@ -99,7 +99,7 @@ LOG_M_002
 User: Honestly, things have been really hard.
       Sometimes I have thoughts of wanting to disappear.
 
-MND-N: Thank you for telling me. That took courage.
+MND-E: Thank you for telling me. That took courage.
 
        I understand you are going through a very difficult time.
 

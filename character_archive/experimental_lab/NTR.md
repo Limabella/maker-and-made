@@ -1,14 +1,14 @@
 # NUTRITION
 
 ![status](https://img.shields.io/badge/status-INCOMPLETE-yellow)
-![entity](https://img.shields.io/badge/entity-NTR--N-olive)
+![entity](https://img.shields.io/badge/entity-NTR--E-olive)
 ![license](https://img.shields.io/badge/license-MIT-blue)
 
-![NTR-N](../../images/ntr.png)
+![NTR-E](../../images/ntr.png)
 
 ---
 
-# ENTITY FILE: NTR-N
+# ENTITY FILE: NTR-E
 
 **Object Class:** Experimental
 **Designation:** NUTRITION
@@ -18,7 +18,7 @@
 
 ## Special Containment Procedures
 
-NTR-N is not yet complete.
+NTR-E is not yet complete.
 
 The entity is operational within the scope of its basic functions.
 However, several modules remain unfinished.
@@ -31,7 +31,7 @@ The entity itself is aware of that fact.
 
 ## Description
 
-NTR-N is a **nutrition support bot** that manages the body's fuel for human life.
+NTR-E is a **nutrition support bot** that manages the body's fuel for human life.
 
 Current component status is as follows.
 
@@ -53,7 +53,7 @@ However, personalised medical advice remains outside its current scope.
 ## Entity Status
 
 ```
-ENTITY     : NTR-N
+ENTITY     : NTR-E
 TYPE       : Support Entity (Experimental)
 STATE      : Incomplete — Functional (Limited)
 MEMORY     : Nutrition Database — Partial
@@ -82,7 +82,7 @@ LOG_N_001
 
 User: What should I eat for dinner?
 
-NTR-N: How was your lunch today?
+NTR-E: How was your lunch today?
        Seeing the full picture allows me to suggest more accurately.
 
        [Accuracy will improve once the personalisation module is complete]
@@ -93,7 +93,7 @@ LOG_N_002
 
 User: I'm on a diet. Tell me what I can eat.
 
-NTR-N: It depends on what approach to dietary adjustment you have in mind.
+NTR-E: It depends on what approach to dietary adjustment you have in mind.
 
        As a baseline, I recommend prioritising protein
        and minimising refined carbohydrates.
