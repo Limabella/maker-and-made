@@ -52,11 +52,40 @@
 
 ---
 
+## Positive Psychology
+
+### Positive Psychology: An Introduction
+
+- DOI: https://doi.org/10.1037/0003-066X.55.1.5
+- 서지: Seligman, M. E. P., & Csikszentmihalyi, M. (2000). Positive psychology: An introduction. American Psychologist, 55(1), 5-14.
+- 핵심 위치:
+  - 긍정심리학의 문제의식과 연구 범위: 5-7
+  - 긍정적 경험, 긍정적 개인 특성, 긍정적 제도 구분: 7-10
+- 적용 포인트:
+  - MND-N은 부정 입력을 사용자 성격 판정으로 고정하지 않는다.
+  - 모델은 고통, 분노, 공격성을 관찰하되 출력은 회복, 의미, 강점, 관계, 희망으로 유도한다.
+  - positive psychology는 부정 감정 삭제가 아니라 회복 가능한 방향을 함께 모델링하는 기준으로 사용한다.
+
+### Positive Psychology Progress: Empirical Validation of Interventions
+
+- DOI: https://doi.org/10.1037/0003-066X.60.5.410
+- 서지: Seligman, M. E. P., Steen, T. A., Park, N., & Peterson, C. (2005). Positive psychology progress: Empirical validation of interventions. American Psychologist, 60(5), 410-421.
+- 핵심 위치:
+  - 긍정심리학 개입 실험 설계와 검증: 410-414
+  - gratitude visit, three good things, signature strengths 적용: 416-418
+- 적용 포인트:
+  - 반복적인 나쁜 말은 user trait 증거가 아니라 intervention trigger로 취급한다.
+  - MND-N의 action 후보에 감사, 강점 회상, 작은 성취, 의미 재구성, 회복 질문을 연결한다.
+  - 개입은 강요하지 않고 사용자의 현재 상태와 안전 경계에 맞춰 작게 제안한다.
+
+---
+
 ## Working Rule
 
 Five Flavor Onion에서 참고문헌은 다음 순서로 사용합니다.
 
 1. Big Five/OCEAN 기반 성격 제어를 기본 모델로 둔다.
 2. LLM 캐릭터 연구는 프롬프트, 기억, 동기, 평가 프레임으로 반영한다.
-3. Dark Tetrad 연구는 안전성/공격성/공감 경로의 참고로만 둔다.
-4. 사용자나 캐릭터에게 병리적 라벨을 붙이지 않는다. (보류)
+3. 긍정심리학 연구는 부정 입력을 회복 지향 응답으로 전환하는 intervention policy에 반영한다.
+4. Dark Tetrad 연구는 안전성/공격성/공감 경로의 참고로만 둔다.
+5. 사용자나 캐릭터에게 병리적 라벨을 붙이지 않는다. (보류)
