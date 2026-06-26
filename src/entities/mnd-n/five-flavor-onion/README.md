@@ -88,3 +88,5 @@ The memory layer summarizes prior interactions into:
 The decision layer uses those values to shift NPC attitude. High trust makes help and friendly behavior more likely. Low trust or repeated negative interactions makes refuse or avoid more likely.
 
 The project name follows the "five flavors" metaphor for the five personality factors.
+
+For the integrated architecture, roadmap, governance, and trait model, see `experiments_ko/mnd-n/README.md`.
