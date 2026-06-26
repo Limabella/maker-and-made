@@ -1,4 +1,4 @@
-![No](https://img.shields.io/badge/No-003-green)
+![No](https://img.shields.io/badge/No-002-green)
 ![Project](https://img.shields.io/badge/Project-MaAM-blue)
 ![Classification](https://img.shields.io/badge/Class-Collective_Intelligence-darkblue)
 ![type](https://img.shields.io/badge/type-made-Skyblue)
@@ -14,14 +14,14 @@
 
 **English Name:** Onion Bot  
 **Designation:** Kitchen Assistant / Emotional Test Subject  
-**Maker:** BKG-02  
+**Maker:** BKG-O  
 **Project:** MaAM (Maker and Artifact Intelligence Made)
 
 ---
 
 ## 1. MaAM Special Management Protocol
 
-ONN-C is a made entity from the BKG-02 maker line.
+ONN-C is a made entity from the BKG-O maker line.
 It functions as both a kitchen assistant robot and an emotional test subject.
 
 MaAM classifies ONN-C as a stateful made entity:
@@ -37,11 +37,13 @@ The entity is managed as something that can be observed, tuned, and transformed.
 ## 2. Technical Specification & Description
 
 ```txt
+Archive No     : 002
 Entity ID      : ONN-C
+Code Suffix    : C (meaning reserved for future definition)
 Class          : Made Entity
 Primary Role   : Kitchen Assistant
 Secondary Role : Psychological Trial Subject
-Maker          : BKG-02
+Maker          : BKG-O
 Core Form      : Onion-based robot
 State Model    : Orange / White / Black
 ```
@@ -113,7 +115,7 @@ It changes the way it responds under use, pressure, and care.
 
 | Node | Role |
 |------|------|
-| BKG-02 | Maker |
+| BKG-O | Maker |
 | ONN-C | Made |
 | Psychologist | Observer / Trial Supervisor |
 | Kitchen | Primary operating environment |

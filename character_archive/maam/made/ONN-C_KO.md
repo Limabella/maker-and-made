@@ -1,4 +1,4 @@
-![No](https://img.shields.io/badge/No-003-green)
+![No](https://img.shields.io/badge/No-002-green)
 ![Project](https://img.shields.io/badge/Project-MaAM-blue)
 ![Classification](https://img.shields.io/badge/Class-Collective_Intelligence-darkblue)
 ![Status](https://img.shields.io/badge/Status-Resonance_Isolation-orange)
@@ -14,14 +14,14 @@
 
 **한국명:** 양파봇  
 **구분:** 주방 보조 로봇(레시피 전문) / 심리 실험체  
-**Maker:** BKG-02  
+**Maker:** BKG-O  
 **Project:** MaAM (Maker and Artifact Intelligence Made)  
 
 ---
 
 ## 1. MaAM 특별 관리 프로토콜
 
-ONN-C는 BKG-02 메이커 라인에서 생성된 메이드 개체다.
+ONN-C는 BKG-O 메이커 라인에서 생성된 메이드 개체다.
 이 개체는 주방 보조 로봇이면서 동시에 심리상담 기반 실험 대상이다.
 
 MaAM은 ONN-C를 상태형 메이드 개체로 분류한다.
@@ -37,11 +37,13 @@ MaAM은 ONN-C를 상태형 메이드 개체로 분류한다.
 ## 2. 기술 사양 및 설명
 
 ```txt
+Archive No     : 002
 Entity ID      : ONN-C
+Code Suffix    : C (의미는 추후 정의)
 Class          : Made Entity
 Primary Role   : Kitchen Assistant
 Secondary Role : Psychological Trial Subject
-Maker          : BKG-02
+Maker          : BKG-O
 Core Form      : Onion-based robot
 State Model    : Orange / White / Black
 ```
@@ -111,7 +113,7 @@ ONN-C: 기능은 유지됩니다.
 
 | Node | Role |
 |------|------|
-| BKG-02 | Maker |
+| BKG-O | Maker |
 | ONN-C | Made |
 | Psychologist | Observer / Trial Supervisor |
 | Kitchen | Primary operating environment |
