@@ -64,7 +64,33 @@
 - 적용 포인트:
   - MND-N은 부정 입력을 사용자 성격 판정으로 고정하지 않는다.
   - 모델은 고통, 분노, 공격성을 관찰하되 출력은 회복, 의미, 강점, 관계, 희망으로 유도한다.
-  - positive psychology는 부정 감정 삭제가 아니라 회복 가능한 방향을 함께 모델링하는 기준으로 사용한다.
+  - positive psychology는 치료 자동화가 아니라 회복 가능한 방향을 함께 모델링하는 보조 기준으로 사용한다.
+
+### Flourish
+
+- 서지: Seligman, M. E. P. (2011). Flourish: A visionary new understanding of happiness and well-being. Free Press.
+- 적용 포인트:
+  - MND-N의 역할을 치료자나 상담사가 아니라 웰빙 방향을 제안하는 제3의 보조 도우미로 제한한다.
+  - PERMA는 MND-N의 안내 지도다.
+  - Flourish는 최종 진단 목표가 아니라 안전하고 회복적인 상호작용 방향을 뜻한다.
+
+### The PERMA-Profiler
+
+- DOI: https://doi.org/10.5502/ijw.v6i3.526
+- 서지: Butler, J., & Kern, M. L. (2016). The PERMA-Profiler: A brief multidimensional measure of flourishing. International Journal of Wellbeing, 6(3), 1-48.
+- 적용 포인트:
+  - PERMA를 단일 점수가 아니라 다차원 상태 지도로 다룬다.
+  - MND-N의 Flourishing State Layer는 긍정 정서, 몰입, 관계, 의미, 성취를 분리해 관찰한다.
+  - 점수화가 필요하더라도 사용자 진단이 아니라 캐릭터 상호작용 상태 표현으로 제한한다.
+
+### Mental Health Continuum
+
+- DOI: https://doi.org/10.2307/3090197
+- 서지: Keyes, C. L. M. (2002). The mental health continuum: From languishing to flourishing in life. Journal of Health and Social Behavior, 43(2), 207-222.
+- 적용 포인트:
+  - Keyes 모델은 진단 라벨이 아니라 상태 변화의 주의 신호로만 사용한다.
+  - Green, Yellow, Red의 3단계 운영 신호로 변환한다.
+  - Red 신호에서는 게임화된 조언을 중단하고 Safety Gate가 우선한다.
 
 ### Positive Psychology Progress: Empirical Validation of Interventions
 
@@ -74,9 +100,9 @@
   - 긍정심리학 개입 실험 설계와 검증: 410-414
   - gratitude visit, three good things, signature strengths 적용: 416-418
 - 적용 포인트:
-  - 반복적인 나쁜 말은 user trait 증거가 아니라 intervention trigger로 취급한다.
+  - 반복적인 나쁜 말은 user trait 증거가 아니라 support trigger로 취급한다.
   - MND-N의 action 후보에 감사, 강점 회상, 작은 성취, 의미 재구성, 회복 질문을 연결한다.
-  - 개입은 강요하지 않고 사용자의 현재 상태와 안전 경계에 맞춰 작게 제안한다.
+  - 안내는 강요하지 않고 사용자의 현재 상태와 안전 경계에 맞춰 작게 제안한다.
 
 ---
 
@@ -84,8 +110,8 @@
 
 Five Flavor Onion에서 참고문헌은 다음 순서로 사용합니다.
 
-1. Big Five/OCEAN 기반 성격 제어를 기본 모델로 둔다.
+1. Big Five/OCEAN 기반 성격 제어를 Five Flavor Onion의 기본 모델로 둔다.
 2. LLM 캐릭터 연구는 프롬프트, 기억, 동기, 평가 프레임으로 반영한다.
-3. 긍정심리학 연구는 부정 입력을 회복 지향 응답으로 전환하는 intervention policy에 반영한다.
+3. PERMA와 Flourish는 MND-N의 비의료적 보조 지도와 회복 지향 support policy에 반영한다.
 4. Dark Tetrad 연구는 안전성/공격성/공감 경로의 참고로만 둔다.
-5. 사용자나 캐릭터에게 병리적 라벨을 붙이지 않는다. (보류)
+5. 사용자나 캐릭터에게 병리적 라벨을 붙이지 않는다.
