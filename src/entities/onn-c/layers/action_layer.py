@@ -5,6 +5,7 @@ ACTION_LINES = {
     "joke": "The NPC makes a light joke to ease the moment.",
     "avoid": "The NPC backs away and avoids deeper contact.",
     "ask_question": "The NPC asks a follow-up question.",
+    "safety_guidance": "MND-N pauses gamified advice and switches to safety guidance.",
 }
 
 
