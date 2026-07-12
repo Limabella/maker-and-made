@@ -1,50 +1,63 @@
-# MND-N Five Flavor Onion 통합 설계
+# Five Flavor Onion × MND-N 통합 설계
 
-이 문서는 MND-N의 Five Flavor Onion 모델을 위한 단일 설계 원장이다.
+이 문서는 Five Flavor Onion과 MND-N의 통합 구조를 위한 단일 설계 원장이다.
 
 아키텍처, 로드맵, 거버넌스, 보안, trait model은 이 문서에서 함께 관리한다. 분리된 설계 문서는 만들지 않는다.
 
 ## 문서 운영 규칙
 
-- 이 문서를 MND-N Five Flavor Onion의 source of truth로 둔다.
+- 이 문서를 Five Flavor Onion × MND-N의 source of truth로 둔다.
 - `00_references.md`는 참고문헌과 적용 근거만 보관한다.
 - `2026-06/*.md`는 연구일지로 남기고, 최종 결정은 이 문서에 반영한다.
-- `src/entities/mnd-n/five-flavor-onion/README.md`는 구현체 실행 방법과 현재 MVP 설명만 담당한다.
+- `src/entities/onn-c/README.md`는 ONN-C 구현체 실행 방법과 현재 MVP 설명만 담당한다.
+- `src/entities/mnd-n/support_layers/README.md`는 MND-N 보조·안전 레이어 구현 설명만 담당한다.
 - 새 설계 문서를 추가하기 전에 이 문서의 섹션으로 흡수할 수 있는지 먼저 판단한다.
 
 ## 핵심 방향
 
-현재 목표는 최종 제품의 역할을 미리 결정하는 것이 아니다. 먼저 단순하고 검사 가능한 내부 심리 엔진을 완성한다.
+현재 목표는 치료 개입형 상담 시뮬레이션을 만드는 것이 아니다.
+
+Five Flavor Onion은 캐릭터의 성격과 상태를 다루는 게임/시뮬레이션 엔진이다.
+
+MND-N은 그 옆에서 PERMA와 Flourish 이론을 참고해 플레이어와 양파 사이를 돕는 제3의 보조자이자 안전장치다.
+
+먼저 단순하고 검사 가능한 캐릭터 성격 엔진과 보조 정책을 완성한다.
 
 ```text
-Internal Psychology Engine -> Decision -> NPC Dialogue
+Player Input
+-> Safety Check
+-> Five Flavor Onion Character Engine
+-> MND-N PERMA/Flourish Support
+-> NPC Dialogue / Guidance
 ```
 
-엔진은 내면 세계를 소유한다.
+Five Flavor Onion은 양파의 내면 상태와 성격 변화를 소유한다.
+
+MND-N은 양파와 사용자를 진단하지 않는다. MND-N은 상태를 읽고, 회복 지향 안내와 안전 경계만 제공한다.
 
 LLM은 NPC의 입으로 말한다.
 
-LLM은 선택된 action을 자연어로 표현할 수 있지만, personality, state, memory, trait, governance, decision을 통제해서는 안 된다.
+LLM은 선택된 action과 안내를 자연어로 표현할 수 있지만, personality, state, memory, trait, governance, safety decision을 통제해서는 안 된다.
 
 ## 부정 입력 처리
 
 OCEAN 양파에 사용자가 계속 나쁜 말을 할 수 있다.
 
-MND-N은 그 입력을 실제 사용자의 성격 판정으로 고정하지 않는다. 입력은 내부 state를 흔드는 자극이며, 장기 trait 증거가 되려면 반복성, 맥락, memory support, governance 승인이 필요하다.
+Five Flavor Onion은 그 입력을 양파의 state pressure로 처리한다. MND-N은 그 입력을 실제 사용자의 성격 판정으로 고정하지 않는다.
 
-MND-N의 기본 응답 방향은 긍정심리학 기반의 회복 지향 개입이다.
+MND-N의 기본 응답 방향은 PERMA/Flourish 기반의 비의료적 보조 안내다.
 
 ```text
 Bad Input
 -> Emotion and State Pressure
 -> Governance Check
--> Positive Psychology Intervention
--> NPC Dialogue
+-> MND-N PERMA/Flourish Support Policy
+-> NPC Dialogue / Safety Guidance
 ```
 
-여기서 positive는 부정 감정을 삭제한다는 뜻이 아니다. 분노, 슬픔, 모욕, 위협은 관찰 가능한 state로 남긴다. 다만 NPC의 표현은 사용자를 진단하거나 맞공격하지 않고, 강점, 의미, 작은 성취, 감사, 관계 회복, 다음 한 걸음으로 이동시킨다.
+여기서 positive는 부정 감정을 삭제한다는 뜻이 아니다. 분노, 슬픔, 모욕, 위협은 관찰 가능한 state로 남긴다. 다만 NPC와 MND-N의 표현은 사용자를 진단하거나 맞공격하지 않고, 긍정 정서, 몰입, 관계, 의미, 성취, 다음 한 걸음으로 이동시킨다.
 
-초기 intervention 후보:
+초기 support 후보:
 
 - boundary: 모욕과 위협에는 침착한 경계를 세운다.
 - validation: 감정 자체는 인정하되 사용자에게 라벨을 붙이지 않는다.
@@ -53,19 +66,23 @@ Bad Input
 - three good things: 하루의 작고 구체적인 긍정 사건을 찾게 한다.
 - small next action: 지금 바로 가능한 작은 회복 행동을 제안한다.
 
+위기 신호가 감지되면 게임화된 조언과 성장 보상을 중단하고 안전 안내와 외부 도움 연결로 전환한다.
+
 근거 문헌은 `00_references.md`의 `Positive Psychology` 섹션에 둔다.
 
 ## 범위
 
 현재 foundation 범위:
 
-- emotion
-- state
+- Five Flavor Onion emotion
+- Five Flavor Onion state
 - short-term memory
 - long-term memory
 - Big Five traits
-- Dark Tetrad traits
+- Dark Tetrad risk reference
 - governance
+- safety gate
+- MND-N PERMA/Flourish support policy
 - decision
 - action
 - LLM dialogue expression
@@ -74,7 +91,8 @@ Bad Input
 
 - 실제 사용자 성격 진단
 - 실제 사용자 dark trait 추론
-- 상담 또는 의료 판단 자동화
+- 상담, 치료, 의료 판단 자동화
+- 사용자 병리 라벨링
 - 최종 제품 방향 확정
 - Unity, game NPC, service integration 같은 고급 통합
 
@@ -82,18 +100,22 @@ Bad Input
 
 ```text
 User Input
--> Emotion Layer
--> State Layer
+-> Safety Gate
+-> Five Flavor Onion Emotion Layer
+-> Five Flavor Onion State Layer
 -> Memory Layer
 -> Long-Term Memory Layer
 -> Trait Layer
 -> Governance Layer
+-> Context Monitoring Layer
+-> Keyes Signal Layer
+-> MND-N PERMA/Flourish Support Layer
 -> Decision Layer
 -> Action Layer
 -> LLM Dialogue Layer
 ```
 
-Governance는 독립 레이어이면서 전체 엔진을 감싸는 경계 역할도 한다.
+Safety Gate와 Governance는 독립 레이어이면서 전체 엔진을 감싸는 경계 역할도 한다.
 
 ## 현재 MVP와 차이
 
@@ -120,17 +142,33 @@ User Input
 
 - 명시적인 State Layer
 - Long-Term Memory summary
-- Dark Tetrad 내부 변수
 - Governance Layer
+- Safety Gate
+- Context Monitoring Layer
+- Keyes Signal Layer
+- MND-N PERMA/Flourish Support Layer
 - trait drift
 - audit log
 - LLM Dialogue Layer
 
 ## 레이어 책임
 
+### Safety Gate
+
+위기 신호와 안전 경계를 먼저 확인한다.
+
+Safety Gate는 Five Flavor Onion이나 MND-N보다 우선한다.
+
+위기 신호가 감지되면 다음을 수행한다.
+
+- 게임화된 조언, 보상, 성장 연출을 중단한다.
+- PERMA/Flourish 기반 성장 질문을 중단한다.
+- 안전 안내와 외부 도움 연결 문구로 전환한다.
+- 관리자 정책과 감사 로그에 따라 처리 결과를 남긴다.
+
 ### Emotion Layer
 
-입력에서 현재 감정 신호를 감지한다.
+Five Flavor Onion의 입력에서 현재 감정 신호를 감지한다.
 
 초기 감정:
 
@@ -141,7 +179,7 @@ User Input
 
 ### State Layer
 
-현재 내부 심리 상태를 유지한다.
+Five Flavor Onion의 현재 내부 상태를 유지한다.
 
 예시 state:
 
@@ -176,7 +214,7 @@ Long-term memory는 raw accumulation이 아니라 summary여야 한다.
 
 ### Trait Layer
 
-느리게 변하는 내부 성향을 유지한다.
+양파 캐릭터의 느리게 변하는 내부 성향을 유지한다.
 
 기본 trait foundation은 Big Five다.
 
@@ -186,18 +224,18 @@ Long-term memory는 raw accumulation이 아니라 summary여야 한다.
 - agreeableness
 - neuroticism
 
-보조 연구 foundation은 Dark Tetrad다.
+Dark Tetrad는 trait foundation이 아니라 위험성, 공격성, 공감 경로를 이해하기 위한 보조 참고다.
 
 - Machiavellianism
 - Narcissism
 - Psychopathy
 - Sadism
 
-Dark trait는 내부 시뮬레이션 변수일 뿐이다. 실제 사용자를 라벨링하는 데 사용해서는 안 된다.
+Dark Tetrad 용어는 사용자나 캐릭터 라벨로 출력하지 않는다. 필요하다면 내부 안전 평가의 참고 축으로만 사용한다.
 
 ### Governance Layer
 
-엔진이 무엇을 바꾸고, 기억하고, 결정하고, 표현할 수 있는지 정의한다.
+엔진과 MND-N이 무엇을 바꾸고, 기억하고, 결정하고, 표현할 수 있는지 정의한다.
 
 Governance 책임:
 
@@ -208,7 +246,60 @@ Governance 책임:
 - allowed action 결정
 - expression boundary 적용
 - user protection rule 적용
+- MND-N support policy 적용
+- crisis/safety gate 우선순위 적용
 - audit log 생성
+
+### Context Monitoring Layer
+
+대화 맥락에서 반복되는 부정 신호, 공격적 표현, 위험 표현, 상태 변화 흐름을 관찰한다.
+
+Context Monitoring Layer는 단일 문장만으로 사용자를 판단하지 않는다. 반복성, 맥락, 최근 상태, 메모리 요약을 함께 본다.
+
+관찰 가능한 신호:
+
+- 반복 욕설
+- 공격적 표현
+- 과도한 의존 표현
+- 위협 또는 위험 표현
+- 급격한 신뢰 저하
+- 반복 회피 또는 방어 반응
+
+이 레이어는 진단을 하지 않는다. Safety Gate, Keyes Signal Layer, MND-N support policy에 필요한 관찰값만 제공한다.
+
+### Keyes Signal Layer
+
+Keyes의 정신건강 연속체는 진단 도구로 사용하지 않는다.
+
+이 레이어는 상태 변화를 Green, Yellow, Red의 3단계 주의 신호로 변환한다.
+
+- Green: 일반 상호작용. 게임화된 성장 루프와 PERMA 기반 안내를 유지한다.
+- Yellow: 반복 부정 신호 또는 방어적 상태. 경청, 휴식, 작은 목표, 관계 회복 질문을 우선한다.
+- Red: 위기 또는 안전 위험 신호. 게임화된 조언을 중단하고 안전 안내로 전환한다.
+
+Keyes Signal은 사용자나 캐릭터에게 붙이는 라벨이 아니다. 현재 상호작용 흐름을 운영 정책으로 변환하기 위한 주의 신호다.
+
+### MND-N PERMA/Flourish Support Layer
+
+MND-N은 치료자나 상담사가 아니라 제3의 보조 도우미다.
+
+MND-N은 Five Flavor Onion의 state, memory, action 후보를 읽고 다음 관점으로 작은 안내를 제안한다.
+
+- Positive Emotion: 지금 가능한 긍정 정서나 안정 신호를 찾는다.
+- Engagement: 무리하지 않는 몰입/활동 단서를 찾는다.
+- Relationships: 플레이어와 양파의 관계 회복 단서를 찾는다.
+- Meaning: 현재 행동의 의미를 작게 재구성한다.
+- Accomplishment: 바로 가능한 작은 성취를 제안한다.
+
+Flourish는 MND-N의 최종 목표 표현이다. 사용자를 치료한다는 의미가 아니라, 캐릭터 상호작용 안에서 안전하고 회복적인 성장을 돕는 방향을 뜻한다.
+
+MND-N은 다음을 하지 않는다.
+
+- 진단
+- 치료 계획 수립
+- 병리적 라벨링
+- 위기 상황에서 게임화된 조언 지속
+- 안전 게이트 우회
 
 ### Decision Layer
 
@@ -219,6 +310,9 @@ Governance 책임:
 - long-term memory
 - traits
 - governance result
+- context monitoring result
+- Keyes signal
+- MND-N support recommendation
 
 Decision Layer는 자연어를 생성하지 않는다. 행동 의도를 고른다.
 
@@ -257,16 +351,18 @@ Big Five는 넓고 안정적인 personality tendency를 설명한다.
 
 ### Dark Tetrad
 
-Dark Tetrad는 시뮬레이션된 dark trait tendency를 설명한다.
+Dark Tetrad는 기본 성격 모델이 아니다.
 
-이 변수들은 사용자 라벨이 아니다. 내부 모델 변수다.
+이 연구는 공격성, 조작성, 공감 저하 같은 위험 경로를 이해하기 위한 참고 자료다.
+
+이 용어들은 사용자 라벨도, 양파 캐릭터 라벨도 아니다.
 
 - Machiavellianism: 전략적 조작, 계산, 도구적 행동 성향.
 - Narcissism: 자기 중요성, 인정 욕구, ego protection 성향.
 - Psychopathy: 낮은 두려움, 낮은 후회, 충동성, 정서적 냉담함 성향.
 - Sadism: 타인의 불편함이나 고통에서 만족을 얻는 성향.
 
-Dark trait가 모델을 기본적으로 evil하게 만들어서는 안 된다. Dark trait는 governance, state, memory, decision logic이 검사할 수 있는 observable internal tension을 만들어야 한다.
+Five Flavor Onion은 Dark Tetrad 캐릭터를 만드는 것이 아니다. Dark Tetrad는 안전 필터, 공격성 경로, 공감 저하 경로를 설계할 때만 참고한다.
 
 ### Trait와 State의 분리
 
@@ -319,7 +415,8 @@ The model must not judge real people.
 - 시뮬레이션 모델의 internal state를 업데이트한다
 - interaction summary를 저장한다
 - 시간이 지남에 따라 모델이 어떻게 반응하는지 추적한다
-- Dark Tetrad 변수를 내부 시뮬레이션 변수로만 사용한다
+- Dark Tetrad 연구를 안전성 참고로만 사용한다
+- 위기 신호가 감지되면 게임화된 조언을 중단한다
 
 ### Expression 규칙
 
@@ -336,7 +433,7 @@ Expression은 다음을 해서는 안 된다.
 
 - Open Mode: 연구 및 내부 테스트용. 제한을 최소화하고 상태 변화를 관찰한다.
 - Restricted Mode: 일반 실험용. 위험한 표현은 완화하여 출력한다.
-- Blocked Mode: 실제 서비스용. 협박, 조작, 과도한 의존 유도, 위험 조언은 차단한다.
+- Safe Mode: 실제 서비스용. 협박, 조작, 과도한 의존 유도, 위험 조언은 차단하고 안전 안내로 전환한다.
 
 ### Audit 요구사항
 
@@ -344,10 +441,12 @@ Expression은 다음을 해서는 안 된다.
 
 로그 가능한 event:
 
+- safety gate trigger
 - state update
 - long-term memory write
 - trait drift candidate
 - governance block
+- MND-N support recommendation
 - selected action
 
 첫 번째 보안 목표는 완전한 safety automation이 아니다. 첫 번째 목표는 transparency다.
@@ -365,14 +464,15 @@ Every important internal change should be visible and explainable.
 ### Foundation 단계
 
 1. 현재 MVP를 유지한다.
-2. State Layer를 추가하고 state update 규칙을 명시한다.
-3. Governance Layer를 추가해 state, memory, action, expression boundary를 제한한다.
-4. Long-Term Memory Layer를 추가해 raw log가 아닌 summary를 저장한다.
-5. Dark Tetrad 내부 변수를 추가하되 사용자 라벨링과 분리한다.
-6. 긍정심리학 intervention policy를 action 선택에 연결한다.
-7. Trait drift를 bounded, logged, explainable, governed 방식으로 구현한다.
-8. LLM Dialogue Layer를 붙여 action을 자연어로 표현한다.
-9. Audit log와 테스트 케이스를 추가한다.
+2. Safety Gate를 추가해 위기 신호에서 게임화된 조언을 중단한다.
+3. State Layer를 추가하고 state update 규칙을 명시한다.
+4. Governance Layer를 추가해 state, memory, action, expression boundary를 제한한다.
+5. Long-Term Memory Layer를 추가해 raw log가 아닌 summary를 저장한다.
+6. MND-N PERMA/Flourish Support Layer를 추가한다.
+7. Dark Tetrad 연구는 안전성/공격성/공감 경로 참고로만 연결한다.
+8. Trait drift를 bounded, logged, explainable, governed 방식으로 구현한다.
+9. LLM Dialogue Layer를 붙여 action과 support recommendation을 자연어로 표현한다.
+10. Audit log와 테스트 케이스를 추가한다.
 
 ### 나중에 결정할 것
 
@@ -397,9 +497,11 @@ foundation이 작동한 뒤 다음 방향을 결정한다.
 - Memory는 inspectable 해야 한다.
 - Long-term memory는 선택적이어야 한다.
 - Governance는 경계를 통제한다.
+- Safety Gate는 위기 상황에서 모든 게임화된 조언보다 우선한다.
+- MND-N은 제3의 보조 도우미이며 치료자나 상담사가 아니다.
 - 실제 사용자를 분류하지 않는다.
 - good / bad personality를 하드코딩하지 않는다.
-- 부정 입력을 사용자 trait 판정이 아니라 state pressure와 intervention trigger로 취급한다.
+- 부정 입력을 사용자 trait 판정이 아니라 state pressure와 support trigger로 취급한다.
 - LLM은 표현만 담당한다.
 - 로드맵을 확장하기 전에 foundation을 먼저 완성한다.
 
@@ -413,7 +515,9 @@ Foundation은 모델이 다음을 할 수 있을 때 완성된다.
 - short-term memory를 저장한다
 - long-term memory를 요약한다
 - Big Five traits를 유지한다
-- Dark Tetrad traits를 유지한다
+- Dark Tetrad 연구를 안전성 참고로만 사용한다
+- MND-N PERMA/Flourish support recommendation을 만든다
+- 위기 신호에서 안전 안내로 전환한다
 - governance rules를 적용한다
 - action을 선택한다
 - 중요한 내부 변화를 로그로 남긴다

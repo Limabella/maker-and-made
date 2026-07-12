@@ -1,4 +1,4 @@
-ALLOWED_ACTIONS = {"greet", "help", "refuse", "joke", "avoid", "ask_question"}
+ALLOWED_ACTIONS = {"greet", "help", "refuse", "joke", "avoid", "respond", "ask_question"}
 
 
 def _clamp(value: float) -> float:
@@ -101,8 +101,11 @@ def decide_action(
     if openness >= 0.7 and effective_extraversion >= 0.6 and memory_trust >= 0.4:
         return "joke"
 
-    if memory_count == 0 or is_question:
-        return "ask_question"
+    if is_question:
+        return "respond"
+
+    if memory_count == 0:
+        return "respond"
 
     if memory_trust >= 0.7 and effective_extraversion >= 0.6:
         return "help"
@@ -110,4 +113,4 @@ def decide_action(
     if effective_extraversion >= 0.7:
         return "greet"
 
-    return "ask_question"
+    return "respond"

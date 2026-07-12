@@ -1,143 +1,148 @@
-from __future__ import annotations
-
-import argparse
-import importlib.util
 from pathlib import Path
+import argparse
 import sys
 
-from nim_client import NimClient, NimError
+MND_N_PATH = Path(__file__).parents[1] / "mnd-n"
+if str(MND_N_PATH) not in sys.path:
+    sys.path.insert(0, str(MND_N_PATH))
+
+from main import run_pipeline
+from layers.memory_layer import MemoryLayer
+from support_layers.llm_expression_layer import generate_nvidia_expression
 
 
-ROOT = Path(__file__).resolve().parents[3]
-ENGINE_DIR = ROOT / "src" / "entities" / "mnd-n" / "five-flavor-onion"
-ENGINE_MAIN = ENGINE_DIR / "main.py"
-DEFAULT_MEMORY_PATH = Path(__file__).parent / "data" / "npc_memory.json"
+COMMANDS = {"/help", "/quit", "/exit", "/reset", "/state"}
 
 
-def _load_engine():
-    """Load the MND-N onion MVP despite hyphenated folder names."""
-    if str(ENGINE_DIR) not in sys.path:
-        sys.path.insert(0, str(ENGINE_DIR))
-
-    spec = importlib.util.spec_from_file_location("mnd_five_flavor_onion", ENGINE_MAIN)
-    if spec is None or spec.loader is None:
-        raise RuntimeError(f"Cannot load engine from {ENGINE_MAIN}")
-
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
-    return module
-
-
-def _visible_state(result: dict) -> str:
-    emotion = result.get("emotion", {})
-    action = result.get("npc_action", {}).get("action", "ask_question")
-    memory_summary = result.get("memory_summary_before", {})
-
-    if action in {"refuse", "avoid"}:
-        return "black"
-
-    if memory_summary.get("recent_negative_streak", 0) >= 2:
-        return "black"
-
-    if emotion.get("sadness", 0.0) > 0 or action == "help":
-        return "white"
-
-    return "orange"
-
-
-def _format_response(result: dict, parser_name: str, line: str | None = None) -> str:
-    action = result["npc_action"]["action"]
-    line = line or result["npc_action"]["line"]
-    state = _visible_state(result)
-    trust = result["memory_summary_before"]["trust_level"]
-
-    return "\n".join(
-        [
-            f"ONN-C [{state}]",
-            f"parser: {parser_name}",
-            f"action: {action}",
-            f"trust: {trust:.2f}",
-            f"line: {line}",
-        ]
+def _print_help(use_nvidia: bool) -> None:
+    print(
+        "\nCommands:\n"
+        "  /help   show commands\n"
+        "  /state  show current memory summary\n"
+        "  /reset  clear this CLI play memory\n"
+        "  /quit   exit\n"
+        f"\nNVIDIA expression mode: {'on' if use_nvidia else 'off'}\n"
     )
 
 
-def _generate_line(message: str, result: dict, memory, use_nvidia: bool) -> tuple[str, str]:
-    if not use_nvidia:
-        return result["npc_action"]["line"], "rule-based"
+def _print_result(result: dict, expression: dict | None = None) -> None:
+    onion_state = result["onion_state"]
+    keyes_signal = result["keyes_signal"]
+    support = result["mnd_n_support"]
+    action = result["npc_action"]
 
-    try:
-        line = NimClient().generate_reply(
-            message,
-            result,
-            recent_interactions=memory.load_interactions()[:-1],
-        )
-        return line, "nvidia-nim"
-    except NimError as exc:
-        return result["npc_action"]["line"], f"rule-based (NIM fallback: {exc})"
+    print("\nONN-C")
+    print(f"  stage      : {onion_state['stage']}")
+    print(f"  action     : {action['action']}")
+    print(f"  line       : {action['line']}")
+    print(
+        "  state      : "
+        f"trust={onion_state['trust']:.2f}, "
+        f"darkness={onion_state['darkness']:.2f}, "
+        f"stability={onion_state['stability']:.2f}, "
+        f"energy={onion_state['energy']:.2f}, "
+        f"attachment={onion_state['attachment']:.2f}"
+    )
+    print(f"  emotion    : {onion_state['dominant_emotion']}")
+    if expression:
+        print(f"  says       : {expression['onn_c_line']}")
 
+    print("\nMND-N")
+    print(f"  signal     : {keyes_signal['signal']} ({keyes_signal['reason']})")
+    print(f"  mode       : {support['mode']}")
+    print(f"  guide      : {support['label']} - {support['prompt']}")
+    if expression:
+        print(f"  says       : {expression['mnd_n_line']}")
+        print(f"  expression : {expression['provider']}")
 
-def _run_message(message: str, use_nvidia_parser: bool, memory_path: Path) -> str:
-    engine = _load_engine()
-    memory = engine.MemoryLayer(memory_path)
-    result = engine.run_pipeline(message, memory)
-    line, parser_name = _generate_line(message, result, memory, use_nvidia_parser)
-    memory.update_last_interaction({"npc_line": line, "response_source": parser_name})
-    return _format_response(result, parser_name, line)
-
-
-def _interactive(use_nvidia_parser: bool, memory_path: Path) -> None:
-    print("ONN-C CLI. Type /state or /quit.")
-    last_state = "orange"
-
-    while True:
-        try:
-            message = input("> ").strip()
-        except EOFError:
-            break
-
-        if not message:
-            continue
-
-        if message == "/quit":
-            break
-
-        if message == "/state":
-            print(f"ONN-C [{last_state}]")
-            continue
-
-        engine = _load_engine()
-        memory = engine.MemoryLayer(memory_path)
-        result = engine.run_pipeline(message, memory)
-        last_state = _visible_state(result)
-        line, parser_name = _generate_line(message, result, memory, use_nvidia_parser)
-        memory.update_last_interaction({"npc_line": line, "response_source": parser_name})
-        print(_format_response(result, parser_name, line))
+    if result["safety"]["triggered"]:
+        print(f"  safety     : {result['safety']['message']}")
 
 
-def main() -> None:
-    parser = argparse.ArgumentParser(description="Run ONN-C with the MND-N onion engine.")
-    parser.add_argument("message", nargs="*", help="Optional single message to process.")
+def _print_state(memory: MemoryLayer) -> None:
+    summary = memory.summarize_interactions()
+    print("\nMemory Summary")
+    print(f"  total_interactions      : {summary['total_interactions']}")
+    print(f"  positive_interactions   : {summary['positive_interactions']}")
+    print(f"  negative_interactions   : {summary['negative_interactions']}")
+    print(f"  recent_negative_streak  : {summary['recent_negative_streak']}")
+    print(f"  trust_level             : {summary['trust_level']:.2f}")
+    print(f"  familiarity             : {summary['familiarity']:.2f}")
+
+
+def _parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Playable ONN-C CLI MVP.")
     parser.add_argument(
         "--nvidia",
         action="store_true",
-        help="Generate the final character reply through NVIDIA NIM.",
+        help="Use NVIDIA-compatible chat endpoint as expression layer.",
     )
-    parser.add_argument(
-        "--memory",
-        type=Path,
-        default=DEFAULT_MEMORY_PATH,
-        help="Path to the interaction memory JSON file.",
-    )
-    args = parser.parse_args()
+    return parser.parse_args()
 
-    message = " ".join(args.message).strip()
-    if message:
-        print(_run_message(message, args.nvidia, args.memory))
-        return
 
-    _interactive(args.nvidia, args.memory)
+def main() -> None:
+    args = _parse_args()
+    memory_path = Path(__file__).parent / "data" / "play_cli_memory.json"
+    memory = MemoryLayer(memory_path)
+
+    print("Five Flavor Onion CLI MVP")
+    print("Type as the player. Use /help for commands.\n")
+    if args.nvidia:
+        print("NVIDIA expression mode is on. State and safety decisions remain rule-based.\n")
+
+    while True:
+        try:
+            user_sentence = input("Player > ").strip()
+        except (EOFError, KeyboardInterrupt):
+            print("\nBye.")
+            return
+
+        if not user_sentence:
+            continue
+
+        command = user_sentence.lower()
+        if command in {"/quit", "/exit"}:
+            print("Bye.")
+            return
+
+        if command == "/help":
+            _print_help(args.nvidia)
+            continue
+
+        if command == "/state":
+            _print_state(memory)
+            continue
+
+        if command == "/reset":
+            memory_path.unlink(missing_ok=True)
+            memory = MemoryLayer(memory_path)
+            print("Memory reset.")
+            continue
+
+        if command.startswith("/") and command not in COMMANDS:
+            print("Unknown command. Use /help.")
+            continue
+
+        result = run_pipeline(user_sentence, memory)
+        expression = (
+            generate_nvidia_expression(
+                user_sentence,
+                result,
+                recent_interactions=memory.load_interactions()[:-1],
+            )
+            if args.nvidia
+            else None
+        )
+        if expression:
+            memory.update_last_interaction(
+                {
+                    "onn_c_line": expression["onn_c_line"],
+                    "mnd_n_line": expression["mnd_n_line"],
+                    "expression_provider": expression["provider"],
+                }
+            )
+        _print_result(result, expression=expression)
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())
