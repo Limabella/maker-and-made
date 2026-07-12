@@ -45,6 +45,17 @@ class MemoryLayer:
             encoding="utf-8",
         )
 
+    def update_last_interaction(self, updates: dict) -> None:
+        """Merge generated output into the most recently stored interaction."""
+        interactions = self.load_interactions()
+        if not interactions:
+            return
+        interactions[-1].update(updates)
+        self.memory_path.write_text(
+            json.dumps({"interactions": interactions}, indent=2, ensure_ascii=False),
+            encoding="utf-8",
+        )
+
     def summarize_interactions(self, interactions: list[dict] | None = None) -> dict:
         """Summarize past interactions into a small attitude state."""
         if interactions is None:

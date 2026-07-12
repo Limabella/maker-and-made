@@ -5,6 +5,8 @@ import importlib.util
 from pathlib import Path
 import sys
 
+from nim_client import NimClient, NimError
+
 
 ROOT = Path(__file__).resolve().parents[3]
 ENGINE_DIR = ROOT / "src" / "entities" / "mnd-n" / "five-flavor-onion"
@@ -43,9 +45,9 @@ def _visible_state(result: dict) -> str:
     return "orange"
 
 
-def _format_response(result: dict, parser_name: str) -> str:
+def _format_response(result: dict, parser_name: str, line: str | None = None) -> str:
     action = result["npc_action"]["action"]
-    line = result["npc_action"]["line"]
+    line = line or result["npc_action"]["line"]
     state = _visible_state(result)
     trust = result["memory_summary_before"]["trust_level"]
 
@@ -60,12 +62,28 @@ def _format_response(result: dict, parser_name: str) -> str:
     )
 
 
+def _generate_line(message: str, result: dict, memory, use_nvidia: bool) -> tuple[str, str]:
+    if not use_nvidia:
+        return result["npc_action"]["line"], "rule-based"
+
+    try:
+        line = NimClient().generate_reply(
+            message,
+            result,
+            recent_interactions=memory.load_interactions()[:-1],
+        )
+        return line, "nvidia-nim"
+    except NimError as exc:
+        return result["npc_action"]["line"], f"rule-based (NIM fallback: {exc})"
+
+
 def _run_message(message: str, use_nvidia_parser: bool, memory_path: Path) -> str:
     engine = _load_engine()
     memory = engine.MemoryLayer(memory_path)
     result = engine.run_pipeline(message, memory)
-    parser_name = "nvidia-placeholder" if use_nvidia_parser else "rule-based"
-    return _format_response(result, parser_name)
+    line, parser_name = _generate_line(message, result, memory, use_nvidia_parser)
+    memory.update_last_interaction({"npc_line": line, "response_source": parser_name})
+    return _format_response(result, parser_name, line)
 
 
 def _interactive(use_nvidia_parser: bool, memory_path: Path) -> None:
@@ -92,8 +110,9 @@ def _interactive(use_nvidia_parser: bool, memory_path: Path) -> None:
         memory = engine.MemoryLayer(memory_path)
         result = engine.run_pipeline(message, memory)
         last_state = _visible_state(result)
-        parser_name = "nvidia-placeholder" if use_nvidia_parser else "rule-based"
-        print(_format_response(result, parser_name))
+        line, parser_name = _generate_line(message, result, memory, use_nvidia_parser)
+        memory.update_last_interaction({"npc_line": line, "response_source": parser_name})
+        print(_format_response(result, parser_name, line))
 
 
 def main() -> None:
@@ -102,7 +121,7 @@ def main() -> None:
     parser.add_argument(
         "--nvidia",
         action="store_true",
-        help="Use the reserved NVIDIA parser slot. No network call is made yet.",
+        help="Generate the final character reply through NVIDIA NIM.",
     )
     parser.add_argument(
         "--memory",
