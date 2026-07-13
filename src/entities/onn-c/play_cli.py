@@ -14,6 +14,13 @@ from support_layers.llm_expression_layer import generate_nvidia_expression
 
 COMMANDS = {"/help", "/quit", "/exit", "/reset", "/state"}
 REPOSITORY_ROOT = Path(__file__).resolve().parents[3]
+SUPPORTED_ENV_KEYS = {
+    "NVIDIA_API_KEY",
+    "NVIDIA_MODEL",
+    "NIM_MODEL",
+    "NVIDIA_API_BASE_URL",
+    "NVIDIA_TIMEOUT_SECONDS",
+}
 
 
 def _load_local_env(path: Path = REPOSITORY_ROOT / ".env") -> None:
@@ -27,8 +34,10 @@ def _load_local_env(path: Path = REPOSITORY_ROOT / ".env") -> None:
             continue
         key, value = line.split("=", 1)
         key = key.strip()
+        if key.lower().startswith("$env:"):
+            key = key[5:].strip()
         value = value.strip().strip('"').strip("'")
-        if key:
+        if key in SUPPORTED_ENV_KEYS:
             os.environ.setdefault(key, value)
 
 

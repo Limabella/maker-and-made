@@ -32,13 +32,16 @@ class DecisionLayerTests(unittest.TestCase):
         with TemporaryDirectory() as directory:
             env_path = Path(directory) / ".env"
             env_path.write_text(
-                "NVIDIA_API_KEY=file-key\nNVIDIA_MODEL=file-model\n",
+                '$env:NVIDIA_API_KEY = "file-key"\n'
+                "NVIDIA_MODEL=file-model\n"
+                "client = OpenAI()\n",
                 encoding="utf-8",
             )
             with patch.dict(os.environ, {"NVIDIA_MODEL": "shell-model"}, clear=True):
                 _load_local_env(env_path)
                 self.assertEqual(os.environ["NVIDIA_API_KEY"], "file-key")
                 self.assertEqual(os.environ["NVIDIA_MODEL"], "shell-model")
+                self.assertNotIn("client", os.environ)
 
     def test_neutral_statement_does_not_force_follow_up_question(self) -> None:
         action = decide_action(
