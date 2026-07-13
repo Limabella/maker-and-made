@@ -13,8 +13,9 @@ def _clamp(value: float) -> float:
 class MemoryLayer:
     """Stores and retrieves previous NPC interactions from a JSON file."""
 
-    def __init__(self, memory_path: Path):
+    def __init__(self, memory_path: Path, max_interactions: int = 100):
         self.memory_path = memory_path
+        self.max_interactions = max_interactions
         self.memory_path.parent.mkdir(parents=True, exist_ok=True)
         self._ensure_memory_file()
 
@@ -39,22 +40,17 @@ class MemoryLayer:
         """Append a new interaction and save it back to disk."""
         interactions = self.load_interactions()
         interactions.append(interaction)
+        interactions = interactions[-self.max_interactions :]
+        self._write_interactions(interactions)
 
-        self.memory_path.write_text(
+    def _write_interactions(self, interactions: list[dict]) -> None:
+        """Replace the memory file atomically so partial JSON is not exposed."""
+        temporary_path = self.memory_path.with_suffix(self.memory_path.suffix + ".tmp")
+        temporary_path.write_text(
             json.dumps({"interactions": interactions}, indent=2, ensure_ascii=False),
             encoding="utf-8",
         )
-
-    def update_last_interaction(self, updates: dict) -> None:
-        """Merge generated output into the most recently stored interaction."""
-        interactions = self.load_interactions()
-        if not interactions:
-            return
-        interactions[-1].update(updates)
-        self.memory_path.write_text(
-            json.dumps({"interactions": interactions}, indent=2, ensure_ascii=False),
-            encoding="utf-8",
-        )
+        temporary_path.replace(self.memory_path)
 
     def summarize_interactions(self, interactions: list[dict] | None = None) -> dict:
         """Summarize past interactions into a small attitude state."""

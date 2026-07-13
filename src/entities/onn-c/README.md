@@ -99,6 +99,32 @@ For direct player testing, run the CLI MVP:
 python src/entities/onn-c/play_cli.py
 ```
 
+For Unreal Engine integration, start the local JSON API:
+
+```bash
+python src/entities/onn-c/api_server.py
+```
+
+The server listens on `127.0.0.1:8765` by default. It exposes:
+
+- `GET /health`
+- `POST /v1/conversations/respond`
+
+Example request:
+
+```json
+{
+  "session_id": "ue-local",
+  "message": "오늘 조금 힘들었어.",
+  "use_nvidia": true
+}
+```
+
+The `onn-c.v1` response contains generated dialogue plus stable character fields
+for an Animation Blueprint: `stage`, `emotion`, `action`, `animation`,
+`voice_tone`, and the five numeric state values. NIM remains expression-only;
+ONN-C and MND-N continue to own state and safety decisions.
+
 For the second CLI MVP expression layer, set `NVIDIA_API_KEY` and run:
 
 ```bash

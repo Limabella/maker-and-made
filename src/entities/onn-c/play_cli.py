@@ -1,46 +1,18 @@
-from pathlib import Path
 import argparse
 import os
 import sys
+from pathlib import Path
 
 MND_N_PATH = Path(__file__).parents[1] / "mnd-n"
 if str(MND_N_PATH) not in sys.path:
     sys.path.insert(0, str(MND_N_PATH))
 
-from main import run_pipeline
+from config import load_local_env
+from conversation_service import ConversationService
 from layers.memory_layer import MemoryLayer
-from support_layers.llm_expression_layer import generate_nvidia_expression
 
 
 COMMANDS = {"/help", "/quit", "/exit", "/reset", "/state"}
-REPOSITORY_ROOT = Path(__file__).resolve().parents[3]
-SUPPORTED_ENV_KEYS = {
-    "NVIDIA_API_KEY",
-    "NVIDIA_MODEL",
-    "NIM_MODEL",
-    "NVIDIA_API_BASE_URL",
-    "NVIDIA_TIMEOUT_SECONDS",
-}
-
-
-def _load_local_env(path: Path = REPOSITORY_ROOT / ".env") -> None:
-    """Load simple KEY=VALUE entries without overriding shell variables."""
-    if not path.exists():
-        return
-
-    for raw_line in path.read_text(encoding="utf-8").splitlines():
-        line = raw_line.strip()
-        if not line or line.startswith("#") or "=" not in line:
-            continue
-        key, value = line.split("=", 1)
-        key = key.strip()
-        if key.lower().startswith("$env:"):
-            key = key[5:].strip()
-        value = value.strip().strip('"').strip("'")
-        if key in SUPPORTED_ENV_KEYS:
-            os.environ.setdefault(key, value)
-
-
 def _print_help(use_nvidia: bool) -> None:
     print(
         "\nCommands:\n"
@@ -110,10 +82,11 @@ def _parse_args() -> argparse.Namespace:
 
 
 def main() -> None:
-    _load_local_env()
+    load_local_env()
     args = _parse_args()
     memory_path = Path(__file__).parent / "data" / "play_cli_memory.json"
     memory = MemoryLayer(memory_path)
+    service = ConversationService(memory, use_nvidia=args.nvidia)
 
     print("Five Flavor Onion CLI MVP")
     print("Type as the player. Use /help for commands.\n")
@@ -150,6 +123,7 @@ def main() -> None:
         if command == "/reset":
             memory_path.unlink(missing_ok=True)
             memory = MemoryLayer(memory_path)
+            service = ConversationService(memory, use_nvidia=args.nvidia)
             print("Memory reset.")
             continue
 
@@ -157,27 +131,10 @@ def main() -> None:
             print("Unknown command. Use /help.")
             continue
 
-        result = run_pipeline(user_sentence, memory)
         if args.nvidia:
             print("NVIDIA 응답 생성 중...", flush=True)
-        expression = (
-            generate_nvidia_expression(
-                user_sentence,
-                result,
-                recent_interactions=memory.load_interactions()[:-1],
-            )
-            if args.nvidia
-            else None
-        )
-        if expression:
-            memory.update_last_interaction(
-                {
-                    "onn_c_line": expression["onn_c_line"],
-                    "mnd_n_line": expression["mnd_n_line"],
-                    "expression_provider": expression["provider"],
-                }
-            )
-        _print_result(result, expression=expression)
+        turn = service.respond(user_sentence)
+        _print_result(turn.result, expression=turn.expression)
 
 
 if __name__ == "__main__":

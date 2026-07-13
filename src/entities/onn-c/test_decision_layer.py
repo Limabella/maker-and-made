@@ -5,7 +5,7 @@ import unittest
 from unittest.mock import patch
 
 from layers.decision_layer import decide_action
-from play_cli import _load_local_env
+from config import load_local_env
 
 
 NEUTRAL_BIG_FIVE = {
@@ -38,7 +38,7 @@ class DecisionLayerTests(unittest.TestCase):
                 encoding="utf-8",
             )
             with patch.dict(os.environ, {"NVIDIA_MODEL": "shell-model"}, clear=True):
-                _load_local_env(env_path)
+                load_local_env(env_path)
                 self.assertEqual(os.environ["NVIDIA_API_KEY"], "file-key")
                 self.assertEqual(os.environ["NVIDIA_MODEL"], "shell-model")
                 self.assertNotIn("client", os.environ)

@@ -17,7 +17,22 @@ from support_layers.perma_support_layer import recommend_perma_support
 from support_layers.safety_gate import check_safety_gate
 
 
-def run_pipeline(user_sentence: str, memory: MemoryLayer) -> dict:
+def build_interaction_record(result: dict) -> dict:
+    """Build the persisted form of a completed pipeline result."""
+    return {
+        "user_sentence": result["input"],
+        "big_five": result["big_five"],
+        "emotion": result["emotion"],
+        "onion_state": result["onion_state"],
+        "safety": result["safety"],
+        "context": result["context"],
+        "keyes_signal": result["keyes_signal"],
+        "mnd_n_support": result["mnd_n_support"],
+        "npc_action": result["npc_action"]["action"],
+    }
+
+
+def run_pipeline(user_sentence: str, memory: MemoryLayer, persist: bool = True) -> dict:
     """Run the full NPC personality pipeline for one user sentence."""
     past_interactions = memory.load_interactions()
     memory_summary = memory.summarize_interactions(past_interactions)
@@ -58,21 +73,7 @@ def run_pipeline(user_sentence: str, memory: MemoryLayer) -> dict:
         keyes_signal=keyes_signal,
     )
 
-    memory.add_interaction(
-        {
-            "user_sentence": user_sentence,
-            "big_five": big_five,
-            "emotion": emotion,
-            "onion_state": onion_state,
-            "safety": safety,
-            "context": context,
-            "keyes_signal": keyes_signal,
-            "mnd_n_support": mnd_n_support,
-            "npc_action": npc_action["action"],
-        }
-    )
-
-    return {
+    result = {
         "input": user_sentence,
         "big_five": big_five,
         "emotion": emotion,
@@ -85,6 +86,9 @@ def run_pipeline(user_sentence: str, memory: MemoryLayer) -> dict:
         "mnd_n_support": mnd_n_support,
         "npc_action": npc_action,
     }
+    if persist:
+        memory.add_interaction(build_interaction_record(result))
+    return result
 
 
 def print_result(result: dict) -> None:

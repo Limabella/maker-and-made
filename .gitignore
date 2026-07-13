@@ -100,6 +100,8 @@ htmlcov/
 state.json
 memory.json
 sessions/
+src/entities/onn-c/data/play_cli_memory.json
+src/entities/onn-c/data/sessions/
 
 # =========================
 # Temporary files
