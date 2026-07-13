@@ -1,6 +1,11 @@
+import os
+from pathlib import Path
+from tempfile import TemporaryDirectory
 import unittest
+from unittest.mock import patch
 
 from layers.decision_layer import decide_action
+from play_cli import _load_local_env
 
 
 NEUTRAL_BIG_FIVE = {
@@ -22,6 +27,18 @@ class DecisionLayerTests(unittest.TestCase):
             [],
         )
         self.assertEqual(action, "respond")
+
+    def test_loads_dotenv_without_overriding_shell(self) -> None:
+        with TemporaryDirectory() as directory:
+            env_path = Path(directory) / ".env"
+            env_path.write_text(
+                "NVIDIA_API_KEY=file-key\nNVIDIA_MODEL=file-model\n",
+                encoding="utf-8",
+            )
+            with patch.dict(os.environ, {"NVIDIA_MODEL": "shell-model"}, clear=True):
+                _load_local_env(env_path)
+                self.assertEqual(os.environ["NVIDIA_API_KEY"], "file-key")
+                self.assertEqual(os.environ["NVIDIA_MODEL"], "shell-model")
 
     def test_neutral_statement_does_not_force_follow_up_question(self) -> None:
         action = decide_action(

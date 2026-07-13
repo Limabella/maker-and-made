@@ -105,6 +105,11 @@ For the second CLI MVP expression layer, set `NVIDIA_API_KEY` and run:
 python src/entities/onn-c/play_cli.py --nvidia
 ```
 
+For local configuration, copy `.env.example` to `.env` in the repository root
+and put the real API key in `.env`. The CLI loads it automatically. Shell
+environment variables take precedence over values from the file, and `.env` is
+excluded from Git.
+
 Optional NVIDIA settings:
 
 ```text

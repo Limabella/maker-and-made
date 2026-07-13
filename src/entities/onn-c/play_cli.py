@@ -13,6 +13,23 @@ from support_layers.llm_expression_layer import generate_nvidia_expression
 
 
 COMMANDS = {"/help", "/quit", "/exit", "/reset", "/state"}
+REPOSITORY_ROOT = Path(__file__).resolve().parents[3]
+
+
+def _load_local_env(path: Path = REPOSITORY_ROOT / ".env") -> None:
+    """Load simple KEY=VALUE entries without overriding shell variables."""
+    if not path.exists():
+        return
+
+    for raw_line in path.read_text(encoding="utf-8").splitlines():
+        line = raw_line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        key, value = line.split("=", 1)
+        key = key.strip()
+        value = value.strip().strip('"').strip("'")
+        if key:
+            os.environ.setdefault(key, value)
 
 
 def _print_help(use_nvidia: bool) -> None:
@@ -84,6 +101,7 @@ def _parse_args() -> argparse.Namespace:
 
 
 def main() -> None:
+    _load_local_env()
     args = _parse_args()
     memory_path = Path(__file__).parent / "data" / "play_cli_memory.json"
     memory = MemoryLayer(memory_path)
