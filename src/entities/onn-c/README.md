@@ -112,6 +112,7 @@ NVIDIA_API_KEY       required for NVIDIA expression mode
 NVIDIA_MODEL         optional, defaults to nvidia/nvidia-nemotron-nano-9b-v2
 NIM_MODEL            accepted as an alias for NVIDIA_MODEL
 NVIDIA_API_BASE_URL  optional, defaults to an NVIDIA-compatible chat completions URL
+NVIDIA_TIMEOUT_SECONDS optional, defaults to 30 seconds
 ```
 
 If the key is missing or the endpoint fails, the CLI falls back to deterministic

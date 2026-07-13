@@ -1,5 +1,6 @@
 from pathlib import Path
 import argparse
+import os
 import sys
 
 MND_N_PATH = Path(__file__).parents[1] / "mnd-n"
@@ -54,6 +55,8 @@ def _print_result(result: dict, expression: dict | None = None) -> None:
     if expression:
         print(f"  says       : {expression['mnd_n_line']}")
         print(f"  expression : {expression['provider']}")
+        if expression.get("error"):
+            print(f"  error      : {expression['error']}")
 
     if result["safety"]["triggered"]:
         print(f"  safety     : {result['safety']['message']}")
@@ -89,6 +92,10 @@ def main() -> None:
     print("Type as the player. Use /help for commands.\n")
     if args.nvidia:
         print("NVIDIA expression mode is on. State and safety decisions remain rule-based.\n")
+        print(
+            "NVIDIA model: "
+            f"{os.getenv('NVIDIA_MODEL') or os.getenv('NIM_MODEL') or 'nvidia/nvidia-nemotron-nano-9b-v2'}\n"
+        )
 
     while True:
         try:
@@ -124,6 +131,8 @@ def main() -> None:
             continue
 
         result = run_pipeline(user_sentence, memory)
+        if args.nvidia:
+            print("NVIDIA 응답 생성 중...", flush=True)
         expression = (
             generate_nvidia_expression(
                 user_sentence,

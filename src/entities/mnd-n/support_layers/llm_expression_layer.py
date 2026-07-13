@@ -52,7 +52,7 @@ def generate_nvidia_expression(
     api_key: str | None = None,
     model: str | None = None,
     base_url: str | None = None,
-    timeout_seconds: int = 30,
+    timeout_seconds: int | None = None,
 ) -> dict:
     """Generate ONN-C and MND-N lines using an NVIDIA-compatible chat endpoint.
 
@@ -67,6 +67,7 @@ def generate_nvidia_expression(
         or DEFAULT_NVIDIA_MODEL
     )
     base_url = base_url or os.getenv("NVIDIA_API_BASE_URL") or DEFAULT_NVIDIA_API_BASE_URL
+    timeout_seconds = timeout_seconds or int(os.getenv("NVIDIA_TIMEOUT_SECONDS", "30"))
 
     if not api_key:
         expression = build_fallback_expression(result)
