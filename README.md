@@ -123,12 +123,19 @@ Current support layers:
 - Keyes Green / Yellow / Red signal layer
 - PERMA / Flourish support recommendation
 - NVIDIA-compatible expression layer fallback
+- optional bilingual psychology LightRAG retrieval
 
 Location:
 
 ```text
 src/entities/mnd-n/support_layers/
 ```
+
+The psychology knowledge pipeline, its local-data policy, and the future
+SFT/LoRA/preference-training notes are kept in:
+
+- [`src/entities/mnd-n/knowledge/README.md`](src/entities/mnd-n/knowledge/README.md)
+- [`src/entities/mnd-n/knowledge/TRAINING_ROADMAP.md`](src/entities/mnd-n/knowledge/TRAINING_ROADMAP.md)
 
 Core rule:
 
@@ -187,6 +194,7 @@ src/
       layers/
     mnd-n/
       support_layers/
+      knowledge/
     trn_n/
 
 experiments_ko/

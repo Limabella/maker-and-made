@@ -4,6 +4,7 @@ from tempfile import TemporaryDirectory
 import threading
 import unittest
 import urllib.request
+from unittest.mock import patch
 
 import api_server
 from conversation_service import ConversationService
@@ -61,6 +62,21 @@ class StateTransitionScenarioTests(unittest.TestCase):
                 [item["user_sentence"] for item in memory.load_interactions()],
                 ["second", "third"],
             )
+
+    @patch(
+        "conversation_service.maybe_answer_psychology_question",
+        return_value="검증된 LightRAG 설명",
+    )
+    def test_mnd_n_uses_optional_psychology_answer(self, retrieve) -> None:
+        with TemporaryDirectory() as directory:
+            memory = MemoryLayer(Path(directory) / "memory.json")
+            turn = ConversationService(memory, use_nvidia=False).respond(
+                "심리학 용어를 설명해 줘"
+            )
+
+        retrieve.assert_called_once()
+        self.assertEqual(turn.expression["mnd_n_line"], "검증된 LightRAG 설명")
+        self.assertEqual(turn.expression["knowledge_provider"], "lightrag")
 
     def test_darkening_and_relationship_repair_are_gradual(self) -> None:
         messages = ["꺼져", "닥쳐", "싫어", "미안해", "고마워", "좋아"]

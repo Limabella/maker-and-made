@@ -1,0 +1,4 @@
+# Optional dependencies for the MND-N bilingual psychology knowledge pipeline.
+lightrag-hku==1.4.16
+pdfplumber==0.11.10
+numpy==2.5.1

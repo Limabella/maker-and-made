@@ -6,6 +6,7 @@ from support_layers.llm_expression_layer import (
     build_fallback_expression,
     generate_nvidia_expression,
 )
+from knowledge.mnd_n_knowledge_service import maybe_answer_psychology_question
 
 
 @dataclass
@@ -34,12 +35,20 @@ class ConversationService:
         else:
             expression = build_fallback_expression(result)
 
+        knowledge_answer = None
+        if not result["safety"]["triggered"]:
+            knowledge_answer = maybe_answer_psychology_question(user_sentence)
+        if knowledge_answer:
+            expression["mnd_n_line"] = knowledge_answer
+            expression["knowledge_provider"] = "lightrag"
+
         interaction = build_interaction_record(result)
         interaction.update(
             {
                 "onn_c_line": expression["onn_c_line"],
                 "mnd_n_line": expression["mnd_n_line"],
                 "expression_provider": expression["provider"],
+                "knowledge_provider": expression.get("knowledge_provider"),
             }
         )
         self.memory.add_interaction(interaction)
