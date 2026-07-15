@@ -48,6 +48,7 @@ def build_ue_response(result: dict, expression: dict) -> dict:
                 "energy": state["energy"],
                 "attachment": state["attachment"],
             },
+            "transition": state["transition"],
         },
         "support": {
             "signal": result["keyes_signal"]["signal"],

@@ -49,6 +49,7 @@ def decide_action(
     emotion: dict,
     memory: list[dict],
     memory_summary: dict | None = None,
+    recovery_signal: dict | None = None,
 ) -> str:
     """Choose one NPC action based on personality, emotion, and memory."""
     is_question = user_sentence.strip().endswith(("?", "？"))
@@ -60,6 +61,7 @@ def decide_action(
     memory_trust = memory_summary.get("trust_level", 0.5)
     familiarity = memory_summary.get("familiarity", 0.0)
     recent_negative_streak = memory_summary.get("recent_negative_streak", 0)
+    recovery_signal = recovery_signal or {}
 
     agreeableness = big_five.get("agreeableness", 0.5)
     extraversion = big_five.get("extraversion", 0.5)
@@ -73,6 +75,9 @@ def decide_action(
 
     is_greeting = _has_any(["hello", "hi", "hey", "안녕", "반가워"], sentence, words)
     asks_for_help = _has_any(["help", "support", "도와", "지원"], sentence, words)
+
+    if recovery_signal.get("detected"):
+        return "respond"
 
     if recent_negative_streak >= 2 and dominant_emotion in {"anger", "sadness"}:
         return "avoid"

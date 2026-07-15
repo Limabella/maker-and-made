@@ -99,6 +99,10 @@ class MemoryLayer:
         negative_emotion = emotion.get("anger", 0.0) + emotion.get("sadness", 0.0)
         score = positive_emotion - negative_emotion
 
+        recovery_signal = interaction.get("recovery_signal", {})
+        if recovery_signal.get("detected"):
+            score += recovery_signal.get("strength", 0.0) * 0.6
+
         if action in POSITIVE_ACTIONS:
             score += 0.2
         elif action in NEGATIVE_ACTIONS:

@@ -62,6 +62,34 @@ class StateTransitionScenarioTests(unittest.TestCase):
                 ["second", "third"],
             )
 
+    def test_darkening_and_relationship_repair_are_gradual(self) -> None:
+        messages = ["꺼져", "닥쳐", "싫어", "미안해", "고마워", "좋아"]
+        expected_stages = [
+            "mixed",
+            "guarded",
+            "dark",
+            "recovering",
+            "recovering",
+            "recovering",
+        ]
+
+        with TemporaryDirectory() as directory:
+            service = ConversationService(
+                MemoryLayer(Path(directory) / "memory.json"),
+                use_nvidia=False,
+            )
+            states = [service.respond(message).result["onion_state"] for message in messages]
+
+        self.assertEqual([state["stage"] for state in states], expected_stages)
+        self.assertEqual(states[3]["transition"]["recovery_signal"], "repair")
+        self.assertEqual(states[4]["transition"]["recovery_signal"], "appreciation")
+        self.assertEqual(states[3]["transition"]["direction"], "recovering")
+
+        for previous, current in zip(states, states[1:]):
+            change = current["darkness"] - previous["darkness"]
+            self.assertLessEqual(change, 0.281)
+            self.assertGreaterEqual(change, -0.221)
+
     def test_http_api_returns_safety_state_for_ue(self) -> None:
         with TemporaryDirectory() as directory:
             original_data_dir = api_server.DATA_DIR

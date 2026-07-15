@@ -9,6 +9,7 @@ from layers.action_layer import build_npc_action
 from layers.big_five_layer import estimate_big_five
 from layers.decision_layer import decide_action
 from layers.emotion_layer import estimate_emotion
+from layers.interaction_signal_layer import detect_recovery_signal
 from layers.memory_layer import MemoryLayer
 from layers.state_layer import estimate_onion_state
 from support_layers.context_monitoring_layer import monitor_context
@@ -23,6 +24,7 @@ def build_interaction_record(result: dict) -> dict:
         "user_sentence": result["input"],
         "big_five": result["big_five"],
         "emotion": result["emotion"],
+        "recovery_signal": result["recovery_signal"],
         "onion_state": result["onion_state"],
         "safety": result["safety"],
         "context": result["context"],
@@ -39,6 +41,7 @@ def run_pipeline(user_sentence: str, memory: MemoryLayer, persist: bool = True) 
 
     big_five = estimate_big_five(user_sentence)
     emotion = estimate_emotion(user_sentence)
+    recovery_signal = detect_recovery_signal(user_sentence)
     safety = check_safety_gate(user_sentence)
     context = monitor_context(
         sentence=user_sentence,
@@ -63,6 +66,7 @@ def run_pipeline(user_sentence: str, memory: MemoryLayer, persist: bool = True) 
             emotion=emotion,
             memory=past_interactions,
             memory_summary=memory_summary,
+            recovery_signal=recovery_signal,
         )
 
     npc_action = build_npc_action(action_name)
@@ -71,12 +75,15 @@ def run_pipeline(user_sentence: str, memory: MemoryLayer, persist: bool = True) 
         memory_summary=memory_summary,
         action_name=action_name,
         keyes_signal=keyes_signal,
+        previous_state=(past_interactions[-1].get("onion_state", {}) if past_interactions else None),
+        recovery_signal=recovery_signal,
     )
 
     result = {
         "input": user_sentence,
         "big_five": big_five,
         "emotion": emotion,
+        "recovery_signal": recovery_signal,
         "memory_count_before": len(past_interactions),
         "memory_summary_before": memory_summary,
         "onion_state": onion_state,
