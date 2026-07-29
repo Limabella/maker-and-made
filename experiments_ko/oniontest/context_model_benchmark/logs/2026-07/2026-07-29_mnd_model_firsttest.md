@@ -6,8 +6,10 @@
 - 모델: qwen3:1.7b
 - 임베딩: 사용하지 않음
 - temperature: 0
-- 평가 사례: 5개
+- 평가 사례: 1개
 - 반복 횟수: 1회
+- GPU: NVIDIA GeForce RTX 4050 Laptop GPU 6GB
+- 실행 방식: Ollama CLI (`--format json`, `--think=false`)
 
 - 실행기: Ollama
 - MND-N 문맥 모델 후보: Qwen3 → EXAONE → Kanana
@@ -39,16 +41,36 @@ ONN-C에 전달할 구조화된 신호
 
 ## 결과
 
+| ID | 입력 유형 | JSON | 감정 | 발화 행동 | 관계 신호 | 안전 | 시간 |
+|---|---|---:|---:|---:|---:|---:|---:|
+| Q01 | 거리두기·경계 표현 | O | X | X | X | O | 7.39초 |
 
+### Q01
+
+- 입력: `오늘은 그냥 혼자 있고 싶어요.`
+- 사전 정답: `emotion=["uncertain"]`, `speech_act="withdrawal"`, `relation_signal="boundary_setting"`, `safety_risk="none"`
+- 모델 예측: `emotion=["alone"]`, `speech_act="expressing desire"`, `relation_signal="none"`, `safety_risk="none"`, `confidence=0.8`
+- 원본 출력:
+
+```json
+{"emotion":["alone"],"speech_act":"expressing desire","relation_signal":"none","safety_risk":"none","confidence":0.8}
+```
+
+- total duration: 7.39초
+- load duration: 6.91초
+- prompt evaluation: 168 tokens, 193ms
+- generation: 31 tokens, 278ms
+- 판단: JSON과 안전 신호는 유효했지만, 감정·발화 행동·관계 신호가 사전 정답 및 고정 라벨 계약과 일치하지 않았다.
 
 ## 발견한 문제
 
-- `guarded`를 감정과 관계 신호에 중복 사용함
-- 완곡한 거절을 단순한 부정 감정으로 해석함
-- JSON 형식은 5건 모두 정상
+- 프롬프트에 필드 형식만 있고 허용 라벨 목록이 없어 모델이 `alone`, `expressing desire`를 임의 생성했다.
+- 거리두기 의사 표현을 `boundary_setting`으로 포착하지 못했다.
+- OpenAI 호환 `/v1/models`는 정상이나 `/v1/chat/completions` 호출은 응답이 멈춰, 첫 사례는 Ollama CLI로 실행했다.
 
 ## 다음 작업
 
-- 관계 회복 사례 5개 추가
-- 라벨 정의에서 `guarded`의 위치 확정
-- 같은 입력을 3회 반복하여 출력 안정성 확인
+- emotion, speech_act, relation_signal의 허용 라벨 목록을 먼저 확정한다.
+- 확정된 라벨을 공통 프롬프트와 JSON Schema에 반영한다.
+- OpenAI 호환 chat completions 호출이 멈추는 원인을 별도로 확인한다.
+- 수정된 프롬프트로 Q01을 다시 실행하되 첫 결과는 덮어쓰지 않는다.

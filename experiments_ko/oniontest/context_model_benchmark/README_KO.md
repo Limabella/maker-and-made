@@ -87,7 +87,9 @@ experiments_ko/oniontest/context_model_benchmark/
 공통 출력 제약은 `prompts/mnd_n_signal_prompt.txt`에서 관리한다. 모델별로
 프롬프트를 바꾸지 않으며, 결과와 판단 근거는 `logs/YYYY-MM/`의 날짜별
 일지에 기록한다. 첫 호출은 모델 로딩 시간이 포함되므로 cold latency로
-분리하고, 이후 호출은 warm latency로 기록한다.
+분리하고, 이후 호출은 warm latency로 기록한다. 단건 스크립트는 안정적인
+수동 실험을 위해 Ollama 자체 `/api/chat`을 사용한다. 모델 비교 자동화
+단계에서는 OpenAI 호환 `/v1/chat/completions` 동작을 별도로 검증한다.
 
 각 실행 레코드는 최소한 다음 값을 보관한다.
 
