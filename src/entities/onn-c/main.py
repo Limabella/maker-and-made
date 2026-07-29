@@ -13,6 +13,7 @@ from layers.interaction_signal_layer import detect_recovery_signal
 from layers.memory_layer import MemoryLayer
 from layers.state_layer import estimate_onion_state
 from support_layers.context_monitoring_layer import monitor_context
+from support_layers.counselor_guidance_layer import recommend_counselor_guidance
 from support_layers.keyes_signal_layer import assign_keyes_signal
 from support_layers.perma_support_layer import recommend_perma_support
 from support_layers.safety_gate import check_safety_gate
@@ -30,6 +31,7 @@ def build_interaction_record(result: dict) -> dict:
         "context": result["context"],
         "keyes_signal": result["keyes_signal"],
         "mnd_n_support": result["mnd_n_support"],
+        "counselor_guidance": result["counselor_guidance"],
         "npc_action": result["npc_action"]["action"],
     }
 
@@ -55,6 +57,11 @@ def run_pipeline(user_sentence: str, memory: MemoryLayer, persist: bool = True) 
         memory_summary=memory_summary,
         safety=safety,
         keyes_signal=keyes_signal,
+    )
+    counselor_guidance = recommend_counselor_guidance(
+        user_sentence=user_sentence,
+        mnd_n_support=mnd_n_support,
+        safety=safety,
     )
 
     if safety["triggered"]:
@@ -91,6 +98,7 @@ def run_pipeline(user_sentence: str, memory: MemoryLayer, persist: bool = True) 
         "context": context,
         "keyes_signal": keyes_signal,
         "mnd_n_support": mnd_n_support,
+        "counselor_guidance": counselor_guidance,
         "npc_action": npc_action,
     }
     if persist:
@@ -137,6 +145,13 @@ def print_result(result: dict) -> None:
     print(f"  mode: {result['mnd_n_support']['mode']}")
     print(f"  label: {result['mnd_n_support']['label']}")
     print(f"  prompt: {result['mnd_n_support']['prompt']}")
+    guidance = result["counselor_guidance"]
+    print("Counselor Guidance:")
+    print(f"  active: {guidance['active']}")
+    print(f"  topic: {guidance['topic']}")
+    print(f"  principle: {guidance['principle']}")
+    if guidance.get("suggested_message"):
+        print(f"  suggested_message: {guidance['suggested_message']}")
     print("NPC Action:")
     print(f"  action: {result['npc_action']['action']}")
     print(f"  line: {result['npc_action']['line']}")

@@ -3,6 +3,8 @@ import os
 import urllib.error
 import urllib.request
 
+from support_layers.counselor_guidance_layer import format_counselor_guidance
+
 
 DEFAULT_NVIDIA_API_BASE_URL = "https://integrate.api.nvidia.com/v1/chat/completions"
 DEFAULT_NVIDIA_MODEL = "nvidia/nvidia-nemotron-nano-9b-v2"
@@ -13,6 +15,7 @@ def build_fallback_expression(result: dict) -> dict:
     onion_state = result["onion_state"]
     action = result["npc_action"]["action"]
     support = result["mnd_n_support"]
+    counselor_guidance = result["counselor_guidance"]
     signal = result["keyes_signal"]["signal"]
 
     stage_lines = {
@@ -40,7 +43,8 @@ def build_fallback_expression(result: dict) -> dict:
         "onn_c_line": action_lines.get(action, action_lines["ask_question"]),
         "mnd_n_line": (
             f"{stage_lines.get(onion_state['stage'], stage_lines['mixed'])} "
-            f"주의 신호는 {signal.upper()}이고, 권장 방향은 {support['label']}입니다."
+            f"주의 신호는 {signal.upper()}이고, 권장 방향은 {support['label']}입니다. "
+            f"{format_counselor_guidance(counselor_guidance)}"
         ),
     }
 
@@ -79,7 +83,7 @@ def generate_nvidia_expression(
     payload = {
         "model": model,
         "temperature": 0.4,
-        "max_tokens": 220,
+        "max_tokens": 420,
         "messages": [
             {
                 "role": "system",
@@ -89,6 +93,11 @@ def generate_nvidia_expression(
                     "Write concise Korean dialogue only. "
                     "Return strict JSON with keys onn_c_line and mnd_n_line. "
                     "ONN-C is an onion character. MND-N is a bounded support helper. "
+                    "The player is practicing as a virtual counselor. MND-N speaks to the player, "
+                    "not as if MND-N were diagnosing or treating ONN-C. "
+                    "When counselor_guidance is active, MND-N should give an evidence-bounded reason, "
+                    "a practical option, and a sentence the player could offer with consent. "
+                    "Preserve research scope and cautions. Never invent a study or citation. "
                     "Answer the player's current message directly before asking anything. "
                     "Do not echo, paraphrase, or turn the player's words back into a question. "
                     "Ask a follow-up only when it is genuinely needed. "
@@ -108,10 +117,12 @@ def generate_nvidia_expression(
                         "safety": result["safety"],
                         "keyes_signal": result["keyes_signal"],
                         "mnd_n_support": result["mnd_n_support"],
+                        "counselor_guidance": result["counselor_guidance"],
                         "instruction": (
-                            "Create one short ONN-C line and one short MND-N line. "
+                            "Create one short ONN-C line and one concise but useful MND-N counselor-guidance line. "
                             "Do not alter any state. Avoid clinical labels. "
-                            "Respond to the current message instead of repeating it."
+                            "Respond to the current message instead of repeating it. "
+                            "Use only the supplied evidence and retrieved knowledge."
                         ),
                     },
                     ensure_ascii=False,

@@ -234,4 +234,19 @@ MND-N uses PERMA as a small support map:
 If the safety gate is triggered, MND-N pauses PERMA guidance and switches to
 safety guidance.
 
+MND-N also returns `support.counselor_guidance` for the player acting as a
+virtual counselor. The object keeps five concerns separate:
+
+- the principle being suggested;
+- observable practice steps;
+- a consent-based sentence the player can adapt for ONN-C;
+- a research note with source metadata and scope;
+- a caution against diagnosis or overgeneralization.
+
+The initial reviewed cards cover positive-first feedback, slow breathing,
+resilience as a recovery process, positive psychology/PERMA, and psychology
+concept education. The NVIDIA/NIM model expresses these decisions but cannot
+invent evidence or change the selected card. LightRAG can supplement the card
+with retrieved knowledge when its local index is enabled.
+
 For the integrated architecture, roadmap, governance, and trait model, see `experiments_ko/oniontest/README_KO.md`.

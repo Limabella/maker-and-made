@@ -9,6 +9,7 @@
 - 이 문서를 Five Flavor Onion × MND-N의 source of truth로 둔다.
 - `00_references.md`는 참고문헌과 적용 근거만 보관한다.
 - `2026-06/*.md`는 연구일지로 남기고, 최종 결정은 이 문서에 반영한다.
+- `context_model_benchmark/`는 MND-N 문맥 모델 비교 계획, 공통 프롬프트, 실행 기록과 결과를 보관한다.
 - `src/entities/onn-c/README.md`는 ONN-C 구현체 실행 방법과 현재 MVP 설명만 담당한다.
 - `src/entities/mnd-n/support_layers/README.md`는 MND-N 보조·안전 레이어 구현 설명만 담당한다.
 - 새 설계 문서를 추가하기 전에 이 문서의 섹션으로 흡수할 수 있는지 먼저 판단한다.
@@ -292,6 +293,22 @@ MND-N은 Five Flavor Onion의 state, memory, action 후보를 읽고 다음 관�
 - Accomplishment: 바로 가능한 작은 성취를 제안한다.
 
 Flourish는 MND-N의 최종 목표 표현이다. 사용자를 치료한다는 의미가 아니라, 캐릭터 상호작용 안에서 안전하고 회복적인 성장을 돕는 방향을 뜻한다.
+
+### Evidence-bounded Counselor Guidance Layer
+
+플레이어는 가상 내담자 ONN-C와 대화하는 상담자 역할을 연습할 수 있다. MND-N은 플레이어에게 정답을 명령하지 않고 다음 구조의 선택지를 제공한다.
+
+- principle: 지금 적용할 수 있는 심리학적 원칙
+- practice steps: 관찰 가능한 연습 순서
+- suggested message: 동의를 구하며 내담자에게 건넬 수 있는 예시 문장
+- research note/evidence: 연구 사례와 적용 범위
+- caution: 일반화, 진단, 강요를 막는 주의사항
+
+초기 안내 카드는 긍정 우선 피드백, 편안한 느린 호흡, 회복탄력성을 시간에 따른 회복 과정으로 보는 관점, PERMA 기반 작은 행동, 심리학 용어 교육을 포함한다.
+
+`5긍정 + 1피드백`은 상담의 보편적 임상 공식이 아니다. 긍정·부정 상호작용 균형에 관한 부부 갈등 연구에서 영감을 받은 연습 규칙으로만 제공하며, 구체적이고 진실한 관찰을 우선한다. 호흡 안내는 동의를 먼저 구하고 특정 패턴이나 숨 참기를 강요하지 않으며, 불편함이나 어지러움이 있으면 즉시 중단한다.
+
+LLM/NIM은 선택된 안내를 자연어로 표현하지만 연구를 새로 만들거나 support policy를 변경할 수 없다. LightRAG는 검토된 용어와 자료를 보충하며, Safety Gate가 활성화되면 일반 상담 연습 안내보다 안전 절차가 우선한다.
 
 MND-N은 다음을 하지 않는다.
 

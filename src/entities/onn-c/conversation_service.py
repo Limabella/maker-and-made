@@ -6,6 +6,7 @@ from support_layers.llm_expression_layer import (
     build_fallback_expression,
     generate_nvidia_expression,
 )
+from support_layers.counselor_guidance_layer import format_counselor_guidance
 from knowledge.mnd_n_knowledge_service import maybe_answer_psychology_question
 
 
@@ -26,6 +27,12 @@ class ConversationService:
         recent_interactions = self.memory.load_interactions()
         result = run_pipeline(user_sentence, self.memory, persist=False)
 
+        knowledge_answer = None
+        if not result["safety"]["triggered"]:
+            knowledge_answer = maybe_answer_psychology_question(user_sentence)
+        if knowledge_answer:
+            result["counselor_guidance"]["retrieved_knowledge"] = knowledge_answer
+
         if self.use_nvidia:
             expression = generate_nvidia_expression(
                 user_sentence,
@@ -35,11 +42,15 @@ class ConversationService:
         else:
             expression = build_fallback_expression(result)
 
-        knowledge_answer = None
-        if not result["safety"]["triggered"]:
-            knowledge_answer = maybe_answer_psychology_question(user_sentence)
+        if knowledge_answer and not self.use_nvidia:
+            if result["counselor_guidance"].get("card") == "psychology_concept":
+                expression["mnd_n_line"] = knowledge_answer
+            else:
+                expression["mnd_n_line"] = (
+                    f"{format_counselor_guidance(result['counselor_guidance'])} "
+                    f"검색된 참고 지식: {knowledge_answer}"
+                )
         if knowledge_answer:
-            expression["mnd_n_line"] = knowledge_answer
             expression["knowledge_provider"] = "lightrag"
 
         interaction = build_interaction_record(result)

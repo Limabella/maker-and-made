@@ -28,6 +28,7 @@ def _print_result(result: dict, expression: dict | None = None) -> None:
     onion_state = result["onion_state"]
     keyes_signal = result["keyes_signal"]
     support = result["mnd_n_support"]
+    guidance = result["counselor_guidance"]
     action = result["npc_action"]
 
     print("\nONN-C")
@@ -50,6 +51,14 @@ def _print_result(result: dict, expression: dict | None = None) -> None:
     print(f"  signal     : {keyes_signal['signal']} ({keyes_signal['reason']})")
     print(f"  mode       : {support['mode']}")
     print(f"  guide      : {support['label']} - {support['prompt']}")
+    print(f"  topic      : {guidance['topic'] or 'safety'}")
+    print(f"  principle  : {guidance['principle']}")
+    if guidance.get("suggested_message"):
+        print(f"  try saying : {guidance['suggested_message']}")
+    if guidance.get("research_note"):
+        print(f"  evidence   : {guidance['research_note']}")
+    if guidance.get("caution"):
+        print(f"  caution    : {guidance['caution']}")
     if expression:
         print(f"  says       : {expression['mnd_n_line']}")
         print(f"  expression : {expression['provider']}")

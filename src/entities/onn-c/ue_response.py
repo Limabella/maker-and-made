@@ -55,6 +55,7 @@ def build_ue_response(result: dict, expression: dict) -> dict:
             "mode": result["mnd_n_support"]["mode"],
             "label": result["mnd_n_support"]["label"],
             "prompt": result["mnd_n_support"]["prompt"],
+            "counselor_guidance": result["counselor_guidance"],
         },
         "safety": {
             "triggered": safety["triggered"],

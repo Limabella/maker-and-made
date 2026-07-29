@@ -18,6 +18,12 @@ RESULT = {
     "safety": {"triggered": False},
     "keyes_signal": {"signal": "green"},
     "mnd_n_support": {"label": "Accomplishment", "prompt": "Take one step."},
+    "counselor_guidance": {
+        "active": True,
+        "principle": "작은 행동을 제안합니다.",
+        "suggested_message": "한 걸음만 함께 해볼까요?",
+        "research_note": "일반적인 연습 안내입니다.",
+    },
 }
 
 
@@ -57,6 +63,8 @@ class ExpressionLayerTests(unittest.TestCase):
         self.assertTrue(payload["messages"][0]["content"].startswith("/no_think\n"))
         self.assertEqual(payload["messages"][1]["content"], "안녕")
         self.assertEqual(payload["messages"][2]["role"], "assistant")
+        current_turn = json.loads(payload["messages"][-1]["content"])
+        self.assertIn("counselor_guidance", current_turn)
 
     @patch.dict("os.environ", {"NIM_MODEL": "nvidia/test-model"}, clear=True)
     def test_accepts_nim_model_alias_without_calling_endpoint(self) -> None:

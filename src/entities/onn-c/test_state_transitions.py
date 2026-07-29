@@ -46,6 +46,11 @@ class StateTransitionScenarioTests(unittest.TestCase):
             response = build_ue_response(turn.result, turn.expression)
             self.assertEqual(response["schema_version"], "onn-c.v1")
             self.assertEqual(response["dialogue"]["onn_c"], interactions[0]["onn_c_line"])
+            self.assertIn("counselor_guidance", response["support"])
+            self.assertEqual(
+                response["support"]["counselor_guidance"]["audience"],
+                "player_as_virtual_counselor",
+            )
             self.assertIn(response["character"]["animation"], {
                 "greet_warmly", "listen_gently", "set_boundary", "lighten_mood",
                 "step_back", "talk_neutral", "listen_curiously", "safety_focus",

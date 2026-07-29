@@ -87,9 +87,12 @@ PSYCH_RAG_ENABLED=true
 PSYCH_RAG_STORAGE=runtime/psychology/lightrag
 ```
 
-The conversation service then gives the retrieved answer to MND-N only when the
-player explicitly asks for a psychology term or concept. Safety mode always
-skips educational retrieval.
+The conversation service gives retrieved knowledge to MND-N when the player
+explicitly asks for a psychology term, research basis, resilience concept, or
+educational intervention option. The deterministic counselor-guidance layer
+still owns the practice boundary and safety caution. Retrieval can supplement
+that card but cannot turn a glossary result into a diagnosis or overwrite the
+safety path. Safety mode always skips educational retrieval.
 
 ## Proposed Commit Message
 

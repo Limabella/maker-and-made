@@ -46,6 +46,8 @@ class PsychologyKnowledgeTests(unittest.TestCase):
 
     def test_retrieval_requires_an_explicit_educational_cue(self) -> None:
         self.assertTrue(should_retrieve_psychology_knowledge("인지 부조화가 무슨 뜻이야?"))
+        self.assertTrue(should_retrieve_psychology_knowledge("회복탄력성 연구 사례가 있나요?"))
+        self.assertTrue(should_retrieve_psychology_knowledge("호흡법을 내담자에게 권해볼까요?"))
         self.assertFalse(should_retrieve_psychology_knowledge("오늘 마음이 복잡해"))
 
     def test_instruction_forbids_diagnosis_and_requires_source(self) -> None:
