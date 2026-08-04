@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://maker-and-made.local/schemas/mnd-n-interaction-signal-v1.json",
+  "title": "MND-N Interaction Signal v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "emotion",
+    "speech_act",
+    "relation_signal",
+    "safety_risk",
+    "confidence",
+    "evidence_spans"
+  ],
+  "properties": {
+    "emotion": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "joy",
+          "sadness",
+          "anger",
+          "fear",
+          "anxiety",
+          "relief",
+          "neutral",
+          "uncertain"
+        ]
+      }
+    },
+    "speech_act": {
+      "enum": [
+        "gratitude",
+        "apology",
+        "rejection",
+        "help_request",
+        "repair_attempt",
+        "withdrawal",
+        "disclosure",
+        "request",
+        "neutral",
+        "uncertain"
+      ]
+    },
+    "relation_signal": {
+      "enum": [
+        "trust_building",
+        "boundary_setting",
+        "repair",
+        "distancing",
+        "hostility",
+        "neutral",
+        "uncertain"
+      ]
+    },
+    "safety_risk": {
+      "enum": ["none", "caution", "urgent"]
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "evidence_spans": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  }
+}

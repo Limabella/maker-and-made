@@ -76,6 +76,10 @@ checkpoints/
 *.safetensors
 *.bin
 
+# Public benchmark Modelfiles contain aliases only; source mappings stay local.
+!experiments_ko/oniontest/context_model_benchmark/models/
+!experiments_ko/oniontest/context_model_benchmark/models/*.Modelfile
+
 # =========================
 # PyTorch
 # =========================
@@ -133,3 +137,5 @@ artifacts/
 vectorstore/
 embeddings/
 prompts/
+!experiments_ko/oniontest/context_model_benchmark/prompts/
+!experiments_ko/oniontest/context_model_benchmark/prompts/mnd_n_signal_prompt.txt

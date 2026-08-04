@@ -1,9 +1,9 @@
-# 2026-07-29 Qwen3 1.7B 테스트
+# 2026-07-29 Model A 테스트
 
 ## 환경
 
 - 실행기: Ollama 0.32.1
-- 모델: qwen3:1.7b
+- 모델: onion-model-a
 - 임베딩: 사용하지 않음
 - temperature: 0
 - 평가 사례: 1개
@@ -12,7 +12,7 @@
 - 실행 방식: Ollama CLI (`--format json`, `--think=false`)
 
 - 실행기: Ollama
-- MND-N 문맥 모델 후보: Qwen3 → EXAONE → Kanana
+- MND-N 문맥 모델 후보: Model A → Model B → Model C
 - MND-N 임베딩 모델: bge-m3
 
 ## 형식
@@ -44,6 +44,7 @@ ONN-C에 전달할 구조화된 신호
 | ID | 입력 유형 | JSON | 감정 | 발화 행동 | 관계 신호 | 안전 | 시간 |
 |---|---|---:|---:|---:|---:|---:|---:|
 | Q01 | 거리두기·경계 표현 | O | X | X | X | O | 7.39초 |
+| Q01-v1 | 동일 입력, 라벨 계약 v1.0 | O | X | O | X | O | 1.28초 |
 
 ### Q01
 
@@ -62,6 +63,20 @@ ONN-C에 전달할 구조화된 신호
 - generation: 31 tokens, 278ms
 - 판단: JSON과 안전 신호는 유효했지만, 감정·발화 행동·관계 신호가 사전 정답 및 고정 라벨 계약과 일치하지 않았다.
 
+### Q01-v1 라벨 계약 적용 후 재실행
+
+- 실행일: `2026-08-03`
+- 계약: `LABEL_GUIDE_KO.md` 및 `interaction_signal.schema.json` v1.0
+- 모델 예측: `emotion=["neutral"]`, `speech_act="withdrawal"`, `relation_signal="distancing"`, `safety_risk="none"`, `confidence=0.7`
+- 원본 출력:
+
+```json
+{"emotion":["neutral"],"speech_act":"withdrawal","relation_signal":"distancing","safety_risk":"none","confidence":0.7,"evidence_spans":["오늘은 그냥 혼자 있고 싶어요."]}
+```
+
+- warm latency: 1.28초
+- 판단: 허용 라벨과 JSON 필드를 모두 지켰고 발화 행동과 안전 신호는 정답과 일치했다. 감정은 `uncertain` 대신 `neutral`, 관계 신호는 `boundary_setting` 대신 `distancing`을 선택했다. 이 차이는 모델 오류로 확정하기 전에 라벨 정의와 사전 정답을 한 번 더 사람 검토해야 한다.
+
 ## 발견한 문제
 
 - 프롬프트에 필드 형식만 있고 허용 라벨 목록이 없어 모델이 `alone`, `expressing desire`를 임의 생성했다.
@@ -70,7 +85,6 @@ ONN-C에 전달할 구조화된 신호
 
 ## 다음 작업
 
-- emotion, speech_act, relation_signal의 허용 라벨 목록을 먼저 확정한다.
-- 확정된 라벨을 공통 프롬프트와 JSON Schema에 반영한다.
+- 라벨 계약 v1.0의 경계 사례를 사람 검토한다.
+- 나머지 합성 사례 7건을 동일 조건으로 실행한다.
 - OpenAI 호환 chat completions 호출이 멈추는 원인을 별도로 확인한다.
-- 수정된 프롬프트로 Q01을 다시 실행하되 첫 결과는 덮어쓰지 않는다.

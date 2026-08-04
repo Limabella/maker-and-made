@@ -2,7 +2,7 @@ param(
     [Parameter(Mandatory)]
     [string]$InputText,
 
-    [string]$Model = "qwen3:1.7b"
+    [string]$Model = "onion-model-a"
 )
 
 $promptPath = Join-Path $PSScriptRoot "prompts/mnd_n_signal_prompt.txt"
