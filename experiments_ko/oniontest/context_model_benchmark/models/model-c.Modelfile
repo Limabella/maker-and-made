@@ -1,3 +1,4 @@
 FROM onion-model-c-source
 PARAMETER temperature 0
 PARAMETER num_ctx 4096
+PARAMETER stop <|eot_id|>

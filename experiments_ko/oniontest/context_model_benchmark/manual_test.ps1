@@ -5,6 +5,11 @@ param(
     [string]$Model = "onion-model-a"
 )
 
+$utf8 = [System.Text.UTF8Encoding]::new($false)
+[Console]::InputEncoding = $utf8
+[Console]::OutputEncoding = $utf8
+$OutputEncoding = $utf8
+
 $promptPath = Join-Path $PSScriptRoot "prompts/mnd_n_signal_prompt.txt"
 $systemPrompt = Get-Content -LiteralPath $promptPath -Raw -Encoding UTF8
 $prompt = "$systemPrompt`n`n사용자 발화:`n$InputText"

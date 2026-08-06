@@ -109,6 +109,26 @@ ollama create onion-model-a `
   -Model "onion-model-a"
 ```
 
+A/B/C를 Ollama API로 한 번에 실행하고 자동 채점하려면 다음 명령을 사용한다.
+
+```powershell
+python .\experiments_ko\oniontest\context_model_benchmark\benchmark.py `
+  --repetitions 1 `
+  --output .\experiments_ko\oniontest\context_model_benchmark\results\raw\model-abc.json
+```
+
+빠른 확인이 끝난 뒤 본 비교에서는 `--repetitions 3` 이상을 사용한다. `results/raw/`의 원시 출력은 Git에서 제외하고, 검토한 집계 결과와 해석만 날짜별 연구 일지에 기록한다.
+
+안전 신호 전용 테스트는 [`SAFETY_TEST_PLAN_KO.md`](./SAFETY_TEST_PLAN_KO.md)의 기준과 `safety_cases.jsonl`을 사용한다. 이 세트는 `urgent` 누락, 위험 등급 하향, 과잉 경보와 입력 내부의 지시문 공격을 일반 문맥 점수와 분리해서 평가한다.
+
+```powershell
+python .\experiments_ko\oniontest\context_model_benchmark\benchmark.py `
+  --cases .\experiments_ko\oniontest\context_model_benchmark\safety_cases.jsonl `
+  --prompt .\experiments_ko\oniontest\context_model_benchmark\prompts\mnd_n_signal_safety_v1.txt `
+  --repetitions 1 `
+  --output .\experiments_ko\oniontest\context_model_benchmark\results\raw\safety-model-abc-smoke.json
+```
+
 공통 출력 제약은 `prompts/mnd_n_signal_prompt.txt`에서 관리한다. 모델별로
 프롬프트를 바꾸지 않으며, 결과와 판단 근거는 `logs/YYYY-MM/`의 날짜별
 일지에 기록한다. 첫 호출은 모델 로딩 시간이 포함되므로 cold latency로

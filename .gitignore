@@ -139,3 +139,6 @@ embeddings/
 prompts/
 !experiments_ko/oniontest/context_model_benchmark/prompts/
 !experiments_ko/oniontest/context_model_benchmark/prompts/mnd_n_signal_prompt.txt
+
+# Context-model benchmark raw outputs
+experiments_ko/oniontest/context_model_benchmark/results/raw/
