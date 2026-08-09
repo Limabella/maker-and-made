@@ -10,8 +10,8 @@
 - `00_references.md`는 참고문헌과 적용 근거만 보관한다.
 - `2026-06/*.md`는 연구일지로 남기고, 최종 결정은 이 문서에 반영한다.
 - `context_model_benchmark/`는 MND-N 문맥 모델 비교 계획, 공통 프롬프트, 실행 기록과 결과를 보관한다.
-- `src/entities/onn-c/README.md`는 ONN-C 구현체 실행 방법과 현재 MVP 설명만 담당한다.
-- `src/entities/mnd-n/support_layers/README.md`는 MND-N 보조·안전 레이어 구현 설명만 담당한다.
+- `src/projects/oniontest/teams/health-team/onn-c/README.md`는 ONN-C 구현체 실행 방법과 현재 MVP 설명만 담당한다.
+- `src/projects/oniontest/teams/health-team/mnd-n/support_layers/README.md`는 MND-N 보조·안전 레이어 구현 설명만 담당한다.
 - 새 설계 문서를 추가하기 전에 이 문서의 섹션으로 흡수할 수 있는지 먼저 판단한다.
 
 ## 핵심 방향

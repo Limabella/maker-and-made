@@ -1,7 +1,8 @@
 from pathlib import Path
 import sys
+import uuid
 
-MND_N_PATH = Path(__file__).parents[1] / "mnd-n"
+MND_N_PATH = Path(__file__).parent.parent / "mnd-n"
 if str(MND_N_PATH) not in sys.path:
     sys.path.insert(0, str(MND_N_PATH))
 
@@ -22,6 +23,7 @@ from support_layers.safety_gate import check_safety_gate
 def build_interaction_record(result: dict) -> dict:
     """Build the persisted form of a completed pipeline result."""
     return {
+        "turn_id": result["turn_id"],
         "user_sentence": result["input"],
         "big_five": result["big_five"],
         "emotion": result["emotion"],
@@ -87,6 +89,7 @@ def run_pipeline(user_sentence: str, memory: MemoryLayer, persist: bool = True) 
     )
 
     result = {
+        "turn_id": str(uuid.uuid4()),
         "input": user_sentence,
         "big_five": big_five,
         "emotion": emotion,

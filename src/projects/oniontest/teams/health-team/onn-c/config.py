@@ -2,7 +2,9 @@ import os
 from pathlib import Path
 
 
-REPOSITORY_ROOT = Path(__file__).resolve().parents[3]
+REPOSITORY_ROOT = next(
+    parent for parent in Path(__file__).resolve().parents if (parent / ".git").exists()
+)
 SUPPORTED_ENV_KEYS = {
     "NVIDIA_API_KEY",
     "NVIDIA_MODEL",

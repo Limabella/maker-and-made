@@ -243,7 +243,7 @@ Core Loop : Enter -> Draw card -> Vote -> Result
 ## 9. 아카이브 구조 초안
 
 ```txt
-src/entities/ntr-n/maam-kitchen-contest/
+src/projects/oniontest/teams/health-team/ntr-n/maam-kitchen-contest/
   README.md
   README_KO.md
   rules/

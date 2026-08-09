@@ -7,7 +7,9 @@ from lightrag_adapter import index_glossary, query_glossary
 from translation_pipeline import translate_jsonl
 
 
-REPOSITORY_ROOT = Path(__file__).resolve().parents[4]
+REPOSITORY_ROOT = next(
+    parent for parent in Path(__file__).resolve().parents if (parent / ".git").exists()
+)
 DEFAULT_RUNTIME_DIR = REPOSITORY_ROOT / "runtime" / "psychology"
 
 

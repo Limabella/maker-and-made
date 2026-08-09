@@ -243,7 +243,7 @@ Minimum prototype:
 ## 9. Archive Structure Draft
 
 ```txt
-src/entities/ntr-n/maam-kitchen-contest/
+src/projects/oniontest/teams/health-team/ntr-n/maam-kitchen-contest/
   README.md
   README_KO.md
   rules/

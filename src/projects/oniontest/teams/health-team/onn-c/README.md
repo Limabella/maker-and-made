@@ -35,7 +35,7 @@ prototype-level heuristic, not full multilingual understanding.
 ## Structure
 
 ```text
-src/entities/onn-c/
+src/projects/oniontest/teams/health-team/onn-c/
   main.py
   play_cli.py
   layers/
@@ -62,7 +62,7 @@ src/entities/onn-c/
 MND-N support layers live outside ONN-C:
 
 ```text
-src/entities/mnd-n/support_layers/
+src/projects/oniontest/teams/health-team/mnd-n/support_layers/
   safety_gate.py
   context_monitoring_layer.py
   keyes_signal_layer.py
@@ -90,19 +90,19 @@ priority over the normal character action loop.
 From the repository root:
 
 ```bash
-python src/entities/onn-c/main.py
+python src/projects/oniontest/teams/health-team/onn-c/main.py
 ```
 
 For direct player testing, run the CLI MVP:
 
 ```bash
-python src/entities/onn-c/play_cli.py
+python src/projects/oniontest/teams/health-team/onn-c/play_cli.py
 ```
 
 For Unreal Engine integration, start the local JSON API:
 
 ```bash
-python src/entities/onn-c/api_server.py
+python src/projects/oniontest/teams/health-team/onn-c/api_server.py
 ```
 
 The server listens on `127.0.0.1:8765` by default. It exposes:
@@ -128,7 +128,7 @@ ONN-C and MND-N continue to own state and safety decisions.
 For the second CLI MVP expression layer, set `NVIDIA_API_KEY` and run:
 
 ```bash
-python src/entities/onn-c/play_cli.py --nvidia
+python src/projects/oniontest/teams/health-team/onn-c/play_cli.py --nvidia
 ```
 
 For local configuration, copy `.env.example` to `.env` in the repository root
@@ -152,8 +152,8 @@ template dialogue. State and safety decisions are never delegated to the model.
 To test a different sentence, pass it as a command line argument:
 
 ```bash
-python src/entities/onn-c/main.py "안녕 친구야, 새로운 장소를 탐험하게 도와줄래?"
-python src/entities/onn-c/main.py "I hate you and I will attack."
+python src/projects/oniontest/teams/health-team/onn-c/main.py "안녕 친구야, 새로운 장소를 탐험하게 도와줄래?"
+python src/projects/oniontest/teams/health-team/onn-c/main.py "I hate you and I will attack."
 ```
 
 You can still edit `user_sentence` in `main.py` if you prefer a fixed scenario.

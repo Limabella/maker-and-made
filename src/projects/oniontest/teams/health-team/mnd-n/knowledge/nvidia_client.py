@@ -5,7 +5,9 @@ import urllib.request
 from pathlib import Path
 
 
-REPOSITORY_ROOT = Path(__file__).resolve().parents[4]
+REPOSITORY_ROOT = next(
+    parent for parent in Path(__file__).resolve().parents if (parent / ".git").exists()
+)
 DEFAULT_CHAT_URL = "https://integrate.api.nvidia.com/v1/chat/completions"
 
 

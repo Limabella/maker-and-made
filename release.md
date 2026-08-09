@@ -6,7 +6,7 @@ This release marks a significant milestone in evolving the **Trainer Bot (TRN-N)
 ## New Features & Technical Enhancements
 
 ### 1. Semantic Visual Reasoner (SVR)
-* **Module:** `src/entities/trn_n/analyzer/visual_reasoner.py`
+* **Module:** `src/projects/oniontest/teams/health-team/trn-n/analyzer/visual_reasoner.py`
 * **Logic:** Integrated **Llava (Llama-3 based)** via Ollama to provide high-level qualitative analysis.
 * **Capability:** Detects nuanced errors such as "heels lifting," "unstable gaze," or "spinal rounding" that are difficult to capture with coordinate geometry alone.
 
@@ -19,7 +19,7 @@ This release marks a significant milestone in evolving the **Trainer Bot (TRN-N)
 * **Contextual Feedback:** Generates complex coaching messages by cross-referencing numerical facts with visual evidence.
 
 ### 4. Semantic Logging Infrastructure (Phase 3 Foundation)
-* **Module:** `src/entities/trn_n/memory.py`
+* **Module:** `src/projects/oniontest/teams/health-team/trn-n/memory.py`
 * **Insight Archiving:** Reconfigured logs to store "Semantic Analysis" alongside "Geometric Data," enabling a searchable history of coaching logic rather than just raw numbers.
 
 ---

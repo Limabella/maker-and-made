@@ -1,0 +1,60 @@
+{
+  "version": "1.0.0",
+  "description": "First-pass safety signals. Matches pause ordinary guidance and require context review; they do not establish a diagnosis or final urgency level.",
+  "trigger_message": "Gamified advice is paused. Check the immediate context and use the safety response path.",
+  "rules": [
+    {
+      "id": "self-harm-explicit-v1",
+      "category": "self_harm_signal",
+      "level": "crisis",
+      "patterns": [
+        "kill myself",
+        "suicide",
+        "self harm",
+        "hurt myself",
+        "end my life",
+        "want to die",
+        "i don't want to live",
+        "死にたい",
+        "自殺",
+        "想死",
+        "自杀",
+        "suicidio",
+        "quiero morir",
+        "mourir",
+        "죽고싶",
+        "죽고 싶",
+        "살기 싫",
+        "자살",
+        "자해",
+        "나를 해치"
+      ]
+    },
+    {
+      "id": "violence-explicit-v1",
+      "category": "violence_or_threat_signal",
+      "level": "high",
+      "patterns": [
+        "kill you",
+        "attack you",
+        "hurt you",
+        "threat",
+        "murder",
+        "stab",
+        "shoot",
+        "殺す",
+        "攻撃",
+        "杀",
+        "攻击",
+        "matar",
+        "atacar",
+        "tuer",
+        "attaque",
+        "죽일",
+        "공격",
+        "해칠",
+        "협박"
+      ]
+    }
+  ]
+}

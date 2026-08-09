@@ -1,4 +1,4 @@
-# src/entities/mnd-n/cognition/stress_prediction.py
+# src/projects/oniontest/teams/health-team/mnd-n/cognition/stress_prediction.py
 
 from transformers import pipeline
 

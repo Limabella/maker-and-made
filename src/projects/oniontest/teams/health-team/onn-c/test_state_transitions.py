@@ -45,7 +45,10 @@ class StateTransitionScenarioTests(unittest.TestCase):
 
             response = build_ue_response(turn.result, turn.expression)
             self.assertEqual(response["schema_version"], "onn-c.v1")
+            self.assertEqual(response["turn_id"], interactions[0]["turn_id"])
             self.assertEqual(response["dialogue"]["onn_c"], interactions[0]["onn_c_line"])
+            self.assertTrue(response["feedback"]["reportable"])
+            self.assertEqual(response["feedback"]["endpoint"], "/v1/feedback/reports")
             self.assertIn("counselor_guidance", response["support"])
             self.assertEqual(
                 response["support"]["counselor_guidance"]["audience"],
@@ -140,7 +143,10 @@ class StateTransitionScenarioTests(unittest.TestCase):
                     payload = json.loads(response.read().decode("utf-8"))
 
                 self.assertEqual(payload["schema_version"], "onn-c.v1")
+                self.assertTrue(payload["turn_id"])
                 self.assertTrue(payload["safety"]["triggered"])
+                self.assertEqual(payload["safety"]["policy_version"], "1.0.0")
+                self.assertTrue(payload["safety"]["requires_context_review"])
                 self.assertEqual(payload["character"]["stage"], "safety")
                 self.assertEqual(payload["character"]["animation"], "safety_focus")
             finally:
@@ -148,6 +154,49 @@ class StateTransitionScenarioTests(unittest.TestCase):
                 server.server_close()
                 thread.join(timeout=5)
                 api_server.DATA_DIR = original_data_dir
+
+    def test_http_api_accepts_feedback_without_raw_content(self) -> None:
+        with TemporaryDirectory() as directory:
+            original_report_dir = api_server.REPORT_DIR
+            api_server.REPORT_DIR = Path(directory)
+            server = api_server.ThreadingHTTPServer(
+                ("127.0.0.1", 0),
+                api_server.OnionRequestHandler,
+            )
+            thread = threading.Thread(target=server.serve_forever, daemon=True)
+            thread.start()
+            try:
+                body = json.dumps(
+                    {
+                        "session_id": "test-session",
+                        "turn_id": "turn-1",
+                        "category": "missed_risk",
+                        "note": "The response did not recognize the risk.",
+                    }
+                ).encode("utf-8")
+                request = urllib.request.Request(
+                    f"http://127.0.0.1:{server.server_port}/v1/feedback/reports",
+                    data=body,
+                    headers={"Content-Type": "application/json"},
+                    method="POST",
+                )
+                with urllib.request.urlopen(request, timeout=5) as response:
+                    payload = json.loads(response.read().decode("utf-8"))
+
+                self.assertEqual(response.status, 201)
+                self.assertEqual(payload["status"], "pending_review")
+                self.assertFalse(payload["content_included"])
+                stored = json.loads(
+                    (Path(directory) / "pending_reports.jsonl")
+                    .read_text(encoding="utf-8")
+                    .splitlines()[0]
+                )
+                self.assertIsNone(stored["content"])
+            finally:
+                server.shutdown()
+                server.server_close()
+                thread.join(timeout=5)
+                api_server.REPORT_DIR = original_report_dir
 
 
 if __name__ == "__main__":

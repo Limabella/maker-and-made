@@ -10,7 +10,9 @@ except ImportError:
     from mnd_n_education_policy import should_retrieve_psychology_knowledge
 
 
-REPOSITORY_ROOT = Path(__file__).resolve().parents[4]
+REPOSITORY_ROOT = next(
+    parent for parent in Path(__file__).resolve().parents if (parent / ".git").exists()
+)
 DEFAULT_STORAGE = REPOSITORY_ROOT / "runtime" / "psychology" / "lightrag"
 
 

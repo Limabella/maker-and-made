@@ -44,14 +44,14 @@ ollama pull bge-m3
 Extract the glossary with page-level provenance:
 
 ```powershell
-.venv\Scripts\python src/entities/mnd-n/knowledge/psychology_rag_cli.py extract `
+.venv\Scripts\python src/projects/oniontest/teams/health-team/mnd-n/knowledge/psychology_rag_cli.py extract `
   --pdf "C:\path\to\SocialPsychGlossary.pdf"
 ```
 
 Create resumable machine-draft Korean translations:
 
 ```powershell
-.venv\Scripts\python src/entities/mnd-n/knowledge/psychology_rag_cli.py translate `
+.venv\Scripts\python src/projects/oniontest/teams/health-team/mnd-n/knowledge/psychology_rag_cli.py translate `
   --max-batches 1
 ```
 
@@ -62,8 +62,8 @@ not requested again.
 Index and query:
 
 ```powershell
-.venv\Scripts\python src/entities/mnd-n/knowledge/psychology_rag_cli.py index --limit 1
-.venv\Scripts\python src/entities/mnd-n/knowledge/psychology_rag_cli.py query "인지 부조화란 무엇인가요?"
+.venv\Scripts\python src/projects/oniontest/teams/health-team/mnd-n/knowledge/psychology_rag_cli.py index --limit 1
+.venv\Scripts\python src/projects/oniontest/teams/health-team/mnd-n/knowledge/psychology_rag_cli.py query "인지 부조화란 무엇인가요?"
 ```
 
 Use `--limit 1` for the first end-to-end check. Remove it only after inspecting

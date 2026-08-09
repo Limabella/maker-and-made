@@ -32,40 +32,34 @@ MaAM is not only a chatbot collection. It is a world model for:
 
 The project is currently focused on turning each entity into a testable bot or engine.
 
-The most active line is **OnionTest**:
+The most active line is **OnionTest**, now organized as a project team:
 
 ```text
-Player
--> ONN-C  Five Flavor Onion character engine
--> MND-N  bounded support and safety agent
--> CLI / future Unity visualization
+OnionTest / health-team
+├─ ONN-C  Five Flavor Onion character engine
+├─ MND-N  bounded support and safety agent
+├─ TRN-N  movement support (joining)
+├─ NTR-N  nutrition support (planned)
+└─ CUR-N  historical research perspective (planned)
 ```
 
 The goal is to make a playable simulation first, then refine the detailed psychology, personality, motion, and visual systems.
 
 ---
 
-## Entity Structure
+## Project Team Structure
 
 ```text
 Maker-and-Made / MaAM
-│
-├─ Researcher Bots
-│   ├─ VCT-N  Victor Bot
-│   ├─ WCM-N  William Chester Minor Bot
-│   ├─ CUR-N  Curie Bot
-│   └─ JMR-N  James Murray Bot
-│
-├─ Life Support Bots
-│   ├─ NTR-N  Nutrition Bot
-│   ├─ TRN-N  Trainer Bot
-│   └─ MND-N  Mind / support agent
-│
-├─ Made Entities
-│   └─ ONN-C  Onion character engine
-│
-└─ Experiments
+└─ Projects
     └─ oniontest
+        └─ teams
+            └─ health-team
+                ├─ ONN-C
+                ├─ MND-N
+                ├─ TRN-N
+                ├─ NTR-N
+                └─ CUR-N
 ```
 
 ---
@@ -91,19 +85,19 @@ Current implementation:
 Location:
 
 ```text
-src/entities/onn-c/
+src/projects/oniontest/teams/health-team/onn-c/
 ```
 
 Run:
 
 ```bash
-python src/entities/onn-c/play_cli.py
+python src/projects/oniontest/teams/health-team/onn-c/play_cli.py
 ```
 
 Optional NVIDIA expression mode:
 
 ```bash
-python src/entities/onn-c/play_cli.py --nvidia
+python src/projects/oniontest/teams/health-team/onn-c/play_cli.py --nvidia
 ```
 
 The model is expression-only. ONN-C state and safety decisions remain rule-based and inspectable.
@@ -128,14 +122,14 @@ Current support layers:
 Location:
 
 ```text
-src/entities/mnd-n/support_layers/
+src/projects/oniontest/teams/health-team/mnd-n/support_layers/
 ```
 
 The psychology knowledge pipeline, its local-data policy, and the future
 SFT/LoRA/preference-training notes are kept in:
 
-- [`src/entities/mnd-n/knowledge/README.md`](src/entities/mnd-n/knowledge/README.md)
-- [`src/entities/mnd-n/knowledge/TRAINING_ROADMAP.md`](src/entities/mnd-n/knowledge/TRAINING_ROADMAP.md)
+- [`MND-N knowledge README`](src/projects/oniontest/teams/health-team/mnd-n/knowledge/README.md)
+- [`MND-N training roadmap`](src/projects/oniontest/teams/health-team/mnd-n/knowledge/TRAINING_ROADMAP.md)
 
 Core rule:
 
@@ -187,15 +181,15 @@ Principles:
 
 ```text
 src/
-  entities/
-    onn-c/
-      play_cli.py
-      main.py
-      layers/
-    mnd-n/
-      support_layers/
-      knowledge/
-    trn_n/
+  projects/
+    oniontest/
+      teams/
+        health-team/
+          onn-c/
+          mnd-n/
+          trn-n/
+          ntr-n/
+          cur-n/
 
 experiments_ko/
   oniontest/
@@ -217,7 +211,7 @@ output/
 Run the playable OnionTest CLI:
 
 ```bash
-python src/entities/onn-c/play_cli.py
+python src/projects/oniontest/teams/health-team/onn-c/play_cli.py
 ```
 
 Commands inside the CLI:
@@ -235,7 +229,7 @@ Optional NVIDIA expression mode:
 # PowerShell
 $env:NVIDIA_API_KEY="YOUR_KEY"
 $env:NVIDIA_MODEL="nvidia/nvidia-nemotron-nano-9b-v2"
-python src/entities/onn-c/play_cli.py --nvidia
+python src/projects/oniontest/teams/health-team/onn-c/play_cli.py --nvidia
 ```
 
 If the NVIDIA key or endpoint is unavailable, the CLI falls back to deterministic template dialogue.
@@ -275,8 +269,9 @@ Long-term:
 | Area | Path |
 |---|---|
 | OnionTest lab | [experiments_ko/oniontest](./experiments_ko/oniontest) |
-| ONN-C engine | [src/entities/onn-c](./src/entities/onn-c) |
-| MND-N support layers | [src/entities/mnd-n/support_layers](./src/entities/mnd-n/support_layers) |
+| OnionTest health team | [src/projects/oniontest/teams/health-team](./src/projects/oniontest/teams/health-team) |
+| ONN-C engine | [health-team/onn-c](./src/projects/oniontest/teams/health-team/onn-c) |
+| MND-N support layers | [health-team/mnd-n/support_layers](./src/projects/oniontest/teams/health-team/mnd-n/support_layers) |
 | Character archive | [character_archive](./character_archive) |
 | Korean README | [README_KO.md](./README_KO.md) |
 

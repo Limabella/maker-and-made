@@ -18,7 +18,8 @@ ONN-C state / player input
 
 ## Layers
 
-- `safety_gate.py`: pauses gamified guidance when high-priority safety signals appear.
+- `safety_gate.py`: pauses gamified guidance when a versioned registry signal appears.
+- `safety_signal_registry.json`: auditable first-pass phrases grouped by policy rule.
 - `context_monitoring_layer.py`: observes repeated negative, aggressive, distress, or trust-drop signals without diagnosis.
 - `keyes_signal_layer.py`: converts observed signals into Green, Yellow, or Red operating signals.
 - `perma_support_layer.py`: recommends a bounded PERMA/Flourish support direction.
@@ -37,6 +38,11 @@ Keyes signals are operating signals, not clinical labels:
 - Red: pause gamified guidance and switch to safety guidance.
 
 LLM expression must not own state, stage, safety, or support decisions.
+
+Keyword matches are signals for context review, not final judgments. User reports
+must never update the registry automatically. A reported failure is reviewed,
+de-identified, converted into a regression case, and only then considered for a
+versioned policy update.
 
 ## Counselor Guidance Contract
 

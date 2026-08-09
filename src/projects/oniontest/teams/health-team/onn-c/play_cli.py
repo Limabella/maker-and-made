@@ -3,7 +3,7 @@ import os
 import sys
 from pathlib import Path
 
-MND_N_PATH = Path(__file__).parents[1] / "mnd-n"
+MND_N_PATH = Path(__file__).parent.parent / "mnd-n"
 if str(MND_N_PATH) not in sys.path:
     sys.path.insert(0, str(MND_N_PATH))
 

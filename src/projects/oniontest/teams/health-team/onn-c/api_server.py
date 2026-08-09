@@ -7,11 +7,13 @@ from pathlib import Path
 
 from config import load_local_env
 from conversation_service import ConversationService
+from feedback_store import save_feedback_report
 from layers.memory_layer import MemoryLayer
 from ue_response import build_ue_response
 
 
 DATA_DIR = Path(__file__).parent / "data" / "sessions"
+REPORT_DIR = Path(__file__).parent / "data" / "reports"
 SESSION_PATTERN = re.compile(r"^[A-Za-z0-9_-]{1,64}$")
 TURN_LOCK = threading.Lock()
 
@@ -40,7 +42,7 @@ class OnionRequestHandler(BaseHTTPRequestHandler):
         self._write_json(404, {"error": "not_found"})
 
     def do_POST(self) -> None:
-        if self.path != "/v1/conversations/respond":
+        if self.path not in {"/v1/conversations/respond", "/v1/feedback/reports"}:
             self._write_json(404, {"error": "not_found"})
             return
 
@@ -49,6 +51,20 @@ class OnionRequestHandler(BaseHTTPRequestHandler):
             if length <= 0 or length > 64_000:
                 raise ValueError("request body must be between 1 and 64000 bytes")
             payload = json.loads(self.rfile.read(length).decode("utf-8"))
+            if not isinstance(payload, dict):
+                raise ValueError("request body must be a JSON object")
+            if self.path == "/v1/feedback/reports":
+                report = save_feedback_report(payload, REPORT_DIR)
+                self._write_json(
+                    201,
+                    {
+                        "report_id": report["report_id"],
+                        "status": report["status"],
+                        "content_included": report["content_included"],
+                    },
+                )
+                return
+
             message = payload.get("message")
             session_id = payload.get("session_id", "ue-local")
             use_nvidia = payload.get("use_nvidia", True)
@@ -87,7 +103,7 @@ def main() -> None:
     args = _parse_args()
     server = ThreadingHTTPServer((args.host, args.port), OnionRequestHandler)
     print(f"ONN-C API listening on http://{args.host}:{args.port}")
-    print("POST /v1/conversations/respond or GET /health")
+    print("POST /v1/conversations/respond, POST /v1/feedback/reports, or GET /health")
     try:
         server.serve_forever()
     except KeyboardInterrupt:

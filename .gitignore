@@ -104,8 +104,9 @@ htmlcov/
 state.json
 memory.json
 sessions/
-src/entities/onn-c/data/play_cli_memory.json
-src/entities/onn-c/data/sessions/
+src/projects/oniontest/teams/health-team/onn-c/data/play_cli_memory.json
+src/projects/oniontest/teams/health-team/onn-c/data/sessions/
+src/projects/oniontest/teams/health-team/onn-c/data/reports/
 
 # =========================
 # Temporary files

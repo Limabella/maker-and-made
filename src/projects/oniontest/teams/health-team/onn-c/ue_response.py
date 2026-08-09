@@ -30,6 +30,7 @@ def build_ue_response(result: dict, expression: dict) -> dict:
 
     return {
         "schema_version": SCHEMA_VERSION,
+        "turn_id": result["turn_id"],
         "dialogue": {
             "onn_c": expression["onn_c_line"],
             "mnd_n": expression["mnd_n_line"],
@@ -62,5 +63,12 @@ def build_ue_response(result: dict, expression: dict) -> dict:
             "level": safety["level"],
             "reason": safety["reason"],
             "message": safety["message"],
+            "policy_version": safety.get("policy_version"),
+            "requires_context_review": safety.get("requires_context_review", False),
+        },
+        "feedback": {
+            "reportable": True,
+            "endpoint": "/v1/feedback/reports",
+            "notice": "AI 응답은 부정확하거나 부적절할 수 있습니다.",
         },
     }
