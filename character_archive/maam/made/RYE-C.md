@@ -7,7 +7,7 @@
 
 [한국어](RYE-C_KO.md)
 
-![RYE-C](../../../data/images/rye-v10.png)
+![RYE-C](../../../data/images/rye-v11.png)
 
 # [ MaAM CHARACTER ARCHIVE ]
 ## Made Entity: RYE-C (Rye Bot)
@@ -78,7 +78,7 @@ Archive Title    : The Unbroken Harvest
 
 | Variant | Image | Distinction |
 |---|---|---|
-| RYE-C | `rye-v10.png` | Canonical uniform green-gold head, torso, arms, and hands with leaf-green accessories and shoes, plus an emphasized ripe ear |
+| RYE-C | `rye-v11.png` | Canonical uniform green-gold head, torso, arms, and hands with leaf-green accessories and shoes, an emphasized ripe ear, and a natural green-olive-to-straw storm field |
 | RYE (Black) | `rye-black.png` | Black-green archive variant using one hand and both feet as a three-point anchor |
 
 ![RYE Black](../../../data/images/rye-black.png)
@@ -173,6 +173,8 @@ Rye does not survive strong wind by remaining perfectly rigid. It bends with its
 The initial card placed eyes and a mouth directly on the grain face and omitted the face monitor. The canonical card and this record use a charcoal-glass display, an aged-brass rim, and amber digital expressions.
 
 The canonical body follows rye at an intermediate ripening stage. Leaves remain green while exposed parts of the head and spikes transition through yellow-green, olive, and greenish straw. The held mature sample alone reaches a warmer straw-gold, while the black-green palette is preserved as the separate `RYE (Black)` archive variant.
+
+The canonical storm field uses the same biological transition without losing the scene's severity: stems and leaves remain muted green to blue-green, while ripening heads move through yellow-green, olive, khaki, and soft straw-gold. Near-black field vegetation is reserved for the `RYE (Black)` archive variant.
 
 ---
 

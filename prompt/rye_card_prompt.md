@@ -6,8 +6,14 @@ Built-in ImageGen precise-object edit following the established MaAM character-c
 
 ## Final Assets
 
-- Canonical: `data/images/rye-v10.png`
+- Canonical: `data/images/rye-v11.png`
 - Black variant: `data/images/rye-black.png`
+
+## Canonical Green-Gold Storm Field Prompt
+
+Edit the exact two-panel RYE / RYE-C card and change only the rye vegetation growing in the field/background in both panels. Recolor the plants to natural storm-lit ripening rye: medium green to muted blue-green leaves and stems, with yellow-green, olive, khaki, and soft straw-gold heads and tips. Keep realistic variation between living green leaves and maturing grain; the field must read as green-gold rather than black without becoming bright or neon.
+
+Keep the near-black thunderclouds, heavy diagonal rain, lightning, wet dark soil, antique frames, composition, logo, and typography unchanged. Lock RYE-C completely, including its head casing, charcoal face monitor, amber expression, grain crown, torso, pose, anatomy, arms, hands, leaf-green accessories and shoes, glowing roots, and held ripe rye ear. Preserve verbatim: `RYE`, `RYE-C`, `THE UNBROKEN HARVEST`, `MaAM`, and `ARCHIVE`. Near-black field vegetation belongs only to the `RYE (Black)` variant.
 
 ## Source Condition
 
