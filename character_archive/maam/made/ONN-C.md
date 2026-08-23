@@ -5,7 +5,7 @@
 ![Status](https://img.shields.io/badge/Status-Resonance_Isolation-orange)
 ![License](https://img.shields.io/badge/License-MIT-lightgrey)
 
-![ONN-C](../../data/images/onn.png)
+![ONN-C (Orange)](../../../data/images/onn-orange.png)
 
 # [ MaAM CHARACTER ARCHIVE ]
 ## Made Entity: ONN-C (Onion Bot)
@@ -51,13 +51,24 @@ State Model    : Orange / White / Black
 ### Technical Notes
 
 - Onion-shaped body with rounded volume
-- Green sprout leaves on the crown
+- The Orange origin state keeps green sprout leaves on the crown
 - Cute, readable face screen
 - Warm orange core identity
 - White and black are derived appearance states
 - The card layout keeps rounded corners, mirrored composition, and the approved mark position
 
 The entity is designed for kitchen workflow support and controlled emotional observation.
+
+### State Variants
+
+| State | Image | Meaning |
+|---|---|---|
+| ONN-C (ORANGE) | `onn-orange.png` | Origin state: warm, curious, emotionally immediate |
+| ONN-C (WHITE) | `onn-white.png` | Grown peeled state: open, patient, clear, and resilient |
+
+![ONN-C (White)](../../../data/images/onn-white.png)
+
+The White state is not merely a pale recolor. Its outer defensive skin has been peeled away, revealing a firm pearl-ivory onion body. A raw-onion ring spiral replaces the sprout crown, green ear modules preserve a living accent, and the chest onion emblem remains visible. Its compact rear Kitchen Utility Pack supplies cooking water and steam, regulates internal humidity, and filters smoke and odors. The orange onion carried in its hand is a reminder of its origin state.
 
 ---
 

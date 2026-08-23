@@ -5,7 +5,7 @@
 ![Category](https://img.shields.io/badge/Category-made-Skyblue)
 ![License](https://img.shields.io/badge/License-MIT-lightgrey)
 
-![ONN-C](../../../data/images/onn.png)
+![ONN-C (Orange)](../../../data/images/onn-orange.png)
 # [ MaAM CHARACTER ARCHIVE ]
 ## Made Entity: ONN-C (Onion Bot)
 
@@ -51,13 +51,24 @@ State Model    : Orange / White / Black
 ### 기술 메모
 
 - 둥근 양파 형태의 바디
-- 꼭대기의 초록색 새싹 잎
+- 주황색 원형 상태는 꼭대기의 초록색 새싹 잎을 유지
 - 읽기 쉬운 귀여운 얼굴 스크린
 - 따뜻한 주황색 코어 아이덴티티
 - 흰색과 검은색은 파생된 외형 상태
 - 카드 레이아웃은 둥근 모서리, 좌우 분할 구조, 마크 위치를 유지
 
 이 개체는 주방 작업 보조와 통제된 행동 관찰을 위해 설계되었다.
+
+### 상태 변형
+
+| 상태 | 이미지 | 의미 |
+|---|---|---|
+| ONN-C (ORANGE) | `onn-orange.png` | 원형 상태. 따뜻하고 호기심이 많으며 감정 반응이 즉각적이다 |
+| ONN-C (WHITE) | `onn-white.png` | 성장한 깐양파 상태. 개방적이고 인내심이 있으며 명료하고 회복력이 있다 |
+
+![ONN-C (White)](../../../data/images/onn-white.png)
+
+White 상태는 단순한 흰색 재도색이 아니다. 바깥의 방어 껍질을 벗고 단단한 진주빛 아이보리 양파 몸체를 드러낸 성장 상태다. 새싹 대신 생양파 고리 회오리가 머리를 이루고, 녹색 귀 모듈은 살아 있는 강조색을 남기며, 가슴의 양파 문양도 유지한다. 등 뒤의 소형 Kitchen Utility Pack은 조리용 물과 증기를 공급하고 내부 습도를 조절하며 연기와 냄새를 거른다. 손에 든 주황 양파는 자신의 원형 상태를 기억하는 표본이다.
 
 ---
 
