@@ -249,4 +249,4 @@ concept education. The NVIDIA/NIM model expresses these decisions but cannot
 invent evidence or change the selected card. LightRAG can supplement the card
 with retrieved knowledge when its local index is enabled.
 
-For the integrated architecture, roadmap, governance, and trait model, see `experiments_ko/oniontest/README_KO.md`.
+For the integrated architecture, roadmap, governance, and trait model, see `docs/research/README_KO.md`.

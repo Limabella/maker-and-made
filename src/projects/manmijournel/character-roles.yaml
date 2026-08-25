@@ -1,0 +1,28 @@
+project: manmijournel
+team: editorial-team
+members:
+  - character: characters/mca-n
+    role: editor-in-chief
+    status: joining
+  - character: characters/onn-c
+    variant: white
+    role: kitchen-assistant
+    status: joining
+  - character: characters/atv-o
+    role: lead-taste-reviewer
+    status: joining
+  - character: characters/bkg-o
+    role: rival-caster
+    status: joining
+  - character: characters/khan-o
+    role: rival-caster
+    status: joining
+  - character: characters/ntr-n
+    role: nutrition-fact-checker
+    status: planned
+  - character: characters/jlc-n
+    role: culinary-technique-commentator
+    status: joining
+  - character: characters/mmr-c
+    role: record-compiler
+    status: planned

@@ -38,7 +38,7 @@ State & Memory Tracker: memory.py를 통해 사용자 이력을 관리하고 장
 [3단계] 다중 모달 CoT 및 의미론적 로깅: 랜드마크 관찰 → 시각적 맥락 교차 검증 → 진단 결론 도출 순서의 사고 체계를 구축합니다. 또한 memory.py를 업데이트하여 수치 데이터와 함께 MLLM의 맥락 분석 내용을 저장합니다.
 
 ## 5. 테스트 가이드 (동영상 파일 입력)
-입력 소스 수정: trn_bot.py에서 cv2.VideoCapture(0)를 사용자의 동영상 파일 경로(예: cv2.VideoCapture('workout.mp4'))로 변경합니다.
+입력 소스 수정: 프로젝트 내부의 TRN-N 실행 코드에서 `cv2.VideoCapture(0)`를 사용자의 동영상 파일 경로(예: `cv2.VideoCapture('workout.mp4')`)로 변경합니다.
 
 로컬 MLLM 실행: Ollama 서버에서 ollama run llava 또는 llama3-vision이 실행 중인지 확인합니다.
 

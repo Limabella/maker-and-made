@@ -5,5 +5,5 @@ health support. Its implementation will be added here when it is integrated.
 
 Current research material:
 
-- [`experiments_ko/ntr-n`](../../../../../../experiments_ko/ntr-n/)
-- [`character_archive/experimental_lab/NTR.md`](../../../../../../character_archive/experimental_lab/NTR.md)
+- [`docs/research/ideas/ntr-n`](../../../../../../docs/research/ideas/ntr-n/)
+- [`characters/ntr-n/README.md`](../../../../../../characters/ntr-n/README.md)

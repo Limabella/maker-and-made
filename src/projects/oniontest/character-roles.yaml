@@ -1,0 +1,18 @@
+project: oniontest
+team: health-team
+members:
+  - character: characters/onn-c
+    role: player-facing-character-engine
+    status: active
+  - character: characters/mnd-n
+    role: bounded-support-and-safety-agent
+    status: active
+  - character: characters/trn-n
+    role: movement-support-agent
+    status: joining
+  - character: characters/ntr-n
+    role: nutrition-support-agent
+    status: planned
+  - character: characters/cur-n
+    role: historical-research-perspective
+    status: planned

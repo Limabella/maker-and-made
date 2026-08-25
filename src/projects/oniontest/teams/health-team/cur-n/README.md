@@ -6,5 +6,8 @@ as a medical authority.
 
 Current source material:
 
-- [`character_archive/historical_hall/CUR.md`](../../../../../../character_archive/historical_hall/CUR.md)
-- [`src/snippets/cur_bot.py`](../../../../../snippets/cur_bot.py)
+- [`characters/cur-n/README.md`](../../../../../../characters/cur-n/README.md)
+
+The earlier standalone chat snippet was removed. A new implementation should
+be created here only when CUR-N has a defined role and integration contract for
+OnionTest.

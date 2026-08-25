@@ -3,7 +3,7 @@
 ![status](https://img.shields.io/badge/status-ACTIVE-brightgreen)
 ![license](https://img.shields.io/badge/license-MIT-blue)
 
-![OnionTest season banner](./data/images/banner-oniontest-full.png)
+![OnionTest season banner](./assets/images/banner-oniontest-full.png)
 
 ---
 
@@ -142,7 +142,7 @@ State, safety, and policy decisions remain in explicit engines.
 
 ### OnionTest Lab
 
-`experiments_ko/oniontest` is the Korean experiment log and design lab for ONN-C × MND-N.
+`docs/research` is the Korean experiment log and design lab for ONN-C × MND-N.
 
 It contains:
 
@@ -155,7 +155,7 @@ It contains:
 Location:
 
 ```text
-experiments_ko/oniontest/
+docs/research/
 ```
 
 ---
@@ -180,28 +180,24 @@ Principles:
 ## Project Layout
 
 ```text
-src/
-  projects/
-    oniontest/
-      teams/
-        health-team/
-          onn-c/
-          mnd-n/
-          trn-n/
-          ntr-n/
-          cur-n/
+src/projects/
+├─ oniontest/
+├─ manmijournel/
+└─ maam-kitchen-contest/
 
-experiments_ko/
-  oniontest/
-  ntr-n/
-  trn-n/
+characters/
+├─ <character-id>/
+└─ archived/
 
-character_archive/
-  maam/
-  food_list_lm/
+docs/research/
+├─ journal/
+├─ ideas/
+└─ experiments/
 
-output/
-  thumbnails/
+assets/images/
+artifacts/examples/
+tools/prompts/
+tests/
 ```
 
 ---
@@ -253,7 +249,7 @@ Mid-term:
 - ONN-C motion controller
 - MND-N helper UI
 - state-to-motion mapping
-- richer MaAM entity archive
+- richer MaAM character registry
 
 Long-term:
 
@@ -268,11 +264,11 @@ Long-term:
 
 | Area | Path |
 |---|---|
-| OnionTest lab | [experiments_ko/oniontest](./experiments_ko/oniontest) |
+| OnionTest lab | [docs/research](./docs/research) |
 | OnionTest health team | [src/projects/oniontest/teams/health-team](./src/projects/oniontest/teams/health-team) |
 | ONN-C engine | [health-team/onn-c](./src/projects/oniontest/teams/health-team/onn-c) |
 | MND-N support layers | [health-team/mnd-n/support_layers](./src/projects/oniontest/teams/health-team/mnd-n/support_layers) |
-| Character archive | [character_archive](./character_archive) |
+| Character registry | [characters](./characters) |
 | Korean README | [README_KO.md](./README_KO.md) |
 
 ---

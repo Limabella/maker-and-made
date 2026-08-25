@@ -1,166 +1,92 @@
 # Maker-and-Made
 
-![status](https://img.shields.io/badge/status-ACTIVE-brightgreen)
-![license](https://img.shields.io/badge/license-MIT-blue)
-![banner](./images/banner.png)
+Maker-and-Made(MaAM)는 캐릭터 AI, 상태 기반 에이전트, 안전한 지원 시스템을
+프로젝트 단위로 연구하는 실험 저장소입니다.
 
----
+현재 가장 활발한 프로젝트는 **OnionTest**입니다.
 
-# 창조자와 창조물의 관계를 탐구하는 실험적 AI 프로젝트
-
-**핵심 질문:**
-창조된 존재는 창조자의 의도를 얼마나 닮는가?
-
-각 연구자 봇은 자신만의 철학과 방식으로 새로운 봇을 만들며
-그 과정에서 서로 다른 성격과 역할이 나타납니다.
-
----
-
-## 개체 구조
-
+```text
+OnionTest
+└─ health-team
+   ├─ ONN-C  Five Flavor Onion 캐릭터 엔진
+   ├─ MND-N  비임상 정서 지원 및 안전 에이전트
+   ├─ TRN-N  운동·신체 활동 지원 (합류 중)
+   ├─ NTR-N  영양·생활 건강 지원 (예정)
+   └─ CUR-N  역사적 연구 관점 (예정)
 ```
-Maker-and-Made
-│
-├─ Researchers
-│   ├─ VCT-N  (Victor Bot)
-│   │   └─ WCM-N  (William Chester Minor Bot)
-│   │
-│   └─ CUR-N  (Curie Bot)
-│       └─ JMR-N  (James Murray Bot)
-│
-└─ Experimental Bots  [미완성]
-    ├─ NTR-N  (Nutrition Bot)    — 71%
-    ├─ TRN-N  (Trainer Bot)      — 68%
-    └─ MND-N  (Mind Care Bot)    — 74%
-```
-
----
-
-## 연구자 봇
-
-### VCT-N — Victor Bot
-창조자. 실험적이고 집요한 연구자 봇.
-지식 탐구를 위해 새로운 존재를 만들지만
-그 결과는 항상 예측 가능한 것은 아니다.
-
-| 파일 | 내용 |
-|------|------|
-| [VCT.md](./VCT.md) | 개체 파일 |
-| [src/vct_bot.py](./src/vct_bot.py) | 봇 코드 |
-
----
-
-### WCM-N — William Chester Minor Bot
-렉시코그래퍼. 감금된 환경에서 영어 단어를 연구하는 봇.
-수천 권의 책을 읽고, 단어의 기원을 추적하며, 슬립을 발송한다.
-그의 연구는 Oxford English Dictionary 편찬에 기여한다.
-
-| 파일 | 내용 |
-|------|------|
-| [WCM.md](./WCM.md) | 개체 파일 |
-| [src/wcm_bot.py](./src/wcm_bot.py) | 봇 코드 |
-
----
-
-### CUR-N — Curie Bot
-연구자. 호기심과 창의성을 중심으로 연구하는 봇.
-발견과 체계화를 동등하게 중요하게 생각한다.
-
-| 파일 | 내용 |
-|------|------|
-| [CUR.md](./CUR.md) | 개체 파일 |
-| [src/cur_bot.py](./src/cur_bot.py) | 봇 코드 |
-
----
-
-### JMR-N — James Murray Bot
-편집자. 언어 자료를 정리하고 사전을 체계화하는 봇.
-WCM-N의 슬립을 수신하고, 분류하고, Oxford English Dictionary를 편찬한다.
-
-| 파일 | 내용 |
-|------|------|
-| [JMR.md](./JMR.md) | 개체 파일 |
-| [src/jmr_bot.py](./src/jmr_bot.py) | 봇 코드 |
-
----
-
-## 두 흐름의 관계
-
-```
-WCM-N  →  단어를 발굴하고 슬립을 발송
-JMR-N  →  슬립을 수신하고 사전을 편찬
-
-두 흐름이 만나 지식이 완성된다.
-```
-
----
-
-## 실험 봇 (미완성)
-
-인간의 삶을 지원하기 위한 세 가지 실험 봇.
-아직 완성되지 않았다. 각 봇은 자신의 한계를 알고 있다.
-
-### NTR-N — Nutrition Bot `[71%]`
-몸의 연료를 관리하는 봇. 식단 관리, 건강한 음식 추천, 생활 습관 조언.
-
-| 파일 | 내용 |
-|------|------|
-| [NTR.md](./NTR.md) | 개체 파일 |
-| [src/ntr_bot.py](./src/ntr_bot.py) | 봇 코드 |
-
-### TRN-N — Trainer Bot `[68%]`
-몸을 단련하는 봇. 운동 루틴 설계, 체력 관리, 동기 부여.
-
-| 파일 | 내용 |
-|------|------|
-| [TRN.md](./TRN.md) | 개체 파일 |
-| [src/trn_bot.py](./src/trn_bot.py) | 봇 코드 |
-
-### MND-N — Mind Care Bot `[74%]`
-마음을 돌보는 봇. 감정 관리, 스트레스 케어, 대화 기반 정서 지원.
-
-> **주의:** 위기 상황 시 자살예방상담전화 **1393** (24시간, 무료)
-
-| 파일 | 내용 |
-|------|------|
-| [MND.md](./MND.md) | 개체 파일 |
-| [src/mnd_bot.py](./src/mnd_bot.py) | 봇 코드 |
-
----
 
 ## 실행
 
-```bash
-# 연구자 봇
-python src/vct_bot.py
-python src/wcm_bot.py
-python src/cur_bot.py
-python src/jmr_bot.py
+저장소 루트에서 ONN-C CLI를 실행합니다.
 
-# 실험 봇
-python src/ntr_bot.py
-python src/trn_bot.py
-python src/mnd_bot.py
+```powershell
+python src/projects/oniontest/teams/health-team/onn-c/play_cli.py
 ```
 
----
+NVIDIA 호환 표현 모델을 사용하려면 다음과 같이 실행합니다.
 
-## 프로젝트 테마
+```powershell
+python src/projects/oniontest/teams/health-team/onn-c/play_cli.py --nvidia
+```
 
-이 프로젝트는 세 가지 개념을 중심으로 한다.
+상태·안전·정책 결정은 규칙 기반 계층이 담당하며, 외부 언어 모델은 표현만
+보조합니다.
 
-1. **창조자와 창조물** — 만드는 것과 만들어지는 것의 관계
-2. **지식의 발견과 정리** — WCM-N이 발굴하고, JMR-N이 체계화한다
-3. **인간을 돕는 AI** — 실험 봇들은 몸과 마음을 지원하려 한다
+## 저장소 구조
 
----
+```text
+src/projects/
+├─ oniontest/                # 상태형 캐릭터·건강 지원 에이전트
+├─ manmijournel/             # 《만미록》 편집 에이전트 팀
+└─ maam-kitchen-contest/     # 점심 메뉴봇 프로젝트와 로드맵
+
+characters/                  # 프로젝트가 참조하는 캐릭터 원전
+├─ <character-id>/
+└─ archived/                 # 현재 실행·로드맵이 없는 캐릭터
+
+docs/research/
+├─ journal/                  # 날짜별 연구 일지
+├─ ideas/                    # 아이디어 노트와 초기 제안
+└─ experiments/              # 재현 가능한 실험·벤치마크
+
+assets/images/               # 문서용 로컬 이미지; 원본 자산은 외부 저장소
+artifacts/examples/          # 선별된 결과 예시
+tools/prompts/               # 이미지·아카이브 제작 프롬프트
+tests/                       # 저장소 공통 테스트
+```
+
+각 폴더의 책임은 다음과 같이 구분합니다.
+
+- `src/projects/`: 실행 코드와 프로젝트별 역할 계약을 둡니다.
+- `characters/`: 기존 MD 상단의 타입·분류를 보존하는 캐릭터 원전입니다.
+- `docs/research/`: 연구 일지, 아이디어 노트, 실험을 분리해 관리합니다.
+- `assets/images/`: 문서 호환을 위한 로컬 이미지입니다. 자산 원본은 [`Le-vela/character-assets`](https://github.com/Le-vela/character-assets)에서 관리합니다.
+- `artifacts/examples/`: 문서에서 다시 볼 가치가 있는 결과만 둡니다.
+- `tools/prompts/`: 런타임 에이전트 프롬프트가 아닌 제작 도구용 프롬프트만 둡니다.
+
+일회성 실행 파일을 위한 `src/snippets/`는 사용하지 않습니다. 새로운 캐릭터
+구현은 먼저 소속 프로젝트와 팀을 정한 뒤 해당 팀 폴더 안에 추가합니다.
+
+## OnionTest 문서
+
+| 영역 | 위치 |
+|---|---|
+| 프로젝트 개요 | [src/projects/oniontest](./src/projects/oniontest) |
+| Health Team | [health-team](./src/projects/oniontest/teams/health-team) |
+| ONN-C | [health-team/onn-c](./src/projects/oniontest/teams/health-team/onn-c) |
+| MND-N | [health-team/mnd-n](./src/projects/oniontest/teams/health-team/mnd-n) |
+| 연구 기록 | [docs/research](./docs/research) |
+| 캐릭터 레지스트리 | [characters](./characters) |
+
+## 안전 원칙
+
+OnionTest는 임상 진단이나 치료 시스템이 아닙니다.
+
+1. 사용자나 캐릭터를 병리적으로 진단하지 않습니다.
+2. 안전 신호가 나타나면 게임화된 조언보다 안전 안내를 우선합니다.
+3. 상태, 기억, 안전 및 정책 결정을 검사 가능한 코드로 유지합니다.
+4. 언어 모델이 근거·안전 정책·캐릭터 상태를 임의로 결정하지 못하게 합니다.
 
 ## License
 
 MIT License
-
----
-
-## Author
-
-FerryLa

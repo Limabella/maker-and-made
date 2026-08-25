@@ -23,4 +23,4 @@ training, nutrition, and historical research can join without moving the
 project back to a flat entity catalog.
 
 Project research and decision records live in
-[`experiments_ko/oniontest`](../../../../../experiments_ko/oniontest/).
+[`docs/research`](../../../../../docs/research/).

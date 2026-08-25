@@ -55,7 +55,7 @@ Semantic Logging: Update memory.py to store MLLM's contextual analysis alongside
 ## 5. Testing Guide (Video File Input)
 To test the current and upcoming features with your own workout video:
 
-Modify Input Source: In trn_bot.py, change cv2.VideoCapture(0) to your video file path (e.g., cv2.VideoCapture('my_video.mp4')).
+Modify Input Source: In the project-local TRN-N runner, change `cv2.VideoCapture(0)` to your video file path (for example, `cv2.VideoCapture('my_video.mp4')`).
 
 Launch Local MLLM: Ensure the Ollama server is running with ollama run llava or llama3-vision.
 

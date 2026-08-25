@@ -1,7 +1,7 @@
 # OnionTest
 
 OnionTest is organized around project teams rather than a global character
-catalog. Research notes remain in `experiments_ko/oniontest/`; executable
+catalog. Research notes remain in `docs/research/`; executable
 members and their project-specific integrations live under `teams/`.
 
 ## Teams

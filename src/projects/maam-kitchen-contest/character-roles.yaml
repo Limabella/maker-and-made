@@ -1,0 +1,11 @@
+project: maam-kitchen-contest
+members:
+  - character: characters/ntr-n
+    role: nutrition-balance-observer
+    status: planned
+  - character: characters/onn-c
+    role: kitchen-flow-assistant
+    status: planned
+project_entities:
+  source: src/projects/maam-kitchen-contest/content/menus
+  type: lunch-menu

@@ -77,8 +77,8 @@ checkpoints/
 *.bin
 
 # Public benchmark Modelfiles contain aliases only; source mappings stay local.
-!experiments_ko/oniontest/context_model_benchmark/models/
-!experiments_ko/oniontest/context_model_benchmark/models/*.Modelfile
+!docs/research/experiments/oniontest/context-model-benchmark/models/
+!docs/research/experiments/oniontest/context-model-benchmark/models/*.Modelfile
 
 # =========================
 # PyTorch
@@ -134,12 +134,14 @@ exports/
 # AI Runtime Artifacts
 # =========================
 runtime/
-artifacts/
+artifacts/runtime/
 vectorstore/
 embeddings/
 prompts/
-!experiments_ko/oniontest/context_model_benchmark/prompts/
-!experiments_ko/oniontest/context_model_benchmark/prompts/mnd_n_signal_prompt.txt
+!tools/prompts/
+!tools/prompts/**
+!docs/research/experiments/oniontest/context-model-benchmark/prompts/
+!docs/research/experiments/oniontest/context-model-benchmark/prompts/mnd_n_signal_prompt.txt
 
 # Context-model benchmark raw outputs
-experiments_ko/oniontest/context_model_benchmark/results/raw/
+docs/research/experiments/oniontest/context-model-benchmark/results/raw/
