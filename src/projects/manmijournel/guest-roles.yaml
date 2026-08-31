@@ -1,0 +1,9 @@
+project: manmijournel
+team: editorial-team
+guests:
+  - character: characters/frk-n
+    role: human-sculpture-specialist
+    status: guest-first-weekly-planned
+    term: first-weekly-issue
+    project_contract: teams/editorial-team/frk-n/README.md
+
