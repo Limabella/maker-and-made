@@ -3,7 +3,7 @@
 ![status](https://img.shields.io/badge/status-ACTIVE-brightgreen)
 ![license](https://img.shields.io/badge/license-MIT-blue)
 
-![OnionTest season banner](./assets/images/banner-oniontest-full.png)
+![Franklin repairs a magpie bot beside a courier bot and three gourds symbolizing gratitude](https://raw.githubusercontent.com/Le-vela/character-assets/refs/heads/agent/add-budapest-kurtoskalacs-photos/banner/franklin-bird-bots-boeun.png)
 
 ---
 
