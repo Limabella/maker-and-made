@@ -17,6 +17,17 @@
       "source": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159264&menuNo=200011"
     },
     {
+      "date": "2026-11-01",
+      "title": "JTBC 서울마라톤",
+      "time": "상암월드컵공원 출발",
+      "point": "풀·10K · 도심 레이스",
+      "source": "https://marathon.jtbc.com/39",
+      "stars": 0,
+      "status": "confirmed",
+      "category": "sports",
+      "verifiedAt": "2026-10-12"
+    },
+    {
       "date": "2026-11-02",
       "title": "베스트셀러 확인일",
       "time": "교보·NYT · 편집 일정",
@@ -71,6 +82,17 @@
       "source": "https://thebookerprizes.com/the-booker-library/prize-years/2026"
     },
     {
+      "date": "2026-11-15",
+      "title": "손기정평화마라톤",
+      "time": "파주 임진각",
+      "point": "풀·하프·10K·6K · 평화의 의미",
+      "source": "https://son.wizrun.com/",
+      "stars": 0,
+      "status": "confirmed",
+      "category": "sports",
+      "verifiedAt": "2026-10-12"
+    },
+    {
       "date": "2026-11-16",
       "title": "베스트셀러 확인일",
       "time": "교보·NYT · 편집 일정",
@@ -87,6 +109,17 @@
       "stars": 0,
       "status": "confirmed",
       "source": "https://www.nationalbook.org/awards2026/"
+    },
+    {
+      "date": "2026-11-22",
+      "title": "인천마라톤",
+      "time": "08:00 · 코스별 출발지",
+      "point": "풀: 운서역 / 10K·5K: 아시아드",
+      "source": "https://www.incheonmarathon.or.kr/",
+      "stars": 0,
+      "status": "confirmed",
+      "category": "sports",
+      "verifiedAt": "2026-10-12"
     },
     {
       "date": "2026-11-24",
@@ -134,8 +167,10 @@
   "pending": [
     "기존에 조사한 일정 데이터를 다시 조판한 파일. 이번 요청에서 전체 일정 신규 재조사는 하지 않음.",
     "베스트셀러 확인일은 공식 발표일이 아닌 기존 편집 일정.",
-    "실제 일정이 없는 발제 독서모임은 모두 제외."
+    "실제 일정이 없는 발제 독서모임은 모두 제외.",
+    "체육 일정만 2026-10-12 공식 요강으로 추가 확인. 기존 독서·문화 일정의 전수 재조사는 하지 않음."
   ],
   "mascotPath": "assets/author-11.png",
-  "mascotName": "GTH-N · 괴테봇"
+  "mascotName": "GTH-N · 괴테봇",
+  "sportsAsOf": "2026-10-12"
 }

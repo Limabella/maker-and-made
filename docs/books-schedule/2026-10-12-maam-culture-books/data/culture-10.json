@@ -107,6 +107,28 @@
       "source": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159264&menuNo=200011"
     },
     {
+      "date": "2026-10-16",
+      "title": "전국체육대회 ~22",
+      "time": "제주 일원 · 10/16–22",
+      "point": "전국 시도 대표 선수 · 종목별 관람",
+      "source": "https://sports.or.kr/sports/bbs/BMSR00001/view.do?boardId=72744&menuNo=200024",
+      "stars": 0,
+      "status": "confirmed",
+      "category": "sports",
+      "verifiedAt": "2026-10-12"
+    },
+    {
+      "date": "2026-10-17",
+      "title": "의정부 물길마라톤",
+      "time": "동막교 인라인광장",
+      "point": "5K 09시 · 10K 10시 · 하프 10:30",
+      "source": "https://ujb.my-race.kr/about-guidelines.php",
+      "stars": 0,
+      "status": "confirmed",
+      "category": "sports",
+      "verifiedAt": "2026-10-12"
+    },
+    {
       "date": "2026-10-23",
       "title": "서울야외도서관 ~25",
       "time": "금–일 · 무료",
@@ -114,6 +136,17 @@
       "stars": 0,
       "status": "confirmed",
       "source": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159264&menuNo=200011"
+    },
+    {
+      "date": "2026-10-25",
+      "title": "춘천마라톤",
+      "time": "09:00 · 춘천 공지천교",
+      "point": "풀·10K · 의암호 순환코스",
+      "source": "https://www.chuncheonmarathon.com/",
+      "stars": 0,
+      "status": "confirmed",
+      "category": "sports",
+      "verifiedAt": "2026-10-12"
     },
     {
       "date": "2026-10-26",
@@ -161,8 +194,10 @@
   "pending": [
     "기존에 조사한 일정 데이터를 다시 조판한 파일. 이번 요청에서 전체 일정 신규 재조사는 하지 않음.",
     "베스트셀러 확인일은 공식 발표일이 아닌 기존 편집 일정.",
-    "실제 일정이 없는 발제 독서모임은 모두 제외."
+    "실제 일정이 없는 발제 독서모임은 모두 제외.",
+    "체육 일정만 2026-10-12 공식 요강으로 추가 확인. 기존 독서·문화 일정의 전수 재조사는 하지 않음."
   ],
   "mascotPath": "assets/author-10.png",
-  "mascotName": "BFR-N · 벤저민 프랭클린봇"
+  "mascotName": "BFR-N · 벤저민 프랭클린봇",
+  "sportsAsOf": "2026-10-12"
 }

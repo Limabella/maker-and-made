@@ -5,10 +5,11 @@
   "rows": 5,
   "asOf": "2026-10-03",
   "width": 3840,
-  "height": 4985,
+  "height": 5098,
   "days": 31,
   "bots": 1,
-  "events": 16,
+  "events": 19,
+  "sportsEvents": 3,
   "overflow": [],
   "titleSpeechOverlap": false
 }

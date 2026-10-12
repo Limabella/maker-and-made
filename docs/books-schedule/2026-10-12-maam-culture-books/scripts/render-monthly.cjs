@@ -38,7 +38,7 @@ function calendar(group){
  for(let i=0;i<rows*7;i++){
   const day=i-first+1,inside=day>=1&&day<=last;
   const events=inside?groups[group].filter(e=>e.date===prefix+'-'+String(day).padStart(2,'0')):[];
-  cells+=`<div class="day ${events.length>=3?'dense':''} ${inside?'':'empty'} ${i%7===0?'sun':i%7===6?'sat':''}">${inside?`<div class="date">${String(day).padStart(2,'0')}</div>${events.map(e=>`<div class="event"><div class="event-title">${e.stars?`<b class="stars">${'★'.repeat(e.stars)}</b>`:''}${esc(e.title)}</div><div class="time">${esc(e.time)}</div><div class="point">${esc(e.point)}</div></div>`).join('')}`:''}</div>`;
+  cells+=`<div class="day ${events.length>=3?'dense':''} ${inside?'':'empty'} ${i%7===0?'sun':i%7===6?'sat':''}">${inside?`<div class="date">${String(day).padStart(2,'0')}</div>${events.map(e=>`<div class="event ${e.category==='sports'?'sports':''}"><div class="event-title">${e.stars?`<b class="stars">${'★'.repeat(e.stars)}</b>`:''}${esc(e.title)}</div><div class="time">${esc(e.time)}</div><div class="point">${esc(e.point)}</div></div>`).join('')}`:''}</div>`;
  }
  return `<section class="calendar"><div class="weekdays">${['일 SUN','월 MON','화 TUE','수 WED','목 THU','금 FRI','토 SAT'].map(t=>'<span>'+t+'</span>').join('')}</div><div class="grid">${cells}</div></section>`;
 }
@@ -74,6 +74,7 @@ const css=`
 .day{padding:14px 17px;border-top:1px solid #cbd3cd;border-right:1px solid #cbd3cd;overflow:hidden;min-width:0}.day:nth-child(7n){border-right:0}.empty{background:#fafbf9}
 .date{font-size:48px;line-height:1.4;font-weight:500;margin-bottom:12px}.event{padding:4px 0 7px;margin-bottom:10px}.event-title{font-size:40px;font-weight:700;line-height:1.5;word-break:keep-all;letter-spacing:-.6px;color:#314c42}
 .time{font-size:28px;line-height:1.35;margin:3px 0;color:#7c8981}.point{font-size:30px;line-height:1.35;word-break:keep-all;letter-spacing:-.5px;color:#5d7066}.stars{color:#9f834b;margin-right:8px;white-space:nowrap}
+.sports .event-title{color:#236889}.sports .point{color:#496d7d}
 .dense .date{font-size:36px;margin-bottom:6px}.dense .event{padding:0;margin-bottom:2px}.dense .event-title{font-size:36px}.dense .time,.dense .point{font-size:24px;line-height:1.2}.dense .time{margin:2px 0}
 .dual{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 64px;margin-top:160px}.shared-line{grid-column:1/-1}.dual-panel{min-width:0}
 .bottom-space{height:${dual?175:58}px}
@@ -87,14 +88,20 @@ const css=`
   await page.evaluate(()=>{
    const band=document.querySelector('.month-line'),title=band.querySelector('h1'),bubble=band.querySelector('.speech');
    const needed=Math.max(400,title.offsetHeight+156,bubble.offsetHeight+140);band.style.height=needed+'px';
-   const days=[...document.querySelectorAll('.day')];let maximum=440;
-   for(const day of days){const end=day.lastElementChild;if(end)maximum=Math.max(maximum,Math.ceil(end.getBoundingClientRect().bottom-day.getBoundingClientRect().top+18));}
-   document.querySelector('#canvas').style.setProperty('--row-height',maximum+'px');
+   for(const grid of document.querySelectorAll('.grid')){
+    const days=[...grid.querySelectorAll('.day')],heights=[];
+    for(let start=0;start<days.length;start+=7){
+     let maximum=440;
+     for(const day of days.slice(start,start+7)){const end=day.lastElementChild;if(end)maximum=Math.max(maximum,Math.ceil(end.getBoundingClientRect().bottom-day.getBoundingClientRect().top+18));}
+     heights.push(maximum+'px');
+    }
+    grid.style.gridTemplateRows=heights.join(' ');
+   }
   });
   const qa=await page.evaluate(()=>{
    const overflow=[...document.querySelectorAll('.day,.event-title,.time,.point,.quote-text,.speech small')].filter(e=>e.scrollHeight>e.clientHeight+2||e.scrollWidth>e.clientWidth+2).map(e=>e.textContent);
    const title=document.querySelector('h1').getBoundingClientRect(),bubble=document.querySelector('.speech').getBoundingClientRect();
-   return {width:document.querySelector('#canvas').offsetWidth,height:document.querySelector('#canvas').offsetHeight,days:document.querySelectorAll('.date').length,bots:document.querySelectorAll('.bot').length,events:document.querySelectorAll('.event').length,overflow,titleSpeechOverlap:title.right>bubble.left&&title.left<bubble.right&&title.bottom>bubble.top&&title.top<bubble.bottom};
+   return {width:document.querySelector('#canvas').offsetWidth,height:document.querySelector('#canvas').offsetHeight,days:document.querySelectorAll('.date').length,bots:document.querySelectorAll('.bot').length,events:document.querySelectorAll('.event').length,sportsEvents:document.querySelectorAll('.sports').length,overflow,titleSpeechOverlap:title.right>bubble.left&&title.left<bubble.right&&title.bottom>bubble.top&&title.top<bubble.bottom};
   });
   if(qa.overflow.length||qa.titleSpeechOverlap)throw Error('Layout needs editing: '+JSON.stringify(qa));
   fs.mkdirSync(path.dirname(path.resolve(out)),{recursive:true});

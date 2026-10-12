@@ -8,7 +8,8 @@
   "height": 4980,
   "days": 31,
   "bots": 1,
-  "events": 10,
+  "events": 12,
+  "sportsEvents": 2,
   "overflow": [],
   "titleSpeechOverlap": false
 }
