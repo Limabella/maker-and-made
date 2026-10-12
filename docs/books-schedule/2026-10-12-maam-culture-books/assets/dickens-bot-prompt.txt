@@ -1,0 +1,3 @@
+Built-in image_gen tool; transparent RGBA; Goethebot supplied as style reference.
+
+Create a single Charles Dickens author robot mascot for the MaAM Culture & Books December calendar. Match the referenced Goethebot compact full-body proportions, cream-and-gold mechanical head, glossy black smiling amber face screen, brass joints and 3D steampunk collectible finish. Distinguish Dickens with swept-back chestnut hair, moustache and pointed beard, Victorian burgundy frock coat, dark waistcoat, ivory cravat, green hardback book and brass fountain pen. One standing robot, full body visible, facing slightly left. Transparent background, clean edges, small margin. No typography, label, pedestal or speech bubble.

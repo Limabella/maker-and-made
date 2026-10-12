@@ -1,0 +1,117 @@
+{
+  "year": 2026,
+  "month": 12,
+  "asOf": "2026-10-12",
+  "bannerPath": "assets/banner-12.png",
+  "bannerPosition": "center center",
+  "bannerAspectRatio": 1.7768331562167907,
+  "marketTitle": "금리와 물가, 새해의 방향을 읽는 달",
+  "cultureTitle": "책과 음악으로 한 해를 마무리하는 달",
+  "marketEvents": [],
+  "cultureEvents": [
+    {
+      "date": "2026-12-01",
+      "title": "과달라하라 도서전 ~6",
+      "time": "멕시코 · 진행 중",
+      "point": "11/28 개막 / 번역·출판·저작권 흐름",
+      "stars": 0,
+      "status": "confirmed",
+      "source": "https://fil.com.mx/info/informacion.asp"
+    },
+    {
+      "date": "2026-12-03",
+      "title": "부산국제아동도서전 ~6",
+      "time": "부산 BEXCO",
+      "point": "그림책·출판사·북토크 / 예약 공지 확인",
+      "stars": 0,
+      "status": "confirmed",
+      "source": "https://bicbf.or.kr/page/61"
+    },
+    {
+      "date": "2026-12-10",
+      "title": "노벨문학상 시상식",
+      "time": "스톡홀름 · 현지 날짜",
+      "point": "수상 연설·작품·국내 번역본 살펴보기",
+      "stars": 0,
+      "status": "confirmed",
+      "source": "https://www.nobelprize.org/prizes/lists/nobel-prize-facts/"
+    },
+    {
+      "date": "2026-12-12",
+      "title": "BBC 필하모닉 내한",
+      "time": "예술의전당 콘서트홀",
+      "point": "욘 스토르고르즈 지휘 / 예매 공지 확인",
+      "stars": 0,
+      "status": "confirmed",
+      "source": "https://www.sac.or.kr/site/eng/program/schedule_year_ajax"
+    },
+    {
+      "date": "2026-12-17",
+      "title": "서울시향 환희의 송가 ~18",
+      "time": "예술의전당 콘서트홀",
+      "point": "얍 판 츠베덴 / 베토벤과 함께 연말 마무리",
+      "stars": 0,
+      "status": "confirmed",
+      "source": "https://www.seoulphil.or.kr/perf/pkg/view?pkgNo=359&ticketing=ticketing"
+    },
+    {
+      "date": "2026-12-18",
+      "title": "어벤져스: 둠스데이 개봉",
+      "time": "미국 개봉 · 예정",
+      "point": "마블 신작 / 한국 개봉 일정은 별도 확인",
+      "stars": 0,
+      "status": "tentative",
+      "source": "https://movies.disney.com/avengers-doomsday"
+    },
+    {
+      "date": "2026-12-19",
+      "title": "토요콘서트 · 베토벤",
+      "time": "예술의전당 콘서트홀",
+      "point": "프리뷰 베토벤 / 프로그램·예매 확인",
+      "stars": 0,
+      "status": "confirmed",
+      "source": "https://www.sac.or.kr/site/main/program/schedule_year_ajax"
+    },
+    {
+      "date": "2026-12-20",
+      "title": "파리나무십자가소년합창단",
+      "time": "예술의전당 콘서트홀",
+      "point": "특별초청공연 / 겨울 합창 감상",
+      "stars": 0,
+      "status": "confirmed",
+      "source": "https://www.sac.or.kr/site/main/program/schedule_year_ajax"
+    },
+    {
+      "date": "2026-12-24",
+      "title": "서울 일러스트레이션페어 ~27",
+      "time": "서울 COEX C홀",
+      "point": "작가·그림책·캐릭터 굿즈·라이선싱",
+      "stars": 0,
+      "status": "confirmed",
+      "source": "https://korean.visitseoul.net/exhibition/The-Seoul-Illustration-FairV22/KOP918qu3"
+    },
+    {
+      "date": "2026-12-25",
+      "title": "크리스마스",
+      "time": "12월 25일",
+      "point": "연말 문화·공연 프로그램 확인",
+      "stars": 0,
+      "status": "confirmed",
+      "source": "https://www.nyse.com/trade/hours-calendars"
+    }
+  ],
+  "pending": [
+    "SpaceX·Blue Origin·국내 우주 발사: 12월 특정 공식 날짜 확인 대기",
+    "Broadcom 등 12월 실적: 공식 IR 발표 전 추정일 제외",
+    "미확정 음원·서울 겨울축제·독서모임·베스트셀러 발표일 제외",
+    "국회 예산안 날짜는 법정기한이며 실제 의결일과 구별",
+    "FOMC 시간은 정례 발표 시간을 적용한 예정 시각이며 변경 공지 재확인"
+  ],
+  "quote": {
+    "text": "크리스마스를 마음에 품고,\n일 년 내내 간직하겠습니다.",
+    "attribution": "— 찰스 디킨스 · 『크리스마스 캐럴』 대사 (번역)",
+    "source": "https://www.gutenberg.org/files/46/46-h/46-h.htm"
+  },
+  "mascotPath": "assets/author-12.png",
+  "mascotName": "찰스 디킨스봇"
+}

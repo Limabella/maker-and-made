@@ -1,0 +1,168 @@
+{
+  "year": 2026,
+  "month": 10,
+  "asOf": "2026-10-03",
+  "bannerPath": "assets/banner-10.png",
+  "bannerPosition": "center center",
+  "bannerAspectRatio": 1.7768331562167907,
+  "cultureTitle": "책과 문화가 만나는 가을",
+  "cultureEvents": [
+    {
+      "date": "2026-10-03",
+      "title": "서울야외도서관 ~4",
+      "time": "서울광장·광화문·청계천",
+      "point": "가을 야외 독서 · 장소별 시간 확인",
+      "stars": 0,
+      "status": "confirmed",
+      "source": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159264&menuNo=200011"
+    },
+    {
+      "date": "2026-10-06",
+      "title": "美 도서상 최종후보",
+      "time": "미국 현지 날짜",
+      "point": "소설·논픽션·시·번역·청소년",
+      "stars": 0,
+      "status": "confirmed",
+      "source": "https://www.nationalbook.org/submissions-open-for-the-2026-national-book-awards/"
+    },
+    {
+      "date": "2026-10-07",
+      "title": "궁중문화축전 ~11",
+      "time": "서울 4대 궁·종묘",
+      "point": "고궁에서 전통문화 만나기",
+      "stars": 0,
+      "status": "confirmed",
+      "source": "https://m.korea.kr/briefing/pressReleaseView.do?newsId=156779995"
+    },
+    {
+      "date": "2026-10-07",
+      "title": "프랑크푸르트 도서전 ~11",
+      "time": "독일 현지 날짜",
+      "point": "번역·출판·콘텐츠 흐름 살펴보기",
+      "stars": 0,
+      "status": "confirmed",
+      "source": "https://www.buchmesse.de/en/press/press-releases/2026-06-24-frankfurter-buchmesse-tickets-are-sale"
+    },
+    {
+      "date": "2026-10-08",
+      "title": "노벨문학상 발표",
+      "time": "한국 20:00 이후",
+      "point": "수상 작가·국내 번역 작품 확인",
+      "stars": 0,
+      "status": "confirmed",
+      "source": "https://www.nobelprize.org/prizes/about/prize-announcement-dates/"
+    },
+    {
+      "date": "2026-10-09",
+      "title": "파주 북앤컬처 ~18",
+      "time": "파주출판도시",
+      "point": "책·공연·작가 프로그램 확인",
+      "stars": 0,
+      "status": "confirmed",
+      "source": "https://tour.paju.go.kr/user/link/cultural/BD_selectCulturalView.do?cultMstSn=944"
+    },
+    {
+      "date": "2026-10-09",
+      "title": "서울야외도서관 ~11",
+      "time": "금–일 · 무료",
+      "point": "주말에는 책 한 권과 가을 산책",
+      "stars": 0,
+      "status": "confirmed",
+      "source": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159264&menuNo=200011"
+    },
+    {
+      "date": "2026-10-12",
+      "title": "베스트셀러 확인일",
+      "time": "교보·NYT · 편집 일정",
+      "point": "집계 기간·분야·신간 진입 비교",
+      "stars": 0,
+      "status": "check",
+      "source": "https://store.kyobobook.co.kr/bestseller/total/weekly"
+    },
+    {
+      "date": "2026-10-16",
+      "title": "파주 북소리 북마켓 ~18",
+      "time": "10:00–18:00 · 출판도시",
+      "point": "출판사 부스에서 새 책 발견",
+      "stars": 0,
+      "status": "confirmed",
+      "source": "https://kpipa.or.kr/p/g1_6/173?page=9&sod=desc&sop=and&sst=wr_hit"
+    },
+    {
+      "date": "2026-10-16",
+      "title": "노원달빛산책 ~11/8",
+      "time": "당현천 · 17:30–22:00",
+      "point": "공공미술 빛조각 · 무료",
+      "stars": 0,
+      "status": "confirmed",
+      "source": "https://festival.seoul.go.kr/festival/main/festivalView.do?festacode=535"
+    },
+    {
+      "date": "2026-10-16",
+      "title": "서울야외도서관 ~18",
+      "time": "금–일 · 장소별 시간 확인",
+      "point": "광장·광화문·청계천에서 읽기",
+      "stars": 0,
+      "status": "confirmed",
+      "source": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159264&menuNo=200011"
+    },
+    {
+      "date": "2026-10-23",
+      "title": "서울야외도서관 ~25",
+      "time": "금–일 · 무료",
+      "point": "가을 끝자락에 함께 읽기",
+      "stars": 0,
+      "status": "confirmed",
+      "source": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159264&menuNo=200011"
+    },
+    {
+      "date": "2026-10-26",
+      "title": "베스트셀러 확인일",
+      "time": "교보·NYT · 편집 일정",
+      "point": "문학상 이후 재진입·번역서 관찰",
+      "stars": 0,
+      "status": "check",
+      "source": "https://store.kyobobook.co.kr/bestseller/total/weekly"
+    },
+    {
+      "date": "2026-10-29",
+      "title": "미리 정동야행",
+      "time": "정동 일대 · 사전 행사",
+      "point": "야간 문화 프로그램 확인",
+      "stars": 0,
+      "status": "confirmed",
+      "source": "https://festival.seoul.go.kr/festival/main/festivalView.do?festacode=601"
+    },
+    {
+      "date": "2026-10-30",
+      "title": "정동야행 ~31",
+      "time": "덕수궁길·정동길",
+      "point": "역사문화시설 야간 개방·투어",
+      "stars": 0,
+      "status": "confirmed",
+      "source": "https://festival.seoul.go.kr/festival/main/festivalView.do?festacode=601"
+    },
+    {
+      "date": "2026-10-30",
+      "title": "서울야외도서관 ~11/1",
+      "time": "금–일 · 가을 마지막 주말",
+      "point": "장소별 운영·우천 공지 확인",
+      "stars": 0,
+      "status": "confirmed",
+      "source": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159264&menuNo=200011"
+    }
+  ],
+  "marketEvents": [],
+  "quote": {
+    "text": "잃어버린 시간은\n다시 찾을 수 없다.",
+    "attribution": "— 벤저민 프랭클린 · 『부에 이르는 길』 (번역)",
+    "source": "https://www.gutenberg.org/files/43855/43855-h/43855-h.htm"
+  },
+  "pending": [
+    "기존에 조사한 일정 데이터를 다시 조판한 파일. 이번 요청에서 전체 일정 신규 재조사는 하지 않음.",
+    "베스트셀러 확인일은 공식 발표일이 아닌 기존 편집 일정.",
+    "실제 일정이 없는 발제 독서모임은 모두 제외."
+  ],
+  "mascotPath": "assets/author-10.png",
+  "mascotName": "BFR-N · 벤저민 프랭클린봇"
+}

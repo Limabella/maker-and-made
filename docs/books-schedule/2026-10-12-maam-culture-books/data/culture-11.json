@@ -1,0 +1,141 @@
+{
+  "year": 2026,
+  "month": 11,
+  "asOf": "2026-10-03",
+  "bannerPath": "assets/banner-11.png",
+  "bannerPosition": "center center",
+  "bannerAspectRatio": 1.7768331562167907,
+  "cultureTitle": "문학과 예술의 발견을 나누는 달",
+  "cultureEvents": [
+    {
+      "date": "2026-11-01",
+      "title": "서울야외도서관 종료",
+      "time": "가을 시즌 마지막 날",
+      "point": "서울광장·광화문·청계천",
+      "stars": 0,
+      "status": "confirmed",
+      "source": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159264&menuNo=200011"
+    },
+    {
+      "date": "2026-11-02",
+      "title": "베스트셀러 확인일",
+      "time": "교보·NYT · 편집 일정",
+      "point": "10월 독서 흐름·신간 비교",
+      "stars": 0,
+      "status": "check",
+      "source": "https://store.kyobobook.co.kr/bestseller/total/weekly"
+    },
+    {
+      "date": "2026-11-04",
+      "title": "서울무용제 ~29",
+      "time": "아르코·서울무용창작센터",
+      "point": "작품별 공연 시간·예매 확인",
+      "stars": 0,
+      "status": "confirmed",
+      "source": "https://festival.seoul.go.kr/festival/main/festivalView.do?festacode=855"
+    },
+    {
+      "date": "2026-11-06",
+      "title": "서울아트북페어 ~8",
+      "time": "언리미티드 에디션 18",
+      "point": "북서울미술관 · 독립출판·아트북",
+      "stars": 0,
+      "status": "confirmed",
+      "source": "https://festival.seoul.go.kr/festival/main/festivalView.do?festacode=853"
+    },
+    {
+      "date": "2026-11-08",
+      "title": "부커상 후보 낭독회",
+      "time": "런던 현지 19:30",
+      "point": "사우스뱅크 · 후보작의 목소리",
+      "stars": 0,
+      "status": "confirmed",
+      "source": "https://thebookerprizes.com/events-whats-on-and-dates-for-your-diary"
+    },
+    {
+      "date": "2026-11-08",
+      "title": "노원달빛산책 종료",
+      "time": "당현천 · 17:30–22:00",
+      "point": "빛조각과 가을 산책 · 무료",
+      "stars": 0,
+      "status": "confirmed",
+      "source": "https://festival.seoul.go.kr/festival/main/festivalView.do?festacode=535"
+    },
+    {
+      "date": "2026-11-09",
+      "title": "부커상 수상작 발표",
+      "time": "영국 현지 날짜",
+      "point": "수상작·번역 출간 여부 확인",
+      "stars": 0,
+      "status": "confirmed",
+      "source": "https://thebookerprizes.com/the-booker-library/prize-years/2026"
+    },
+    {
+      "date": "2026-11-16",
+      "title": "베스트셀러 확인일",
+      "time": "교보·NYT · 편집 일정",
+      "point": "부커상 이후 독서 관심 비교",
+      "stars": 0,
+      "status": "check",
+      "source": "https://store.kyobobook.co.kr/bestseller/total/weekly"
+    },
+    {
+      "date": "2026-11-18",
+      "title": "美 도서상 수상식",
+      "time": "미국 현지 날짜",
+      "point": "수상작·국내 번역 여부 확인",
+      "stars": 0,
+      "status": "confirmed",
+      "source": "https://www.nationalbook.org/awards2026/"
+    },
+    {
+      "date": "2026-11-24",
+      "title": "어린이 부커상 후보 발표",
+      "time": "2027년상 · 후보 8권",
+      "point": "아동문학·그림·번역 작품 발견",
+      "stars": 0,
+      "status": "confirmed",
+      "source": "https://thebookerprizes.com/the-booker-library/prize-years/childrens/2027"
+    },
+    {
+      "date": "2026-11-26",
+      "title": "서울디자인페스티벌 ~29",
+      "time": "코엑스 A홀",
+      "point": "그래픽·브랜드·디자인 둘러보기",
+      "stars": 0,
+      "status": "confirmed",
+      "source": "https://www.coex.co.kr/exhibitions/2026-%EC%84%9C%EC%9A%B8%EB%94%94%EC%9E%90%EC%9D%B8%ED%8E%98%EC%8A%A4%ED%8B%B0%EB%B2%8C/"
+    },
+    {
+      "date": "2026-11-29",
+      "title": "서울무용제 마지막 날",
+      "time": "공연별 장소·예매 확인",
+      "point": "무대의 움직임을 함께 감상",
+      "stars": 0,
+      "status": "confirmed",
+      "source": "https://festival.seoul.go.kr/festival/main/festivalView.do?festacode=855"
+    },
+    {
+      "date": "2026-11-30",
+      "title": "베스트셀러 확인일",
+      "time": "교보·NYT · 편집 일정",
+      "point": "11월 순위와 연말 독서 목록",
+      "stars": 0,
+      "status": "check",
+      "source": "https://store.kyobobook.co.kr/bestseller/total/weekly"
+    }
+  ],
+  "marketEvents": [],
+  "quote": {
+    "text": "사람은 저마다\n마음에 품은 것을 본다.",
+    "attribution": "— 괴테 · 『파우스트』 대사 (번역)",
+    "source": "https://www.gutenberg.org/files/2229/2229-h/2229-h.htm"
+  },
+  "pending": [
+    "기존에 조사한 일정 데이터를 다시 조판한 파일. 이번 요청에서 전체 일정 신규 재조사는 하지 않음.",
+    "베스트셀러 확인일은 공식 발표일이 아닌 기존 편집 일정.",
+    "실제 일정이 없는 발제 독서모임은 모두 제외."
+  ],
+  "mascotPath": "assets/author-11.png",
+  "mascotName": "GTH-N · 괴테봇"
+}

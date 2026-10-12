@@ -1,0 +1,14 @@
+{
+  "mode": "culture",
+  "year": 2026,
+  "month": 10,
+  "rows": 5,
+  "asOf": "2026-10-03",
+  "width": 3840,
+  "height": 4985,
+  "days": 31,
+  "bots": 1,
+  "events": 16,
+  "overflow": [],
+  "titleSpeechOverlap": false
+}
