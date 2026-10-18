@@ -137,5 +137,13 @@
   },
   "mascotPath": "assets/author-12.png",
   "mascotName": "찰스 디킨스봇",
-  "sportsAsOf": "2026-10-12"
+  "sportsAsOf": "2026-10-12",
+  "holidays": [
+    {
+      "date": "2026-12-25",
+      "name": "성탄절",
+      "source": "https://www.kasa.go.kr/bbs/BBSMSTR_000000000010/view.do?nttId=B000000001860Pe2zT3"
+    }
+  ],
+  "holidaysAsOf": "2026-10-18"
 }

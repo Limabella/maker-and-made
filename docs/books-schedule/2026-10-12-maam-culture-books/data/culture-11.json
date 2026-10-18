@@ -66,6 +66,22 @@
       "verifiedAt": "2026-10-18"
     },
     {
+      "date": "2026-11-06",
+      "title": "은유 작가와의 만남",
+      "time": "19:00–21:00 · 선유도서관",
+      "point": "5층 프로그램실1 · 『생업』과 일하는 삶",
+      "stars": 0,
+      "status": "confirmed",
+      "source": "https://www.ydplib.or.kr/sylib/menu/10273/program/30012/lectureDetail.do?currentPageNo=1&manageCd=CC&categoryCd&targetCd&searchStatusCd&lectureIdx=15584",
+      "applicationLink": "https://m.site.naver.com/2it7u",
+      "category": "author-talk",
+      "verifiedAt": "2026-10-18",
+      "fullTitle": "일하는 삶, 우리는 무엇을 만나는가",
+      "venue": "선유도서관 5층 프로그램실1",
+      "audience": "누구나",
+      "capacity": 30
+    },
+    {
       "date": "2026-11-08",
       "title": "부커상 후보 낭독회",
       "time": "런던 현지 19:30",
@@ -180,10 +196,14 @@
     "베스트셀러 확인일은 공식 발표일이 아닌 기존 편집 일정.",
     "실제 일정이 없는 발제 독서모임은 모두 제외.",
     "체육 일정만 2026-10-12 공식 요강으로 추가 확인. 기존 독서·문화 일정의 전수 재조사는 하지 않음.",
-    "2026-10-18 교보문고 공연 두 건의 공식 상품 상세를 추가 확인. 기존 일정 전체를 재조사한 변경은 아님."
+    "2026-10-18 교보문고 공연 두 건의 공식 상품 상세를 추가 확인. 기존 일정 전체를 재조사한 변경은 아님.",
+    "선유도서관 작가 행사 2건만 2026-10-18 공식 상세 페이지로 추가 확인. 기존 일정 전체를 재조사한 것은 아님."
   ],
   "mascotPath": "assets/author-11.png",
   "mascotName": "GTH-N · 괴테봇",
   "sportsAsOf": "2026-10-12",
-  "concertsAsOf": "2026-10-18"
+  "concertsAsOf": "2026-10-18",
+  "libraryEventsAsOf": "2026-10-18",
+  "holidays": [],
+  "holidaysAsOf": "2026-10-18"
 }

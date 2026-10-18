@@ -5,11 +5,18 @@
   "rows": 5,
   "asOf": "2026-10-12",
   "width": 3840,
-  "height": 4981,
+  "height": 5026,
   "days": 31,
   "bots": 1,
-  "events": 12,
+  "events": 17,
   "sportsEvents": 2,
+  "bookclubEvents": 5,
+  "publicHolidays": [
+    {
+      "label": "25성탄절",
+      "color": "rgb(189, 62, 50)"
+    }
+  ],
   "overflow": [],
   "titleSpeechOverlap": false
 }

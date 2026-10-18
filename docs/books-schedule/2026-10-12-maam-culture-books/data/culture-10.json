@@ -138,6 +138,24 @@
       "source": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159264&menuNo=200011"
     },
     {
+      "date": "2026-10-23",
+      "title": "우리가 이야기를 남기는 이유",
+      "time": "19:00–21:00 · 선유도서관",
+      "point": "5층 프로그램실1 · 신정섭·조해진",
+      "stars": 0,
+      "status": "confirmed",
+      "source": "https://www.ydplib.or.kr/sylib/lectureDetail.do?lectureIdx=15385&manageCd=CC",
+      "category": "author-talk",
+      "verifiedAt": "2026-10-18",
+      "venue": "선유도서관 5층 프로그램실1",
+      "speakers": [
+        "신정섭",
+        "조해진",
+        "강지웅"
+      ],
+      "theme": "기억과 기록의 의미"
+    },
+    {
       "date": "2026-10-25",
       "title": "춘천마라톤",
       "time": "09:00 · 춘천 공지천교",
@@ -207,10 +225,30 @@
     "베스트셀러 확인일은 공식 발표일이 아닌 기존 편집 일정.",
     "실제 일정이 없는 발제 독서모임은 모두 제외.",
     "체육 일정만 2026-10-12 공식 요강으로 추가 확인. 기존 독서·문화 일정의 전수 재조사는 하지 않음.",
-    "2026-10-18 교보문고 공연 두 건의 공식 상품 상세를 추가 확인. 기존 일정 전체를 재조사한 변경은 아님."
+    "2026-10-18 교보문고 공연 두 건의 공식 상품 상세를 추가 확인. 기존 일정 전체를 재조사한 변경은 아님.",
+    "선유도서관 작가 행사 2건만 2026-10-18 공식 상세 페이지로 추가 확인. 기존 일정 전체를 재조사한 것은 아님."
   ],
   "mascotPath": "assets/author-10.png",
   "mascotName": "BFR-N · 벤저민 프랭클린봇",
   "sportsAsOf": "2026-10-12",
-  "concertsAsOf": "2026-10-18"
+  "concertsAsOf": "2026-10-18",
+  "libraryEventsAsOf": "2026-10-18",
+  "holidays": [
+    {
+      "date": "2026-10-03",
+      "name": "개천절",
+      "source": "https://www.kasa.go.kr/bbs/BBSMSTR_000000000010/view.do?nttId=B000000001860Pe2zT3"
+    },
+    {
+      "date": "2026-10-05",
+      "name": "개천절 대체공휴일",
+      "source": "https://www.kasa.go.kr/bbs/BBSMSTR_000000000010/view.do?nttId=B000000001860Pe2zT3"
+    },
+    {
+      "date": "2026-10-09",
+      "name": "한글날",
+      "source": "https://www.kasa.go.kr/bbs/BBSMSTR_000000000010/view.do?nttId=B000000001860Pe2zT3"
+    }
+  ],
+  "holidaysAsOf": "2026-10-18"
 }

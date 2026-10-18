@@ -1,0 +1,21 @@
+{
+  "mode": "culture",
+  "year": 2026,
+  "month": 12,
+  "rows": 5,
+  "asOf": "2026-10-12",
+  "width": 3840,
+  "height": 4981,
+  "days": 31,
+  "bots": 1,
+  "events": 12,
+  "sportsEvents": 2,
+  "publicHolidays": [
+    {
+      "label": "25성탄절",
+      "color": "rgb(189, 62, 50)"
+    }
+  ],
+  "overflow": [],
+  "titleSpeechOverlap": false
+}

@@ -5,11 +5,13 @@
   "rows": 5,
   "asOf": "2026-10-03",
   "width": 3840,
-  "height": 4980,
+  "height": 5099,
   "days": 30,
   "bots": 1,
-  "events": 17,
+  "events": 23,
   "sportsEvents": 3,
+  "bookclubEvents": 5,
+  "publicHolidays": [],
   "overflow": [],
   "titleSpeechOverlap": false
 }
