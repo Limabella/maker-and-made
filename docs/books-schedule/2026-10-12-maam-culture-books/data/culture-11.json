@@ -55,6 +55,17 @@
       "source": "https://festival.seoul.go.kr/festival/main/festivalView.do?festacode=853"
     },
     {
+      "date": "2026-11-06",
+      "title": "모네 그리고 드뷔시",
+      "time": "19:30 · 로데아트센터 콘서트홀",
+      "point": "이서준·트리오 POS · 명화와 클래식",
+      "stars": 0,
+      "status": "confirmed",
+      "source": "https://product.kyobobook.co.kr/detail/S000221581573",
+      "category": "concert",
+      "verifiedAt": "2026-10-18"
+    },
+    {
       "date": "2026-11-08",
       "title": "부커상 후보 낭독회",
       "time": "런던 현지 19:30",
@@ -168,9 +179,11 @@
     "기존에 조사한 일정 데이터를 다시 조판한 파일. 이번 요청에서 전체 일정 신규 재조사는 하지 않음.",
     "베스트셀러 확인일은 공식 발표일이 아닌 기존 편집 일정.",
     "실제 일정이 없는 발제 독서모임은 모두 제외.",
-    "체육 일정만 2026-10-12 공식 요강으로 추가 확인. 기존 독서·문화 일정의 전수 재조사는 하지 않음."
+    "체육 일정만 2026-10-12 공식 요강으로 추가 확인. 기존 독서·문화 일정의 전수 재조사는 하지 않음.",
+    "2026-10-18 교보문고 공연 두 건의 공식 상품 상세를 추가 확인. 기존 일정 전체를 재조사한 변경은 아님."
   ],
   "mascotPath": "assets/author-11.png",
   "mascotName": "GTH-N · 괴테봇",
-  "sportsAsOf": "2026-10-12"
+  "sportsAsOf": "2026-10-12",
+  "concertsAsOf": "2026-10-18"
 }

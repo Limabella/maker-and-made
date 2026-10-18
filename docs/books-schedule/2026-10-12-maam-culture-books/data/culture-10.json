@@ -183,6 +183,17 @@
       "stars": 0,
       "status": "confirmed",
       "source": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159264&menuNo=200011"
+    },
+    {
+      "date": "2026-10-30",
+      "title": "친절한 재즈 · Fall in Jazz",
+      "time": "19:30 · 씨스퀘어",
+      "point": "류희성 해설·김유진 보컬 · 가을 재즈",
+      "stars": 0,
+      "status": "confirmed",
+      "source": "https://product.kyobobook.co.kr/detail/S000221518148",
+      "category": "concert",
+      "verifiedAt": "2026-10-18"
     }
   ],
   "marketEvents": [],
@@ -195,9 +206,11 @@
     "기존에 조사한 일정 데이터를 다시 조판한 파일. 이번 요청에서 전체 일정 신규 재조사는 하지 않음.",
     "베스트셀러 확인일은 공식 발표일이 아닌 기존 편집 일정.",
     "실제 일정이 없는 발제 독서모임은 모두 제외.",
-    "체육 일정만 2026-10-12 공식 요강으로 추가 확인. 기존 독서·문화 일정의 전수 재조사는 하지 않음."
+    "체육 일정만 2026-10-12 공식 요강으로 추가 확인. 기존 독서·문화 일정의 전수 재조사는 하지 않음.",
+    "2026-10-18 교보문고 공연 두 건의 공식 상품 상세를 추가 확인. 기존 일정 전체를 재조사한 변경은 아님."
   ],
   "mascotPath": "assets/author-10.png",
   "mascotName": "BFR-N · 벤저민 프랭클린봇",
-  "sportsAsOf": "2026-10-12"
+  "sportsAsOf": "2026-10-12",
+  "concertsAsOf": "2026-10-18"
 }
