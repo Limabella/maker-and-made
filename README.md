@@ -3,7 +3,7 @@
 ![status](https://img.shields.io/badge/status-ACTIVE-brightgreen)
 ![license](https://img.shields.io/badge/license-MIT-blue)
 
-![Out-of-Focus](assets/images/out-of-focus.png "Out-of-Focus")
+![MaAM Battlefield Negotiation — Season Banner](assets/images/battlefield-negotiation-v003.png "MaAM Battlefield Negotiation")
 
 ---
 
